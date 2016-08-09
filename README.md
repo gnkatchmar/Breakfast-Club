@@ -3,11 +3,7 @@ https://docs.google.com/spreadsheets/d/16IxZ8lJr8j_VHQySW8rdTueaeK7XSBh6oqZ1E0bH
 The Breakfast Club
 Team Members:
 
-Gregory  Katchmar (launch driver)
-Rosemary Joe
-Jade Dhabolt
-Nathan Pickard
-Cheryl Cruz
+Gregory  Katchmar (launch driver), Cheryl Cruz, Jade Dhabolt, Nathan Pickard, Rosemary Joe
 
 Problem Statement: Yelp doesn’t allow a method to see when restaurants are open at a future time
 
