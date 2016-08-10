@@ -1,7 +1,7 @@
-*Style guide for Breakfast-Club*
+*Style guide for Breakfast-Club* - (Initial layout)
 
 ##Color Scheme##
-Body background:
+Body background: lightyellow
 Headers:
 Image titles:
 Page:
@@ -13,7 +13,7 @@ Restaurant Links:
 
 
 ##Fonts##
-Page title:
+Page title: Raleway
 Image titles:
 Headers:
 Restaurant links:
@@ -26,3 +26,5 @@ Links:
 
 ##Links to CSS##
  -Google fonts:
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+ -Color scheme picker
