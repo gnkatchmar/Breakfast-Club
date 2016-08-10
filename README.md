@@ -17,7 +17,9 @@ Third page: Google Map of the restaurants
 All restaurants will be linked to their website
 
 Store last user’s settings in local storage.
+
 //////////////////////////
+
 Final Project Rules and Process
 
 For your final project, your task is to work with a team to build a web site that simulates a real-world product, service, or game.
@@ -64,7 +66,9 @@ Build a basic file scaffold from scratch as a team.
 Initialize a new git repository (in a personal or organization account).
 Push it to GitHub and add your team members as Collaborators.
 Make a plan, and get to work!
+
 //////////////////////////
+
 Class 15 - Project Week: Milestone 2
 
 Development phase
@@ -96,7 +100,9 @@ Have regular meetings with your teams, away from laptops, to discuss process and
 Always keep the experience of your end user in mind. Deliberately take time to view your app as if you are seeing it for the very first time.
 
 Most important: Be focused and relentless toward achieving your core functionality. By now you should have identified your biggest challenges and toughest problems. Solve them this morning if you have not solved them already. Do not get lured by the siren song of CSS and images and making things pretty. Save that for later unless your team is already solidly on the way to MVP.
+
 //////////////////////////
+
 Class 16 - Project Week: Milestone 3
 
 Development
