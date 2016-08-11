@@ -2,6 +2,7 @@
 
 h1  {
   font-family: 'Raleway', sans-serif;
+  display:
 
 }
 
@@ -11,5 +12,26 @@ body  {
 
 section {
   font-family: 'Raleway' , sans-serif;
-  background-color: lightgray;
+  background-color: lightblue;
+}
+
+form {
+  font-family: monospace;
+}
+
+#launchpage {
+  font-family: 'Raleway' , sans-serif;
+}
+
+#launchcontent {
+  font-family: 'Raleway' , sans-serif;
+  /*background-color: lightgreen;*/
+
+}
+
+#searchform {
+  background-color:
+}
+
+#submitSearchButton {
 }
