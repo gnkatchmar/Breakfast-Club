@@ -57,28 +57,7 @@
     </div>
   </section>
 </body>
-    <script>
-        var map;
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 13,
-                center: {lat: 45.534779, lng: -122.642674}
-            });
-
-            var marker = new google.maps.Marker({
-                position: {lat: 45.534779, lng: -122.642674},
-                map: map,
-                title: 'Spielman Coffee Roaster & Bagels'
-            });
-
-            var marker = new google.maps.Marker({
-                position: {lat: 45.505019, lng: -122.622889},
-                map: map,
-                title: "Tom's Resaraunt"
-            });
-        }
-    </script>
     <script type="text/javascript" src="js/geolocation.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </html>
