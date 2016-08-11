@@ -6,6 +6,10 @@ html, body {
     padding: 0;
 }
 
+#searchpage {
+    height: 100%;
+}
+
 #map {
     height: 100%;
 }
