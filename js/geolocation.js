@@ -1,3 +1,4 @@
+// GEOLOCATION API
 var x = document.getElementById('currentPosition');
 var pos;
 var map;
@@ -37,6 +38,7 @@ function initMap() {
         map.setCenter(pos);
         infoWindow.open(map);//shows location. Not necessarily accurate
 
+        getQuadrant();
         // USER MARKER //Not necessarily accurate!
         // In case we want to drop a marker at current user location
             // var marker0 = new google.maps.Marker({//user marker
@@ -61,3 +63,27 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
        'Error: The Geolocation service failed.' :
        'Error: Your browser doesn\'t support geolocation.');
 }
+// GEOLOCATION API
+
+// Determine cutoff lat, lng between city quadrants (NW, NE, SE, SW)
+    // Treating center of Burnside bridge as axis
+    // lat: 45.523063, lng: -122.667677
+    // Anything > lat = N
+    // Anything > lng = E
+function getQuadrant(){
+    var ns = "S";
+    var ew = "W";
+    if(pos.lat > 45.523063){
+        ns = "N";
+    }
+    if(pos.lng > -122.667677){
+        ew = "E";
+    }
+    // console.log("Quadrant: " + ns + ew);
+    return ns + ew;
+}
+
+
+// Write function to return current quadrant
+// Create only those markers within current quadrant
+// Re-render map
