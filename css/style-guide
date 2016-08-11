@@ -1,0 +1,30 @@
+*Style guide for Breakfast-Club* - (Initial layout)
+
+##Color Scheme##
+Body background: lightyellow
+Headers:
+Image titles:
+Page:
+Buttons:
+Menus:
+Checkboxes:
+Restaurant Links:
+
+
+
+##Fonts##
+Page title: Raleway
+Image titles:
+Headers:
+Restaurant links:
+Buttons:
+Menu header:
+Checkboxes:
+Links:
+
+
+
+##Links to CSS##
+ -Google fonts:
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+ -Color scheme picker

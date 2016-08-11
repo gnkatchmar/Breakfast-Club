@@ -1,0 +1,15 @@
+/*Initial styling from mockups */
+
+h1  {
+  font-family: 'Raleway', sans-serif;
+
+}
+
+body  {
+  background-color: lightyellow;
+}
+
+section {
+  font-family: 'Raleway' , sans-serif;
+  background-color: lightgray;
+}
