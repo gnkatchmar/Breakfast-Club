@@ -1,5 +1,20 @@
 https://docs.google.com/spreadsheets/d/16IxZ8lJr8j_VHQySW8rdTueaeK7XSBh6oqZ1E0bHWhw/edit?usp=sharing
 
+//////////////////////////
+
+Using Git for Project:
+
+Initial setup, only have to do once: "$ git clone [url]". This creates a new folder, so have to: "cd [new folder]" to navigate where you need to be.
+
+To begin work on a new issue branch:
+
+1.  In [master] (use "$ git checkout master" if not in [master] : "$ git pull origin master". This insures that you have the most up-to-date versions of the files.
+2.  "$ git checkout -b [issue#_description]". This creates and switches you to the new branch which will be named something like "10_addCSStoInputs".
+3.  Do your work. When done, use the usual add ., commit -m, and push origin [branchname].
+4.  Go to GitHub, switch to your new branch, and create pull request.	
+
+//////////////////////////
+
 The Breakfast Club
 Team Members: Gregory  Katchmar (launch driver), Cheryl Cruz, Jade Dhabolt, Nathan Pickard, Rosemary Joe
 
@@ -34,26 +49,12 @@ Your web site must have at least 3 interlinked pages and clear navigation.
 Your web site must have at least 2 pages that accept and process user input.
 Your web site's state must persist between page reloads.
 Your web site must be deployed live on the Internet.
+
 Process:
 
 Here's the process that we'll be using for project week. 1. On the first day of project week, your team must submit a proposal to an instructor. 2. During project week, your team must work on-campus so we can help whenever your team is stuck. 3. On the last day of project week, your team must present your project in front of the class.
 
-Project proposals
-
-On the first day of project week, your team must submit a proposal to an instructor with the following information:
-
-Your team's name
-Your team's members
-Your project's pitch. (What is the problem statement and what are the benefits of your solution? Read more about these here.)
-A diagram of relevant details from your project's domain model
-A few wireframe sketches of your project's pages
-TIP: Use pencil and paper to diagram and sketch.
-
-Proposals, written or electronic, as per the project description, are due for review with the instruction team. First come, first served!
-
-Due at 9:00pm.
-
-2. Here are some tips on how to organize your team during the launch phase.
+Here are some tips on how to organize your team during the launch phase.
 
 Elect a Launch Driver who will be responsible for the following:
 Driving the coding of the initial scaffolding phase.
@@ -100,14 +101,4 @@ Have regular meetings with your teams, away from laptops, to discuss process and
 Always keep the experience of your end user in mind. Deliberately take time to view your app as if you are seeing it for the very first time.
 
 Most important: Be focused and relentless toward achieving your core functionality. By now you should have identified your biggest challenges and toughest problems. Solve them this morning if you have not solved them already. Do not get lured by the siren song of CSS and images and making things pretty. Save that for later unless your team is already solidly on the way to MVP.
-
-//////////////////////////
-
-Class 16 - Project Week: Milestone 3
-
-Development
-
-Start with a meeting to assess how Milestone 2 went, and then plan today accordingly.
-
-Your goal today: MVP. You want to have everything working, all of your core features in place, and bugs worked out. That will leave tomorrow for stretch goals and focusing on getting the look and feel dialed in to exactly what you want.
 

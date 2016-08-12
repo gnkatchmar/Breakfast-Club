@@ -20,16 +20,15 @@
     <h1>Portland Brunch Finder</h1>
   </header>
   <section id="launchpage">
-    <div>
-      <label><input type="checkbox" id="cbox1" value="geolocate">Allow geolocation?</label><br>
-    </div>
+    <div id="currentPosition"></div>
     <div id="launchcontent">
       <p>Generated content goes here</p>
     </div>
       <button type ="button" onclick="">Advanced Search</button>
   </section>
+ <!-- PAGE BOUNDARY -->
   <section id="searchpage">
-    <p></p>
+    <div id="map"></div>
     <nav id="searchform">
     <div>
       <form name="timeselect" action="" method="POST">
@@ -71,31 +70,8 @@
 >>>>>>> 34a070d68c12f133ca144ca460806521856778bb
     </div>
   </section>
-  <div id="map"></div>
 </body>
-    <script>
-        var map;
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 13,
-                center: {lat: 45.534779, lng: -122.642674}
-            });
-
-            var marker = new google.maps.Marker({
-                position: {lat: 45.534779, lng: -122.642674},
-                map: map,
-                title: 'Spielman Coffee Roaster & Bagels'
-            });
-
-            var marker = new google.maps.Marker({
-                position: {lat: 45.505019, lng: -122.622889},
-                map: map,
-                title: "Tom's Resaraunt"
-            });
-        }
-    </script>
+    <script type="text/javascript" src="js/geolocation.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
     <script type="text/javascript" src="js/app.js"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp0YQZf_K1pQI6mSV3BAR3TR2s7XBj_QQ&callback=initMap" async defer></script>
-
 </html>
