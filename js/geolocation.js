@@ -11,19 +11,19 @@ function initMap() {
         zoom: 13,
     });
 
-// MARKERS
-    var marker1 = new google.maps.Marker({
-        position: {lat: 45.534779, lng: -122.642674},
-        map: map,
-        title: 'Spielman Coffee Roaster & Bagels'
-    });
-
-    var marker2 = new google.maps.Marker({
-        position: {lat: 45.505019, lng: -122.622889},
-        map: map,
-        title: "Tom's Resaraunt"
-    });
-// MARKERS
+// TEST MARKERS
+    // var marker1 = new google.maps.Marker({
+    //     position: {lat: 45.534779, lng: -122.642674},
+    //     map: map,
+    //     title: 'Spielman Coffee Roaster & Bagels'
+    // });
+    //
+    // var marker2 = new google.maps.Marker({
+    //     position: {lat: 45.505019, lng: -122.622889},
+    //     map: map,
+    //     title: "Tom's Resaraunt"
+    // });
+// TEST MARKERS
 
 
     if (navigator.geolocation) {
@@ -38,7 +38,11 @@ function initMap() {
         map.setCenter(pos);
         infoWindow.open(map);//shows location. Not necessarily accurate
 
-        getQuadrant();
+        var quad = getQuadrant();
+        var brunchObjArr = getBrunchObjs(quad);
+        var brunchMarkerObjs = convertToMarkers(map, brunchObjArr);
+        // console.log(brunchMarkerObjs);
+
         // USER MARKER //Not necessarily accurate!
         // In case we want to drop a marker at current user location
             // var marker0 = new google.maps.Marker({//user marker
@@ -66,24 +70,48 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 // GEOLOCATION API
 
 // Determine cutoff lat, lng between city quadrants (NW, NE, SE, SW)
-    // Treating center of Burnside bridge as axis
+    // Treating center of Burnside bridge as axis // This will need refining!
     // lat: 45.523063, lng: -122.667677
     // Anything > lat = N
     // Anything > lng = E
 function getQuadrant(){
     var ns = "S";
     var ew = "W";
+    var concat;
+
     if(pos.lat > 45.523063){
         ns = "N";
     }
     if(pos.lng > -122.667677){
         ew = "E";
     }
+
     // console.log("Quadrant: " + ns + ew);
-    return ns + ew;
+    concat = ns + ew;
+    return concat;
 }
 
+// Get subset of brunch array that match quadrant
+function getBrunchObjs(quad){
+    var subsetArr = [];
+    for(var i=0; i<brunchArr.length; i++){
+        if(brunchArr[i].nhd === quad){
+            subsetArr.push(brunchArr[i]);
+        }
+    }
+    return subsetArr;
+}
 
-// Write function to return current quadrant
 // Create only those markers within current quadrant
-// Re-render map
+function convertToMarkers(map, brunchObjArr){
+    var arr = [];
+    for(var i=0; i<brunchObjArr.length; i++){
+        var markerObj = new google.maps.Marker({//user marker
+            position: {lat: brunchObjArr[i].lat, lng: brunchObjArr[i].lng},
+            map: map,
+            title: brunchObjArr[i].title
+        });
+        arr.push(markerObj);
+    }
+    return arr;
+}
