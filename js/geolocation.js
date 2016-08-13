@@ -2,18 +2,13 @@
 var x = document.getElementById('currentPosition');
 var pos;
 var mapObj;
-// var infoWindow;
+var infoWindow;
 
 function initMap() {
-    // infoWindow = new google.maps.InfoWindow({map: map});
-    // var map = new google.maps.Map(document.getElementById('map'), {
-    //     center: {lat: 45.523832, lng: -122.676678},//initializes at city center
-    //     zoom: 13,
-    // });
-
+    infoWindow = new google.maps.InfoWindow({map: mapObj});
     mapObj = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 45.523832, lng: -122.676678},//initializes at city center
-        zoom: 13,
+        zoom: 13
     });
 
 // TEST MARKERS
@@ -40,12 +35,12 @@ function initMap() {
         console.log("Current Lat, Lng: " + pos.lat + ", " + pos.lng);
         infoWindow.setPosition(pos);//center view on user location
         infoWindow.setContent('Location found.');
-        map.setCenter(pos);
-        // infoWindow.open(map);//shows location. Not necessarily accurate
+        mapObj.setCenter(pos);
+        infoWindow.open(mapObj);//shows location. Not necessarily accurate
 
         var quad = getQuadrant();
         var brunchObjArr = getBrunchObjs(quad);
-        var brunchMarkerObjs = convertToMarkers(map, brunchObjArr);
+        var brunchMarkerObjs = convertToMarkers(mapObj, brunchObjArr);
         // console.log(brunchMarkerObjs);
 
         // USER MARKER //Not necessarily accurate!
@@ -113,7 +108,7 @@ function convertToMarkers(map, brunchObjArr){
     for(var i=0; i<brunchObjArr.length; i++){
         var markerObj = new google.maps.Marker({//user marker
             position: {lat: brunchObjArr[i].lat, lng: brunchObjArr[i].lng},
-            map: map,
+            map: mapObj,
             title: brunchObjArr[i].title
         });
         arr.push(markerObj);
