@@ -1,85 +1,114 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-      <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-      <link rel="stylesheet" href="css/style.css" type="text/css">
-      <title>Portland Brunch Finder</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Portland Brunch Finder</title>
+    <meta name="viewport" content="initial-scale=1.0">
 </head>
+
 <body>
-  <header>
-    <h1>Portland Brunch Finder</h1>
-  </header>
-  <section id="launchpage">
-    <div id = "launchpageimages">
-    <figure>
-      <img src = "FoodPics/blubrypncksimages.jpg">
-      <a href = "http://www.hotcakehouse.com/">Hot Cake House</a>
-    </figure>
-
-     <figure>
-        <img src = "FoodPics/brchdrnksimages.jpg">
-        <a href = "http://myfathersplacepdx.com/">My Father's Place PDX</a>
-      </figure>
-
+    <header>
+        <h1>Portland Brunch Finder</h1>
+        <nav id="navigation">
+            <a href="#startPage">Start</a>
+            <a href="#listAndMapPage">List and Map</a>
+            <a href="#reviewsPage">Reviews</a>
+        </nav>
+    </header>
+    <section id="launchpage">
+      <div id = "launchpageimages">
       <figure>
-        <img src = "FoodPics/chefimages.jpg">
-        <a href = "http://www.bottlekitchen.com/">Bottle Kitchen</a>
+        <img src = "FoodPics/blubrypncksimages.jpg">
+        <a href = "http://www.hotcakehouse.com/">Hot Cake House</a>
       </figure>
-    </div>
 
-    <p> Click on restuarnt name to go to the site for more information. The restaurant will open in a new tab. To return to the Portalnd Brunch Finder app, click on the tab in the upper left hand corner of the screen.
+       <figure>
+          <img src = "FoodPics/brchdrnksimages.jpg">
+          <a href = "http://myfathersplacepdx.com/">My Father's Place PDX</a>
+        </figure>
+
+        <figure>
+          <img src = "FoodPics/chefimages.jpg">
+          <a href = "http://www.bottlekitchen.com/">Bottle Kitchen</a>
+        </figure>
+      </div>
+
+      <p> Click on restuarnt name to go to the site for more information. The restaurant will open in a new tab. To return to the Portalnd Brunch Finder app, click on the tab in the upper left hand corner of the screen.
 
 
-    <div id="currentPosition"></div>
-    <div id="launchcontent">
-      <p>Generated content goes here</p>
-    </div>
-      <input type ="button" value = "Advanced Search" id = "AdvancedSearch">
-  </section>
- <!-- PAGE BOUNDARY -->
-  <section id="searchpage" class = "hide">
-    <div id="map"></div>
-    <nav id="searchform">
-    <div>
-      <form name="timeselect" action="" method="POST">
-        <select name="dropdown">
-          <option value="6">6:00 am</option>
-          <option value="6.5">6:30 am</option>
-          <option value="7">7:00 am</option>
-          <option value="7.5">7:30 am</option>
-          <option value="8">8:00 am</option>
-          <option value="8.5">8:30 am</option>
-          <option value="9">9:00 am</option>
-          <option value="9.5">9:30 am</option>
-          <option value="10">10:00 am</option>
-          <option value="10.5">10:30 am</option>
-          <option value="11">11:00 am</option>
-          <option value="11.5">11:30 am</option>
-          <option value="12">12:00 pm</option>
-          <option value="12">12:00 pm</option>
-        </select>
-      </form>
-    </div>
-    <p></p>
-    <div>
-      <form name="nhoodselect" action="" method="POST">
-        <input type="checkbox" name="nh1" value="SEPDX">SE Portland<br>
-        <input type="checkbox" name="nh2" value="NEPDX">NE Portland<br>
-        <input type="checkbox" name="nh3" value="DTPDX">Downtown Portland<br>
-      </form>
-    </div>
-    <p></p>
-    <div>
-      <button id="submitSearchButton" type ="button" onclick="">Submit Search</button>
-      <button type ="button" onclick="">Restaurant List</button>
-      <button type ="button" onclick="">Repeat Search</button>
-      <button type ="button" onclick="">Quit</button>
-    </div>
-  </section>
+      <div id="currentPosition"></div>
+      <div id="launchcontent">
+        <p>Generated content goes here</p>
+      </div>
+        <input type ="button" value = "Advanced Search" id = "AdvancedSearch">
+    </section>
+    <!-- PAGE BOUNDARY -->
+    <section id="searchpage">
+        <a name="startPage"></a>
+        <nav id="searchform">
+            <h2 id="timeandlocationheader"> Select time and location </h2>
+            <div id="timeandlocation">
+                <div id="timeselect">
+                    <form name="timeselect">
+                        <select id="dropdown">
+                            <option value="0">6:00 AM</option>
+                            <option value="1">6:30 AM</option>
+                            <option value="2">7:00 AM</option>
+                            <option value="3">7:30 AM</option>
+                            <option value="4">8:00 AM</option>
+                            <option value="5">8:30 AM</option>
+                            <option value="6">9:00 AM</option>
+                            <option value="7">9:30 AM</option>
+                            <option value="8">10:00 AM</option>
+                            <option value="9">10:30 AM</option>
+                            <option value="10">11:00 AM</option>
+                            <option value="11">11:30 AM</option>
+                            <option value="12" checked>12:00 PM</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div>
+                    <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false">
+                    <input type="checkbox" name="nh1" value="SEPDX" checked>SE Portland<br>
+                    <input type="checkbox" name="nh2" value="NEPDX" checked>NE Portland<br>
+                    <input type="checkbox" name="nh3" value="DTPDX" checked>Downtown Portland<br>
+                    <input type="submit" value="Submit Search">
+                    </form>
+                </div>
+                <p></p>
+                <div id="buttondiv">
+                    <button type="button" onclick="">Restaurant List</button>
+                    <button type="button" onclick="">Advanced Search</button>
+                    <button type="button" onclick="">Repeat Search</button>
+                    <button type="button" onclick="">Quit</button>
+                </div>
+            </div>
+            <h2 id="mapheader"> Brunch Map </h2>
+            <nav id="map-nav">
+                <a href="#startPage">Start</a>
+                <a href="#reviewsPage">Reviews</a>
+            </nav>
+            <div id="map"></div>
+            <a name="listAndMapPage"></a>
+
+    </section>
+    <section id="reviews">
+        <h2 id="reviews-header"> Reviews </h2>
+        <a name="reviewsPage"></a>
+        <nav id="reviews-nav">
+            <a href="#startPage">Start</a>
+            <a href="#listAndMapPage">List and Map</a>
+        </nav>
+
+    </section>
 </body>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/geolocation.js"></script>
-    <script type="text/javascript" src="js/launchpage.js"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/geolocation.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+<script type="text/javascript" src="js/forminput.js"></script>
+<script type="text/javascript" src="js/googlePlaces.js"></script>
+<script type="text/javascript" src="js/launchpage.js"></script>
 </html>
