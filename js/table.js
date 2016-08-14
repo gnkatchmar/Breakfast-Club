@@ -1,10 +1,17 @@
+for (var index = 0; index < brunchArr.length; index++) {
+	if (brunchArr[index].nhd == "SE" && brunchArr[index].opentime == "7:00 AM")	 {
+		var currentRestaurant = brunchArr[index];
+		currentRestaurant.addInfo();
+	}
+}
 
 
+/*
 for (var index = 0; index < brunchArr.length; index++) {
 	var currentRestaurant = brunchArr[index];
 	currentRestaurant.addInfo();
 }
-
+*/
 
 /*
 

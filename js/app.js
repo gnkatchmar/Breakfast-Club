@@ -15,14 +15,25 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
 			nameCell.innerText = this.title;
 			locationRow.appendChild(nameCell);
 			
+	var opentimeCell = document.createElement("td");
+			opentimeCell.innerText = this.opentime;
+			locationRow.appendChild(opentimeCell);		
+			
+			
 	var addressCell = document.createElement("td");
 			addressCell.innerText = this.address;
 			locationRow.appendChild(addressCell);			
 	
-	var websiteCell = document.createElement("td");
-			websiteCell.innerText = this.website;
-			locationRow.appendChild(websiteCell);	
+	//var websiteCell = document.createElement("td");
+	//		websiteCell.innerText = "<a href='this.website'>this.website</a>";
+	//		locationRow.appendChild(websiteCell);	
 
+
+	var websiteCell = document.createElement("td");		
+	//var link = "<a href=" +this.website +">" + this.website + "</a>";
+ 	//websiteCell.innerHTML = link;
+	websiteCell.innerHTML = "<a href=" +this.website +">" + this.website + "</a>";
+	locationRow.appendChild(websiteCell);
 			
 
 	var table = document.getElementById("restaurantListTable");
