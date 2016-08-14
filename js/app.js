@@ -8,6 +8,26 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
   this.lat = lat;
   this.lng = lng;
   this.pId = placeId;
+  this.addInfo = function() {
+
+	var locationRow = document.createElement("tr");
+	var nameCell = document.createElement("td");
+			nameCell.innerText = this.title;
+			locationRow.appendChild(nameCell);
+			
+	var addressCell = document.createElement("td");
+			addressCell.innerText = this.address;
+			locationRow.appendChild(addressCell);			
+	
+	var websiteCell = document.createElement("td");
+			websiteCell.innerText = this.website;
+			locationRow.appendChild(websiteCell);	
+
+			
+
+	var table = document.getElementById("restaurantListTable");
+			table.appendChild(locationRow);				
+};
 };
 
 var brunchArr = [
