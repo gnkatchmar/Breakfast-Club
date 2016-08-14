@@ -1,72 +1,98 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-      <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-      <link rel="stylesheet" href="css/style.css" type="text/css">
-      <title>Portland Brunch Finder</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-  <!--    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>-->
+    <title>Portland Brunch Finder</title>
+    <!--    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>-->
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="initial-scale=1.0">
     <title>Portland Brunch Finder</title>
 </head>
+
 <body>
-  <header>
-    <h1>Portland Brunch Finder</h1>
-  </header>
-  <section id="launchpage">
-    <div id="currentPosition"></div>
-    <div id="launchcontent">
-      <p id="generatedcontent">Generated content goes here</p>
-    </div>
+    <header>
+        <h1>Portland Brunch Finder</h1>
+        <nav id="navigation">
+            <a href="#startPage">Start</a>
+            <a href="#listAndMapPage">List and Map</a>
+            <a href="#reviewsPage">Reviews</a>
+        </nav>
+    </header>
+    <section id="launchpage">
+        <div id="currentPosition"></div>
+        <div id="launchcontent">
+            <p id="generatedcontent">Generated content goes here</p>
+        </div>
 
-  </section>
- <!-- PAGE BOUNDARY -->
-  <section id="searchpage">
-    <div id="map"></div>
-    <nav id="searchform">
-      <h2 id="timeandlocationheader"> Select time and location </h2>
-    <div id="timeandlocation">
-    <div id="timeselect">
-      <form name="timeselect" action="" method="POST">
-        <select name="dropdown">
-          <option value="6">6:00 AM</option>
-          <option value="6.5">6:30 AM</option>
-          <option value="7">7:00 AM</option>
-          <option value="7.5">7:30 AM</option>
-          <option value="8">8:00 AM</option>
-          <option value="8.5">8:30 AM</option>
-          <option value="9">9:00 AM</option>
-          <option value="9.5">9:30 AM</option>
-          <option value="10">10:00 AM</option>
-          <option value="10.5">10:30 AM/option>
-          <option value="11">11:00 AM</option>
-          <option value="11.5">11:30 AM</option>
-          <option value="12">12:00 AM</option>
-        </select>
-      </form>
-    </div>
+    </section>
+    <!-- PAGE BOUNDARY -->
+    <section id="searchpage">
+        <a name="startPage"></a>
+        <nav id="searchform">
+            <h2 id="timeandlocationheader"> Select time and location </h2>
+            <div id="timeandlocation">
+                <div id="timeselect">
+                    <form name="timeselect" action="" method="POST">
+                        <select name="dropdown">
+                            <option value="6">6:00 AM</option>
+                            <option value="6.5">6:30 AM</option>
+                            <option value="7">7:00 AM</option>
+                            <option value="7.5">7:30 AM</option>
+                            <option value="8">8:00 AM</option>
+                            <option value="8.5">8:30 AM</option>
+                            <option value="9">9:00 AM</option>
+                            <option value="9.5">9:30 AM</option>
+                            <option value="10">10:00 AM</option>
+                            <option value="10.5">10:30 AM</option>
+                            <option value="11">11:00 AM</option>
+                            <option value="11.5">11:30 AM</option>
+                            <option value="12">12:00 AM</option>
+                        </select>
+                    </form>
+                </div>
 
-    <div>
-      <form name="nhoodselect" action="" method="POST">
-        <input type="checkbox" name="nh1" value="SEPDX">SE Portland<br>
-        <input type="checkbox" name="nh2" value="NEPDX">NE Portland<br>
-        <input type="checkbox" name="nh3" value="DTPDX">Downtown Portland<br>
-      </form>
-    </div>
-    <p></p>
-    <div id="buttondiv">
-      <button id="submitSearchButton" type ="button" onclick="">Submit Search</button>
-      <button type ="button" onclick="">Restaurant List</button>
-      <button type ="button" onclick="">Advanced Search</button>
-      <button type ="button" onclick="">Repeat Search</button>
-      <button type ="button" onclick="">Quit</button>
-    </div>
-  </div>
-  </section>
+                <div>
+                    <form name="nhoodselect" action="" method="POST">
+                        <input type="checkbox" name="nh1" value="SEPDX">SE Portland
+                        <br>
+                        <input type="checkbox" name="nh2" value="NEPDX">NE Portland
+                        <br>
+                        <input type="checkbox" name="nh3" value="DTPDX">Downtown Portland
+                        <br>
+                    </form>
+                </div>
+                <p></p>
+                <div id="buttondiv">
+                    <button id="submitSearchButton" type="button" onclick="">Submit Search</button>
+                    <button type="button" onclick="">Restaurant List</button>
+                    <button type="button" onclick="">Advanced Search</button>
+                    <button type="button" onclick="">Repeat Search</button>
+                    <button type="button" onclick="">Quit</button>
+                </div>
+            </div>
+            <h2 id="mapheader"> Brunch Map </h2>
+            <nav id="map-nav">
+                <a href="#startPage">Start</a>
+                <a href="#reviewsPage">Reviews</a>
+            </nav>
+            <div id="map"></div>
+            <a name="listAndMapPage"></a>
+
+    </section>
+    <section id="reviews">
+        <h2 id="reviews-header"> Reviews </h2>
+        <a name="reviewsPage"></a>
+        <nav id="reviews-nav">
+            <a href="#startPage">Start</a>
+            <a href="#listAndMapPage">List and Map</a>
+        </nav>
+
+    </section>
 </body>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/geolocation.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/geolocation.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+
 </html>
