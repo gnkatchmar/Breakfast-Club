@@ -4,26 +4,40 @@
       <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="css/style.css" type="text/css">
       <title>Portland Brunch Finder</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-  <!--    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>-->
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="initial-scale=1.0">
-    <title>Portland Brunch Finder</title>
 </head>
 <body>
   <header>
     <h1>Portland Brunch Finder</h1>
   </header>
   <section id="launchpage">
+    <div id = "launchpageimages">
+    <figure>
+      <img src = "FoodPics/blubrypncksimages.jpg">
+      <a href = "http://www.hotcakehouse.com/">Hot Cake House</a>
+    </figure>
+
+     <figure>
+        <img src = "FoodPics/brchdrnksimages.jpg">
+        <a href = "http://myfathersplacepdx.com/">My Father's Place PDX</a>
+      </figure>
+
+      <figure>
+        <img src = "FoodPics/chefimages.jpg">
+        <a href = "http://www.bottlekitchen.com/">Bottle Kitchen</a>
+      </figure>
+    </div>
+
+    <p> Click on restuarnt name to go to the site for more information. The restaurant will open in a new tab. To return to the Portalnd Brunch Finder app, click on the tab in the upper left hand corner of the screen.
+
+
     <div id="currentPosition"></div>
     <div id="launchcontent">
       <p>Generated content goes here</p>
     </div>
-      <button type ="button" onclick="">Advanced Search</button>
+      <input type ="button" value = "Advanced Search" id = "AdvancedSearch">
   </section>
  <!-- PAGE BOUNDARY -->
-  <section id="searchpage">
+  <section id="searchpage" class = "hide">
     <div id="map"></div>
     <nav id="searchform">
     <div>
@@ -65,5 +79,7 @@
 </body>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/geolocation.js"></script>
+    <script type="text/javascript" src="js/launchpage.js"></script>
+
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
 </html>

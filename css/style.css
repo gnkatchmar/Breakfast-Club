@@ -38,6 +38,28 @@ form {
 
 #launchpage {
   font-family: 'Raleway' , sans-serif;
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+}
+
+#launchpageimages {
+  display: flex;
+  justify-content: center;
+}
+
+#launchpageimages img{
+  display: block;
+
+}
+
+#launchpageimages a{
+  display: block;
+  text-align: center;
+}
+
+#launchpageimages figure{
+  margin:0 10px;
 }
 
 #launchcontent {
@@ -55,4 +77,22 @@ form {
 
 #map {
   margin: 30px;
+}
+
+#searchpage{
+  /*display: none;*/
+}
+
+.fadeout{
+  opacity: 0;
+  transition: opacity  1s;
+}
+
+.fadein{
+  opacity:1;
+  transition: opacity  1s .25s;
+}
+
+.hide{
+  opacity: 0;
 }
