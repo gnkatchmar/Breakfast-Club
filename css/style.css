@@ -84,6 +84,8 @@ form {
   position: absolute;
   z-index: 5;
   width: 100%;
+  /* ADDED TO WORK AROUND BUG */
+  display:none;
 }
 
 #launchpageimages {
