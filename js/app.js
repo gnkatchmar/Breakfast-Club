@@ -32,7 +32,7 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
 	var websiteCell = document.createElement("td");		
 	//var link = "<a href=" +this.website +">" + this.website + "</a>";
  	//websiteCell.innerHTML = link;
-	websiteCell.innerHTML = "<a href=" +this.website +">" + this.website + "</a>";
+	websiteCell.innerHTML = "<a href=" +this.website +" >" + this.website + "</a>";
 	locationRow.appendChild(websiteCell);
 			
 
