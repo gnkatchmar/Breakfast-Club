@@ -79,7 +79,8 @@ function addPhotosToTracker(pId){
         console.log('Added imgs to tracker object!');
         resetPhotosObj();
 
-        // Temporary just to demo
+        // Next line just for demo.
+        // Comment out to stop auto-drawing photos---------------------
         drawPhotos(getTrackerObj(pId),'container_googlePhotos', 'sm', 5);
     } else {
         console.log("This tracker already has images! Exiting...");
