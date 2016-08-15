@@ -44,7 +44,7 @@ var brunchArr = [
     new brunchtracker("Harlow", "3632 SE Hawthorne", "SE", "8:00 AM", "http://www.harlowpdx.com/", 45.5119, -122.62609, 'ChIJ05kM9o2glVQRi4KO5kvwZjI'),
     new brunchtracker("Hazel Room", "3279 SE Hawthrone", "SE", "8:00 AM", "http://www.thehazelroom.com", 45.512275, -122.631044, 'ChIJfSctvpGglVQRmgETCDkJhAs'),
     new brunchtracker("Holman's", "15 SE 28th", "SE", "8:00 AM", "http://www.holmanspdx.com", 45.522573, -122.637506, 'ChIJo89E_b6glVQRZ-r6Erd1RK4'),
-    new brunchtracker("Imperial", "410 SW Broadway", "SE", "8:00 AM", "http://www.imperialpdx.com", 45.521064, -122.678349, 'ChIJb-oPEwQKlVQRne8t_q7G874'),
+    new brunchtracker("Imperial", "410 SW Broadway", "SW", "8:00 AM", "http://www.imperialpdx.com", 45.521064, -122.678349, 'ChIJb-oPEwQKlVQRne8t_q7G874'),
     new brunchtracker("Junior's Cafe", "1742 SE 12th", "SE", "8:00 AM", "http://www.juniorscafepdx.com", 45.510207, -122.653519, 'ChIJlxowi3UKlVQRuoUyl71l9bg'),
     new brunchtracker("Laurelhurst Cafe", "4611 E Burnside", "NE", "8:00 AM", "http://www.laurelhurstcafe.com", 45.523238, -122.615272, 'ChIJ5criJ-aglVQRsKBzIqUtWLw'),
     new brunchtracker("Lauretta Jean's", "3402 SE Division", "SE", "8:00 AM", "http://www.laurettajeans.com/", 45.504606, -122.629434, 'ChIJbRVUPYaglVQRrzr1-ANe7Co'),
