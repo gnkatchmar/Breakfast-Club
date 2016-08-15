@@ -41,7 +41,7 @@ var log = function(t){
 // Event listener for form elements
 window.addEventListener('load', function(){
     var formEl_nhood = document.forms.nhoodselect;
-    document.getElementById('entryform').addEventListener('change', function(e){
+    document.getElementById('timeandlocation').addEventListener('change', function(e){
 
         // when checkboxes are changed,
         // show/hide corresponding markers
@@ -57,7 +57,7 @@ window.addEventListener('load', function(){
         // when select is changed
         // only show markers with opentime less than or equal to select value
         } else if(e.target.tagName === 'SELECT'){
-            selectedTime = parseInt(e.target.value.replace(':', ''));
+            selectedTime = parseInt(e.target.options[e.target.selectedIndex].text.replace(':', ''));
             visByCheckbox();
         }
 
