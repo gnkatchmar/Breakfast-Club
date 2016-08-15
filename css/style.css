@@ -84,8 +84,6 @@ form {
   position: absolute;
   z-index: 5;
   width: 100%;
-  /* ADDED TO WORK AROUND BUG */
-  display:none;
 }
 
 #launchpageimages {
@@ -115,6 +113,7 @@ form {
 
 #searchform {
   background-color:
+  
 }
 
 #buttondiv {
@@ -128,6 +127,7 @@ form {
 
 #searchpage{
   /*display: none;*/
+  margin-top: 370px;
 }
 
 .fadeout{
