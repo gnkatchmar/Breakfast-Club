@@ -26,8 +26,16 @@ var mapOptions = {
         coords: {lat: 45.518964, lng: -122.679481},
         zoom: 15
     },
-    NW : {
+    NW: {
         coords: {lat: 45.529873, lng: -122.694569},
+        zoom: 14
+    },
+    EASTSIDE: {
+        coords: {lat: 45.519922, lng: -122.590758},
+        zoom: 14
+    },
+    SOUTHSIDE: {
+        coords: {lat: 45.495202, lng: -122.664215},
         zoom: 14
     }
 };
@@ -35,8 +43,6 @@ var mapOptions = {
 var log = function(t){
     console.log(t);
 };
-
-// var coordsArrs = [[mapOptions.NE.coords.lat, mapOptions.NE.coords.lng], [mapOptions.SE.coords.lat, mapOptions.SE.coords.lng], [mapOptions.SW.coords.lat, mapOptions.SW.coords.lng], [mapOptions.NW.coords.lat, mapOptions.NW.coords.lng]];
 
 // Event listener for form elements
 window.addEventListener('load', function(){
@@ -48,8 +54,6 @@ window.addEventListener('load', function(){
         if(e.target.tagName === 'INPUT'){
             var val = e.target.value;
             var selectedCoords = [];
-            // var newCoords;
-            // var newZoom;
             var selectedQuads = [];
 
             visByCheckbox();
@@ -60,73 +64,43 @@ window.addEventListener('load', function(){
             selectedTime = parseInt(e.target.options[e.target.selectedIndex].text.replace(':', ''));
             visByCheckbox();
         }
-
-        // log(selectedCoords);
-        // get furthest ENSW in selectedCoords
-        // if(selectedCoords.length > 1){
-            // log("selectedQuads: " + selectedQuads);
-            // var boundsObj = findBounds(selectedQuads);
-            // var bounds = new google.maps.LatLngBounds();
-            // bounds.extend(bounds);
-            // mapObj.fitBounds(boundsObj);
-            // log(boundsObj);
-            // mapObj.fitBounds(google.maps.LatLngBoundsLiteral = boundsObj);
-            // mapObj.fitBounds(google.maps.LatLngBoundsLiteral = {east: -122.51842, north: 45.5, south: 45.25, west: -122.52});
-        // } else {
-        //
-        // }
-
-        // if(selectedCoords.length > 1){
-        //     newCoords = getMultiCenter(selectedCoords);
-        // } else if(selectedCoords.length === 1){
-        //     switch(val){
-        //         case 'NEPDX':
-        //             newCoords = mapOptions.NE.coords;
-        //             newZoom = mapOptions.NE.zoom;
-        //         break;
-        //
-        //         case 'SEPDX':
-        //             newCoords = mapOptions.SE.coords;
-        //             newZoom = mapOptions.SE.zoom;
-        //         break;
-        //
-        //         case 'DTPDX':
-        //             newCoords = mapOptions.SW.coords;
-        //             newZoom = mapOptions.SW.zoom;
-        //         break;
-        //     }
-        // } else {
-        //     newCoords = mapOptions.cityCenter.coords;
-        //     newZoom = mapOptions.cityCenter.zoom;
-        // }
-        // log(newCoords);
-        //
-        // mapObj.panTo(newCoords);
-        // mapObj.setZoom(newZoom);
     });
 });
 
 function visByCheckbox(){
     var checkboxes = document.querySelectorAll('input[type=checkbox]');
+    var checkedQuads = [];
+
     for(var i=0; i<checkboxes.length; i++){
         var quad = checkboxes[i].dataset.quad;
 
         // show/hide markers based on checked boxes
         if(checkboxes[i].checked){
             setMapOnAll('show', getMarkerObjs(quad));
-            zoomTo(quad);
+            checkedQuads.push(quad);
         } else {
             setMapOnAll('hide', getMarkerObjs(quad));
         }
     }
+    zoomTo(checkedQuads);
 }
 
-function zoomTo(quad){
-    console.log(quad);
-    var options = mapOptions[quad];
-    // mapObj.center = options.center;
-    // mapObj.zoom = options.zoom;
-
+function zoomTo(quadArr){
+    console.log(quadArr);
+    var options;
+    if(quadArr.length === 1){
+        options = mapOptions[quadArr[0]];
+    } else if(quadArr.length === 3){
+        options = mapOptions.cityCenter;
+    } else {
+        if(quadArr.indexOf('NE') && quadArr.indexOf('SW')){
+            options = mapOptions.cityCenter;
+        } else if(quadArr.indexOf('NE') && quadArr.indexOf('SE')){
+            options = mapOptions.EASTSIDE;
+        } else {
+            options = mapOptions.SOUTHSIDE;
+        }
+    }
     mapObj.panTo(options.coords);
     mapObj.setZoom(options.zoom);
 }
@@ -356,45 +330,4 @@ function convertAllToMarkers(){
  //     str = str.replace(/am|pm/i, '');
  //     str.trim();
  //     return str;
- // }
-
- // function findBounds(quadsArr){
- //     var coordsArr = [];
- //
- //     log("quadsArr: " + quadsArr);
- //
- //     for(var i=0; i<quadsArr.length; i++){
- //         var arr = getBrunchObjs(quadsArr[i]);
- //         for(var k=0; k<arr.length; k++){
- //             coordsArr.push(arr[k]);
- //         }
- //     }
- //
- //     // log("coordsArr: " + coordsArr);
- //
- //     var E = coordsArr[0].lng;
- //     var N = coordsArr[0].lat;
- //     var S = coordsArr[0].lat;
- //     var W = coordsArr[0].lng;
- //
- //     for(var j=0; j<coordsArr.length; j++){
- //         var coordLat = coordsArr[i].lat;
- //         var coordLng = coordsArr[i].lng;
- //
- //         if(coordLat > N){
- //             N = coordLat;
- //         }
- //         if(coordLat < S){
- //             S = coordLat;
- //         }
- //         if(coordLng > E){
- //             E = coordLng;
- //         }
- //         if(coordLng < W){
- //             W = coordLng;
- //         }
- //     }
- //     var boundsObj = {east: E, north: N, south: S, west: W};
- //     log("Returning: " + E + " " + N + " " + S + " " + W + " ");
- //     return boundsObj;
  // }
