@@ -8,6 +8,8 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
   this.lat = lat;
   this.lng = lng;
   this.pId = placeId;
+  this.upvotes = 0;
+  this.downvotes = 0;
 };
 
 var brunchArr = [
@@ -99,7 +101,7 @@ var brunchArr = [
     new brunchtracker("Hale Pele", "2733 NE Broadway", "NE", "10:00 AM", "http://halepele.com/", 45.535379, -122.637307, 'ChIJfdqyJsyglVQR-E1VNRS1jK4'),
     new brunchtracker("Hawthorne Hophouse", "4111 SE Hawthorne", "SE", "10:00 AM", "http://oregonhophouse.com/", 45.512159, -122.619617, 'ChIJ97f1K42glVQR0GhYbU4RVvU'),
     new brunchtracker("La Calaca Comelona", "2304 SE Belmont", "SE", "10:00 AM", "http://www.lacalacacomelona.com/", 45.51625, -122.642176, 'ChIJf0JijJeglVQRBJYZN2y4Rk8'),
-    new brunchtracker("Lamp", "3023 SE Milwaukie", "SE", "10:00 AM", "Unavailable", 45.500716, -122.654527, 'ChIJXSnaVHoKlVQRIKCcqt0VLlo'),
+    new brunchtracker("Lamp", "3023 SE Milwaukie", "SE", "10:00 AM", "http://www.thelamppdx.com/", 45.500716, -122.654527, 'ChIJXSnaVHoKlVQRIKCcqt0VLlo'),
     new brunchtracker("Le Bistro Montage", "301 SE Morrison", "SE", "10:00 AM", "http://www.montageportland.com/", 45.51776, -122.662654, 'ChIJyalL4gkKlVQRAN6sa0AzhsU'),
     new brunchtracker("Night Light Lounge", "2100 SE Clinton", "SE", "10:00 AM", "http://www.nightlightlounge.net/", 45.503251, -122.644453, 'ChIJjfxsgngKlVQR82RQeNwhjmI'),
     new brunchtracker("Olympic Provisions", "107 SE Washington", "SE", "10:00 AM", "http://www.olympiaprovisions.com/", 45.519022, -122.664279, 'ChIJDzuJgKeglVQRXyGLZ_NJERA'),
