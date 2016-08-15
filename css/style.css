@@ -6,6 +6,17 @@ html, body {
     padding: 0;
 }
 
+#navigation {
+  /*position: fixed; */
+  border-style: solid;
+  display:inline-block;
+  font-weight: bolder;
+  margin-left: 20px;
+}
+
+header {
+}
+
 #searchpage {
     height: 100%;
 }
@@ -16,11 +27,43 @@ html, body {
     width: 100%;
 }
 
+#timeandlocation {
+  border-style: solid;
+  margin-left: 20px;
+  display: inline-block;
+
+}
+
+#generatedcontent {
+  margin-left: 20px;
+  display: inline-block;
+}
+
 
 h1  {
   font-family: 'Raleway', sans-serif;
-  display:
+  margin-left: 20px;
+  font-weight: bolder;
+}
 
+#timeandlocationheader {
+  margin-left: 20px;
+}
+
+#mapheader {
+  margin-left: 20px;
+}
+
+#reviews-header {
+  margin-left: 20px;
+}
+
+#map-nav {
+  margin-left: 20px;
+}
+
+#reviews-nav {
+  margin-left: 20px;
 }
 
 body  {
@@ -38,6 +81,28 @@ form {
 
 #launchpage {
   font-family: 'Raleway' , sans-serif;
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+}
+
+#launchpageimages {
+  display: flex;
+  justify-content: center;
+}
+
+#launchpageimages img{
+  display: block;
+
+}
+
+#launchpageimages a{
+  display: block;
+  text-align: center;
+}
+
+#launchpageimages figure{
+  margin:0 10px;
 }
 
 #launchcontent {
@@ -50,9 +115,40 @@ form {
   background-color:
 }
 
-#submitSearchButton {
+#buttondiv {
+  margin: 5px;
+
 }
 
 #map {
   margin: 30px;
+}
+
+#searchpage{
+  /*display: none;*/
+}
+
+.fadeout{
+  opacity: 0;
+  transition: opacity  1s;
+}
+
+.fadein{
+  opacity:1;
+  transition: opacity  1s .25s;
+}
+
+.hide{
+  opacity: 0;
+}
+
+#timeselect {
+  margin: 5px;
+}
+
+#nhoodselect {
+}
+
+#reviews {
+  margin-bottom: 300px;
 }
