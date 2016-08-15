@@ -48,8 +48,8 @@ window.addEventListener('load', function(){
         if(e.target.tagName === 'INPUT'){
             var val = e.target.value;
             var selectedCoords = [];
-            var newCoords;
-            var newZoom;
+            // var newCoords;
+            // var newZoom;
             var selectedQuads = [];
 
             visByCheckbox();
@@ -114,10 +114,21 @@ function visByCheckbox(){
         // show/hide markers based on checked boxes
         if(checkboxes[i].checked){
             setMapOnAll('show', getMarkerObjs(quad));
+            zoomTo(quad);
         } else {
             setMapOnAll('hide', getMarkerObjs(quad));
         }
     }
+}
+
+function zoomTo(quad){
+    console.log(quad);
+    var options = mapOptions[quad];
+    // mapObj.center = options.center;
+    // mapObj.zoom = options.zoom;
+
+    mapObj.panTo(options.coords);
+    mapObj.setZoom(options.zoom);
 }
 
 // find center if multiple quads checked
