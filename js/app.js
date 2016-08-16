@@ -40,6 +40,7 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
 
 	var table = document.getElementById("restaurantListTable");
 			table.appendChild(locationRow);				
+	};
 };
 
 var brunchArr = [
