@@ -130,6 +130,7 @@ form {
 #searchpage{
   /*display: none;*/
   margin-top: 400px;
+/*  added to remove launch page conflict*/
 }
 
 .fadeout{
