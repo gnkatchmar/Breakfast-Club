@@ -41,7 +41,7 @@
        </select>
       </form>
       <p></p>
-      <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false" action="index.html">
+      <form name="nhoodselect" id="neighborhoodCheck" onsubmit = "test(nh1, nh2, nh3); return false" action="index.html">
         <input type="checkbox" name="nh1" value="SEPDX">SE Portland<br>
         <input type="checkbox" name="nh2" value="NEPDX">NE Portland<br>
         <input type="checkbox" name="nh3" value="DTPDX">Downtown Portland<br>
@@ -62,11 +62,9 @@
   
 </body>
     <script type="text/javascript" src="js/app.js"></script>
-    <!--
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
     <script type="text/javascript" src="js/geolocation.js"></script>
     <script type="text/javascript" src="js/googlePlaces.js"></script>
     <script type="text/javascript" src="js/forminput.js"></script>
-	-->
 	<script type="text/javascript" src="js/table.js"></script>
 </html>
