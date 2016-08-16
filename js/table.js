@@ -12,6 +12,20 @@ function getIndex() {
 	var userSelectTime = selectDropDown.options[selectDropDown.selectedIndex].text;
 	console.log("this is a time selected "+ parseInt(userSelectTime));
 	
+	// document.getElementById("neighborhoodChecked").addEventListener("checked", test);
+	// function test(nh1, nh2, nh3) {
+         // console.log(nh1, nh2, nh3);
+	// }
+	
+	//var x = document.getElementById("neighborhoodChecked").checked;
+	//console.log(x);
+	
+	//var selectNeighborhood = document.getElementsByName("nhoodselect").checked;
+	//console.log("this is the neighbor selected " + selectNeighborhood);
+	
+	//var x = document.getElementById("myCheck").value;
+	
+	
 	for (var index = 0; index < brunchArr.length; index++) {
 		if (brunchArr[index].nhd == "SE" && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
 		var currentRestaurant = brunchArr[index];
