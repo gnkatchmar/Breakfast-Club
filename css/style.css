@@ -12,6 +12,7 @@ html, body {
   display:inline-block;
   font-weight: bolder;
   margin-left: 20px;
+  font-size: 20px;
 }
 
 header {
@@ -104,7 +105,12 @@ form {
 }
 
 #launchpageimages figure{
+  border-style: solid;
   margin:0 10px;
+}
+
+#launchpageimages h4{
+  text-align: center;
 }
 
 #launchcontent {
@@ -125,6 +131,7 @@ form {
 
 #map {
   margin: 30px;
+  width: 1000px;
 }
 
 #searchpage{
