@@ -75,6 +75,10 @@
                     </form>
                 </div>
                 <p></p>
+				<section>
+				<table id="restaurantListTable">
+				</table>
+				</section>
                 <div id="buttondiv">
                     <button type="button" onclick="">Restaurant List</button>
                     <button type="button" onclick="">Advanced Search</button>
@@ -94,6 +98,126 @@
     <section id="reviews">
         <h2 id="reviews-header"> Reviews </h2>
         <a name="reviewsPage"></a>
+        <form name="restselect">
+              <select id="restdropdown">
+                  <option value="0">Accanto</option>
+                  <option value="1">Americano</option>
+                  <option value="2">Ankeny Tap & Table</option>
+                  <option value="3">Apizza Scholls</option>
+                  <option value="4">Bare Bones Cafe</option>
+                  <option value="5">Batter Griddle & Drinkery</option>
+                  <option value="6">Bottle + Kitchen</option>
+                  <option value="7">Bread and Ink Cafe</option>
+                  <option value="8">Bridges Cafe</option>
+                  <option value="9">C Bar</option>
+                  <option value="10">Cadillac Cafe</option>
+                  <option value="11">Cafe Broder</option>
+                  <option value="12">Cameo Cafe</option>
+                  <option value="13">Casa Maria</option>
+                  <option value="14">Cheese & Crack Shop</option>
+                  <option value="15">Chez Machin</option>
+                  <option value="16">Circa 33</option>
+                  <option value="17">City State Diner</option>
+                  <option value="18">Coquine</option>
+                  <option value="19">Costello’s Travel Caffe</option>
+                  <option value="20">Country Cat</option>
+                  <option value="21">Cricket Cafe</option>
+                  <option value="22">Cup & Saucer Cafe</option>
+                  <option value="23">Delta Cafe</option>
+                  <option value="24">Dot's</option>
+                  <option value="25">Doug Fir Lounge</option>
+                  <option value="26">EastBurn</option>
+                  <option value="27">Genie's Cafe</option>
+                  <option value="28">Genie's Too</option>
+                  <option value="29">Hale Pele</option>
+                  <option value="30">Happy Sparrow</option>
+                  <option value="31">Harlow</option>
+                  <option value="32">Hawthorne Hophouse</option>
+                  <option value="33">Hazel Room</option>
+                  <option value="34">HK Cafe</option>
+                  <option value="35">Hobnob Grill</option>
+                  <option value="36">Holman's</option>
+                  <option value="37">Horse Brass Pub</option>
+                  <option value="38">Iconic Lounge</option>
+                  <option value="39">Imperial</option>
+                  <option value="40">Jam</option>
+                  <option value="41">Junior's Cafe</option>
+                  <option value="42">La Calaca Comelona</option>
+                  <option value="43">La Panza Cafe</option>
+                  <option value="44">Lamp</option>
+                  <option value="45">Laurelhurst Cafe</option>
+                  <option value="46">Lauretta Jean's</option>
+                  <option value="47">Le Bistro Montage</option>
+                  <option value="48">Little T American Baker</option>
+                  <option value="49">Midpoint Food & Drink</option>
+                  <option value="50">Milo's City Cafe</option>
+                  <option value="51">Muscadine</option>
+                  <option value="52">My Father's Place</option>
+                  <option value="53">Navarre</option>
+                  <option value="54">Night Light Lounge</option>
+                  <option value="55">Off the Waffle</option>
+                  <option value="56">Olympic Provisions</option>
+                  <option value="57">Original Hotcake House</option>
+                  <option value="58">Original, the</option>
+                  <option value="59">Oso Market + Bar</option>
+                  <option value="60">Pambiche</option>
+                  <option value="61">Paradox Cafe</option>
+                  <option value="62">Pepper Box</option>
+                  <option value="63">Petisco</option>
+                  <option value="64">Petite Provence</option>
+                  <option value="65">Pho Corner</option>
+                  <option value="66">Pine State Biscuits</option>
+                  <option value="67">Podnah's Pit</option>
+                  <option value="68">Pono Farm Soul Kitchen</option>
+                  <option value="69">Rain or Shine Coffeehouse</option>
+                  <option value="70">Red Square Cafe</option>
+                  <option value="71">Redwood</option>
+                  <option value="72">Ringside Grill</option>
+                  <option value="73">Rocking Frog Cafe</option>
+                  <option value="74">Roman Candle</option>
+                  <option value="75">Roost</option>
+                  <option value="76">Saint Honore Bakery</option>
+                  <option value="77">Sanborns</option>
+                  <option value="78">Sandy Hut</option>
+                  <option value="79">Sckavone's</option>
+                  <option value="80">Screen Door</option>
+                  <option value="81">Slappy Cakes</option>
+                  <option value="82">Slide Inn</option>
+                  <option value="83">Smokehouse Tavern</option>
+                  <option value="84">Spielman Coffee Roaster & Bagels (NE Broadway)</option>
+                  <option value="85">Spielman Coffee Roaster & Bagels (SE Division)</option>
+                  <option value="86">St. Honore </option>
+                  <option value="87">Suzette</option>
+                  <option value="88">Tabor Bread</option>
+                  <option value="89">Tabor Tavern</option>
+                  <option value="90">Tannery Bar</option>
+                  <option value="91">Tapalaya</option>
+                  <option value="92">Toast</option>
+                  <option value="93">Tom's Restaurant</option>
+                  <option value="94">Trinket</option>
+                  <option value="95">Utopia Cafe</option>
+                  <option value="96">Waffle Window</option>
+                  <option value="97">Whisky Soda Lounge</option>
+                  <option value="98">Wild Abandon</option>
+                  <option value="99">Woodsman Tavern</option>
+                  <option value="100">Ya Hala</option>
+                  <option value="101">Zell's Cafe</option>
+              </select>
+        </form>
+        <br>
+        <form name = "votes" action="">
+            <input type="radio" name="vote" value="recommend"> Recommend<br>
+            <input type="radio" name="vote" value="notrecommend"> Do Not Recommend<br>
+        </form>
+        <br>
+        <textarea rows="10" cols="50">Please tell us about your brunch experience with this restaurant.
+        </textarea>
+        <br>
+      <h4>Screen Door, 5 recommendations, 1 non-recommendation.</h4>
+      <p>"I have been here twice and both times was blown away by the food. We were intrigued by the fried chicken and waffle and decided to order one for the three of us. WOW. I've never had anything like it. The only negative point I would make is that the food takes a while. I've waited 30-40 minutes for my meal there before. Granted, it is a rather busy place so it's to be expected. Regardless, it is certainly worth the wait for some quality southern cuisine."</p>
+      <p></p>
+      <h4>Doug Fir Lounge, 3 recommendations, 2 non-recommendations.</h4>
+      <p>"A one word review of Doug Fir? Reliable. I've been here a good number of times, and every time it's been perfectly fine food. They serve breakfast late, until 3pm. I'm sure this is to better accommodate the rock and roll lifestyle that they're trying to cultivate, but for me it works out because dang I love me some eggs Benedict, and having them at a business lunch is the best thing ever. Also, I can recommend their Columbia scramble. But be warned, you really REALLY have to like dill."</p>
         <nav id="reviews-nav">
             <a href="#startPage">Start</a>
             <a href="#listAndMapPage">List and Map</a>
@@ -109,4 +233,6 @@
 <script type="text/javascript" src="js/googlePlaces.js"></script>
 <script type="text/javascript" src="js/launchpage.js"></script>
 <script type = "text/javascript" src= "js/RndImgs.js"></script>
+<script type="text/javascript" src="js/table.js"></script>
+
 </html>

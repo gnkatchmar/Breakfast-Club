@@ -10,6 +10,37 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
   this.pId = placeId;
   this.upvotes = 0;
   this.downvotes = 0;
+  this.addInfo = function() {
+
+	var locationRow = document.createElement("tr");
+	var nameCell = document.createElement("td");
+			nameCell.innerText = this.title;
+			locationRow.appendChild(nameCell);
+			
+	var opentimeCell = document.createElement("td");
+			opentimeCell.innerText = this.opentime;
+			locationRow.appendChild(opentimeCell);		
+			
+			
+	var addressCell = document.createElement("td");
+			addressCell.innerText = this.address;
+			locationRow.appendChild(addressCell);			
+	
+	//var websiteCell = document.createElement("td");
+	//		websiteCell.innerText = "<a href='this.website'>this.website</a>";
+	//		locationRow.appendChild(websiteCell);	
+
+
+	var websiteCell = document.createElement("td");		
+	//var link = "<a href=" +this.website +">" + this.website + "</a>";
+ 	//websiteCell.innerHTML = link;
+	websiteCell.innerHTML = "<a href=" +this.website +" target='_blank'>" + this.website + "</a>";
+	locationRow.appendChild(websiteCell);
+			
+
+	var table = document.getElementById("restaurantListTable");
+			table.appendChild(locationRow);				
+	};
 };
 
 var brunchArr = [
@@ -23,10 +54,10 @@ var brunchArr = [
     new brunchtracker("Petite Provence", "4834 SE Division", "SE", "7:00 AM", "http://www.provencepdx.com/#!blank-1/xp4en", 45.505084, -122.612473, 'ChIJR9VCcoqglVQRqqFADyLpLP8'),
     new brunchtracker("Pine State Biscuits", "1100 SE Division", "SE", "7:00 AM", "http://www.pinestatebiscuits.com/", 45.504642, -122.654428, 'ChIJ3SemR5OglVQRmltTtRdTi10'),
     new brunchtracker("Rain or Shine Coffeehouse", "5941 SE Division", "SE", "7:00 AM", "http://www.pinestatebiscuits.com/", 45.505491, -122.601835, 'ChIJzXbStF6glVQRAiQsYc84F7w'),
-    new brunchtracker("Spielman Coffee Roaster & Bagels", "2128 SE Division", "SE", "7:00 AM", "http://www.spielmanbagels.com/", 45.504654, -122.643945, 'ChIJu00Q7YKglVQRT7Az8Ewt3M8'),
+    new brunchtracker("Spielman Coffee Roaster & Bagels (SE Division)", "2128 SE Division", "SE", "7:00 AM", "http://www.spielmanbagels.com/", 45.504654, -122.643945, 'ChIJu00Q7YKglVQRT7Az8Ewt3M8'),
     new brunchtracker("St. Honore Bakery", "3333 SE Division", "SE", "7:00 AM", "http://www.cricketcafe.pdx", 45.504943, -122.630794, 'ChIJsw68bYaglVQR18drjIMwens'),
     new brunchtracker("Tom's Restaurant", "3871 SE Division", "SE", "7:00 AM", "http://www.tomsrestaurant.net", 45.505019, -122.622889, 'ChIJH8MdromglVQR5iwNUflT'),
-    new brunchtracker("Spielman Coffee Roaster & Bagels", "2200 NE Broadway", "NE", "7:00 AM", "http://www.spielmanbagels.com/", 45.534779, -122.642674, 'ChIJTUNDuMuglVQRTQrMmmXDDbk'),
+    new brunchtracker("Spielman Coffee Roaster & Bagels (NE Broadway)", "2200 NE Broadway", "NE", "7:00 AM", "http://www.spielmanbagels.com/", 45.534779, -122.642674, 'ChIJTUNDuMuglVQRTQrMmmXDDbk'),
     new brunchtracker("Cricket Cafe", "3159 SE 32nd", "SE", "7:30 AM", "http://www.cricketcafe.pdx", 45.501961, -122.632574, 'ChIJta3wE5SglVQRVpH_ixw-WIg'),
     new brunchtracker("Jam", "2239 SE Hawthorne", "SE", "7:30 AM", "http://www.jamonhawthorne.com", 45.512245, -122.642719, 'ChIJi4fI1ZuglVQRKfnLrpsIJN8'),
     new brunchtracker("Milo's City Cafe", "1325 NE Broadway", "NE", "7:30 AM", "http://www.miloscitycafe.com", 45.535211, -122.651847, 'ChIJe0SfMLWglVQRyOGMDIvHbqI'),
