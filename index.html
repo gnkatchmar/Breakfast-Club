@@ -21,19 +21,13 @@
     <section id="launchpage">
         <div id="container_googlePhotos"></div><!--For testing. This can be commented out.-->
       <div id = "launchpageimages">
-      <figure>
-        <img src = "FoodPics/blubrypncksimages.jpg">
-        <a href = "http://www.hotcakehouse.com/">Hot Cake House</a>
+      <figure id = "pic1">
       </figure>
 
-       <figure>
-          <img src = "FoodPics/brchdrnksimages.jpg">
-          <a href = "http://myfathersplacepdx.com/">My Father's Place PDX</a>
+       <figure id = "pic2">
         </figure>
 
-        <figure>
-          <img src = "FoodPics/chefimages.jpg">
-          <a href = "http://www.bottlekitchen.com/">Bottle Kitchen</a>
+        <figure id = "pic3">
         </figure>
       </div>
 
@@ -104,7 +98,114 @@
     <section id="reviews">
         <h2 id="reviews-header"> Reviews </h2>
         <a name="reviewsPage"></a>
-        <form action="">
+        <form name="restselect">
+              <select id="restdropdown">
+                  <option value="0">Accanto</option>
+                  <option value="1">Americano</option>
+                  <option value="2">Ankeny Tap & Table</option>
+                  <option value="3">Apizza Scholls</option>
+                  <option value="4">Bare Bones Cafe</option>
+                  <option value="5">Batter Griddle & Drinkery</option>
+                  <option value="6">Bottle + Kitchen</option>
+                  <option value="7">Bread and Ink Cafe</option>
+                  <option value="8">Bridges Cafe</option>
+                  <option value="9">C Bar</option>
+                  <option value="10">Cadillac Cafe</option>
+                  <option value="11">Cafe Broder</option>
+                  <option value="12">Cameo Cafe</option>
+                  <option value="13">Casa Maria</option>
+                  <option value="14">Cheese & Crack Shop</option>
+                  <option value="15">Chez Machin</option>
+                  <option value="16">Circa 33</option>
+                  <option value="17">City State Diner</option>
+                  <option value="18">Coquine</option>
+                  <option value="19">Costello’s Travel Caffe</option>
+                  <option value="20">Country Cat</option>
+                  <option value="21">Cricket Cafe</option>
+                  <option value="22">Cup & Saucer Cafe</option>
+                  <option value="23">Delta Cafe</option>
+                  <option value="24">Dot's</option>
+                  <option value="25">Doug Fir Lounge</option>
+                  <option value="26">EastBurn</option>
+                  <option value="27">Genie's Cafe</option>
+                  <option value="28">Genie's Too</option>
+                  <option value="29">Hale Pele</option>
+                  <option value="30">Happy Sparrow</option>
+                  <option value="31">Harlow</option>
+                  <option value="32">Hawthorne Hophouse</option>
+                  <option value="33">Hazel Room</option>
+                  <option value="34">HK Cafe</option>
+                  <option value="35">Hobnob Grill</option>
+                  <option value="36">Holman's</option>
+                  <option value="37">Horse Brass Pub</option>
+                  <option value="38">Iconic Lounge</option>
+                  <option value="39">Imperial</option>
+                  <option value="40">Jam</option>
+                  <option value="41">Junior's Cafe</option>
+                  <option value="42">La Calaca Comelona</option>
+                  <option value="43">La Panza Cafe</option>
+                  <option value="44">Lamp</option>
+                  <option value="45">Laurelhurst Cafe</option>
+                  <option value="46">Lauretta Jean's</option>
+                  <option value="47">Le Bistro Montage</option>
+                  <option value="48">Little T American Baker</option>
+                  <option value="49">Midpoint Food & Drink</option>
+                  <option value="50">Milo's City Cafe</option>
+                  <option value="51">Muscadine</option>
+                  <option value="52">My Father's Place</option>
+                  <option value="53">Navarre</option>
+                  <option value="54">Night Light Lounge</option>
+                  <option value="55">Off the Waffle</option>
+                  <option value="56">Olympic Provisions</option>
+                  <option value="57">Original Hotcake House</option>
+                  <option value="58">Original, the</option>
+                  <option value="59">Oso Market + Bar</option>
+                  <option value="60">Pambiche</option>
+                  <option value="61">Paradox Cafe</option>
+                  <option value="62">Pepper Box</option>
+                  <option value="63">Petisco</option>
+                  <option value="64">Petite Provence</option>
+                  <option value="65">Pho Corner</option>
+                  <option value="66">Pine State Biscuits</option>
+                  <option value="67">Podnah's Pit</option>
+                  <option value="68">Pono Farm Soul Kitchen</option>
+                  <option value="69">Rain or Shine Coffeehouse</option>
+                  <option value="70">Red Square Cafe</option>
+                  <option value="71">Redwood</option>
+                  <option value="72">Ringside Grill</option>
+                  <option value="73">Rocking Frog Cafe</option>
+                  <option value="74">Roman Candle</option>
+                  <option value="75">Roost</option>
+                  <option value="76">Saint Honore Bakery</option>
+                  <option value="77">Sanborns</option>
+                  <option value="78">Sandy Hut</option>
+                  <option value="79">Sckavone's</option>
+                  <option value="80">Screen Door</option>
+                  <option value="81">Slappy Cakes</option>
+                  <option value="82">Slide Inn</option>
+                  <option value="83">Smokehouse Tavern</option>
+                  <option value="84">Spielman Coffee Roaster & Bagels (NE Broadway)</option>
+                  <option value="85">Spielman Coffee Roaster & Bagels (SE Division)</option>
+                  <option value="86">St. Honore </option>
+                  <option value="87">Suzette</option>
+                  <option value="88">Tabor Bread</option>
+                  <option value="89">Tabor Tavern</option>
+                  <option value="90">Tannery Bar</option>
+                  <option value="91">Tapalaya</option>
+                  <option value="92">Toast</option>
+                  <option value="93">Tom's Restaurant</option>
+                  <option value="94">Trinket</option>
+                  <option value="95">Utopia Cafe</option>
+                  <option value="96">Waffle Window</option>
+                  <option value="97">Whisky Soda Lounge</option>
+                  <option value="98">Wild Abandon</option>
+                  <option value="99">Woodsman Tavern</option>
+                  <option value="100">Ya Hala</option>
+                  <option value="101">Zell's Cafe</option>
+              </select>
+        </form>
+        <br>
+        <form name = "votes" action="">
             <input type="radio" name="vote" value="recommend"> Recommend<br>
             <input type="radio" name="vote" value="notrecommend"> Do Not Recommend<br>
         </form>
@@ -131,6 +232,7 @@
 <script type="text/javascript" src="js/forminput.js"></script>
 <script type="text/javascript" src="js/googlePlaces.js"></script>
 <script type="text/javascript" src="js/launchpage.js"></script>
+<script type = "text/javascript" src= "js/RndImgs.js"></script>
 <script type="text/javascript" src="js/table.js"></script>
 
 </html>
