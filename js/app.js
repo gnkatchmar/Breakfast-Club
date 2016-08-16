@@ -8,10 +8,8 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
   this.lat = lat;
   this.lng = lng;
   this.pId = placeId;
-<<<<<<< HEAD
   this.upvotes = 0;
   this.downvotes = 0;
-=======
   this.addInfo = function() {
 
 	var locationRow = document.createElement("tr");
@@ -42,8 +40,6 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
 
 	var table = document.getElementById("restaurantListTable");
 			table.appendChild(locationRow);				
-};
->>>>>>> 35_table_fix
 };
 
 var brunchArr = [
