@@ -70,11 +70,11 @@ window.addEventListener('load', function(){
 function visByCheckbox(){
     var checkboxes = document.querySelectorAll('input[type=checkbox]');
     var checkedQuads = [];
-	
+
     for(var i=0; i<checkboxes.length; i++){
         var quad = checkboxes[i].dataset.quad;
 
-        show/hide markers based on checked boxes
+        //show/hide markers based on checked boxes
         if(checkboxes[i].checked){
             setMapOnAll('show', getMarkerObjs(quad));
             checkedQuads.push(quad);
