@@ -49,7 +49,7 @@ function getThreeImages() { //function #2
         var time = document.createElement('p');
         link.href = website;
         link.innerHTML = title;
-        time.innerHTML = 'Opening Time' +openTime;
+        time.innerHTML = 'Opening Time: ' +openTime;
         //divtag.innerHTML = ""; //clear the old picture
         divtag.appendChild(img);
         divtag.appendChild(time);
