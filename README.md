@@ -1,6 +1,6 @@
 ###Going forward we are merging our branches into the 'working' branch.
 - We will use the working branch to test our changes as a team before we merge working into master.
-- Thus, master will always be functional and hopefully bug-free!
+- Thus, master will always be functional, hopefully bug-free, and presentation-ready!
 
 Note: This is easy to do, but also easy to forget. When you submit a pull request just be sure that your 'base' branch dropdown is set to 'working' and not 'master'.
 
