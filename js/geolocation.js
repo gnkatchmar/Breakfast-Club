@@ -91,7 +91,7 @@ function visByCheckbox(){
 }
 
 function zoomTo(quadArr){
-    console.log(quadArr);
+    console.log("Quad arr: " + quadArr);
     var options;
     if(quadArr.length === 1){
         options = mapOptions[quadArr[0]];
@@ -112,18 +112,18 @@ function zoomTo(quadArr){
 
 // find center if multiple quads checked
 // prepare for all relevant markers to be placed
-function getMultiCenter(coordsArr){
-    var x, y;
-    // If two sets of coords, subtract one from the other in each lat lng
-    if(coordsArr.length == 2){
-        x = (coordsArr[0][0] + coordsArr[1][0]) / 2;
-        y = (coordsArr[0][1] + coordsArr[0][1]) / 2;
-    } else {
-        // log("coordsArr length: " + coordsArr.length);
-    }
-    return {lat: x, lng: y};
-    // If three or more coords, create shape and find center of shape
-}
+// function getMultiCenter(coordsArr){
+//     var x, y;
+//     // If two sets of coords, subtract one from the other in each lat lng
+//     if(coordsArr.length == 2){
+//         x = (coordsArr[0][0] + coordsArr[1][0]) / 2;
+//         y = (coordsArr[0][1] + coordsArr[0][1]) / 2;
+//     } else {
+//         // log("coordsArr length: " + coordsArr.length);
+//     }
+//     return {lat: x, lng: y};
+//     // If three or more coords, create shape and find center of shape
+// }
 
 var timerStart, timerEnd;
 function timer(mode){

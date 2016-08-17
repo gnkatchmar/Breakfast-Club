@@ -27,7 +27,7 @@ function getTrackerObj(pId){
 // Utility function
 function getRandom(bounds){
     var rand = Math.floor(Math.random() * bounds);
-    log(rand);
+    log("Random num: " + rand);
     return rand;
 }
 
@@ -76,12 +76,14 @@ function callback(place, status){
         for(var j=0; j<photoSizes.length; j++){
             var size = photoSizes[j];
             var sizedArr = [];
+            var maxPics = 3;
 
-            for(var i=0; i<3; i++){//limt to 2 images
+            for(var i=0; i<maxPics; i++){//limt to 2 images
                 if(photos[i]){
                     url = photos[i].getUrl({'maxWidth':size, 'maxHeight':size});
                 } else {
-                    i--;
+                    log("There were no photos for this place.");
+                    maxPics++;
                 }
                 // if no photos, do something else
                 sizedArr.push(url);
@@ -111,7 +113,12 @@ function drawPhotos(brunchObj, size, quantity){
     var website = brunchArr[indx].website;
     var title = brunchArr[indx].title;
     var openTime = brunchArr[indx].opentime;
-    var photoUrl = brunchArr[indx].imgs[1][getRandom(3)];
+    var photoUrl;
+    if(brunchArr[indx].imgs[1].length > 0){
+        photoUrl = brunchArr[indx].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
+    } else {
+        log("No photos available for this location");
+    }
     var n = imgsFilled+1;
     log("Filling ID: " + n);
     document.getElementById('pic' + n).innerHTML = "<figure><img src='" + photoUrl + "'></figure><figcaption><div class='f-title'>" + brunchObj.title + "</div><div class='f-time'>Open: " + brunchObj.opentime + "</div><div><a href='" + brunchObj.website + "' class='f-site' target='blank'>website</div></figcaption>";
