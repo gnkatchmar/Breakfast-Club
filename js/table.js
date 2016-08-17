@@ -12,28 +12,65 @@ function getIndex() {
 	var userSelectTime = selectDropDown.options[selectDropDown.selectedIndex].text;
 	console.log("this is a time selected "+ parseInt(userSelectTime));
 	
-	// document.getElementById("neighborhoodChecked").addEventListener("checked", test);
-	// function test(nh1, nh2, nh3) {
-         // console.log(nh1, nh2, nh3);
-	// }
+	// check if SE is checked or not, if yes set the variable to "SE"
+	var SEboxChecked = document.getElementById("cb0").checked;
+	if (SEboxChecked == true){
+		console.log("se is true");
+		var SEboxTrue = "SE";
+		console.log("SEboxTrue is "+ SEboxTrue);
+	}
 	
-	//var x = document.getElementById("neighborhoodChecked").checked;
-	//console.log(x);
+	// check if NE is checked or not, if yes set the variable to "NE"
+	var NEboxChecked = document.getElementById("cb1").checked;
+	if (NEboxChecked == true){
+		console.log("ne is true");
+		var NEboxTrue = "NE";
+		console.log("NEboxTrue is "+ NEboxTrue);
+	}
+		console.log("this is ne box " + NEboxChecked);
 	
-	//var selectNeighborhood = document.getElementsByName("nhoodselect").checked;
-	//console.log("this is the neighbor selected " + selectNeighborhood);
-	
-	//var x = document.getElementById("myCheck").value;
-	
-	
+	// check if SW is checked or not, if yes set the variable to "SW"
+	var SWboxChecked = document.getElementById("cb2").checked;
+	console.log("this is sw box " + SWboxChecked);
+	if (SWboxChecked == true){
+		console.log("sw is true");
+		var SWboxTrue = "SW";
+		console.log("SWboxTrue is "+ SWboxTrue);
+	}
+
+	// if SE is selected print out se restaurants
 	for (var index = 0; index < brunchArr.length; index++) {
-		if (brunchArr[index].nhd == "SE" && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
-		var currentRestaurant = brunchArr[index];
-		currentRestaurant.addInfo();
+		//if (brunchArr[index].nhd == "SE" && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
+		if (brunchArr[index].nhd == SEboxTrue && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
+			var currentRestaurant = brunchArr[index];
+			currentRestaurant.addInfo();
 		}
-		
-	}	
+	}
+	
+	// if NE is selected print out ne restaurants
+	for (var index = 0; index < brunchArr.length; index++) {
+		//if (brunchArr[index].nhd == "SE" && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
+		if (brunchArr[index].nhd == NEboxTrue && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
+			var currentRestaurant = brunchArr[index];
+			currentRestaurant.addInfo();
+		}
+	}
+	
+	// if SW is selected print out sw restaurants
+	for (var index = 0; index < brunchArr.length; index++) {
+		//if (brunchArr[index].nhd == "SE" && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
+		if (brunchArr[index].nhd == SWboxTrue && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
+			var currentRestaurant = brunchArr[index];
+			currentRestaurant.addInfo();
+		}
+	}
+	
+	
+	
 }
+
+
+
 
 //var e = document.getElementById("ddlViewBy");
 //var strUser = e.options[e.selectedIndex].text;

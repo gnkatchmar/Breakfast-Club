@@ -12,6 +12,7 @@ html, body {
   display:inline-block;
   font-weight: bolder;
   margin-left: 20px;
+  font-size: 20px;
 }
 
 header {
@@ -38,7 +39,6 @@ header {
   margin-left: 20px;
   display: inline-block;
 }
-
 
 h1  {
   font-family: 'Raleway', sans-serif;
@@ -120,7 +120,12 @@ form {
 }
 
 #launchpageimages figure{
+  border-style: solid;
   margin:0 10px;
+}
+
+#launchpageimages h4{
+  text-align: center;
 }
 
 #launchcontent {
@@ -141,6 +146,7 @@ form {
 
 /*#map {
   margin: 30px;
+<<<<<<< HEAD
 }*/
 
 #searchpage{

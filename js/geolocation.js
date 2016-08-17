@@ -79,7 +79,7 @@ function visByCheckbox(){
     for(var i=0; i<checkboxes.length; i++){
         var quad = checkboxes[i].dataset.quad;
 
-        // show/hide markers based on checked boxes
+        //show/hide markers based on checked boxes
         if(checkboxes[i].checked){
             setMapOnAll('show', getMarkerObjs(quad));
             checkedQuads.push(quad);
