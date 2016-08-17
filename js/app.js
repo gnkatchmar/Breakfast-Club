@@ -10,6 +10,9 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
   this.pId = placeId;
   this.upvotes = 0;
   this.downvotes = 0;
+  this.restcomment ="";
+  
+  //advanced search table generation method
   this.addInfo = function(){
 	var locationRow = document.createElement("tr");
 	var nameCell = document.createElement("td");
