@@ -117,10 +117,68 @@ function drawPhotos(brunchObj, size, quantity){
     if(brunchArr[indx].imgs[1].length > 0){
         photoUrl = brunchArr[indx].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
     } else {
-        log("No photos available for this location");
+        log("No photos available for this location. Rolling again.");
+        photoUrl = brunchArr[getRandom(brunchArr.length)].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
     }
     var n = imgsFilled+1;
+    var target = 'pic' + n;
+    var container = 'container_img' + imgsFilled;
     log("Filling ID: " + n);
-    document.getElementById('pic' + n).innerHTML = "<figure><img src='" + photoUrl + "'></figure><figcaption><div class='f-title'>" + brunchObj.title + "</div><div class='f-time'>Open: " + brunchObj.opentime + "</div><div><a href='" + brunchObj.website + "' class='f-site' target='blank'>website</div></figcaption>";
+
+    document.getElementById(target).innerHTML = "<figure id='" + container + "' class='invisible'><img src='" + photoUrl + "'></figure><figcaption><div class='f-title'>" + brunchObj.title + "</div><div class='f-time'>Open: " + brunchObj.opentime + "</div><div><a href='" + brunchObj.website + "' class='f-site' target='blank'>website</div></figcaption>";
     // document.getElementById('launchpageimages').display = block;
+
+    // setTimeout(function(){
+    //     replaceClass('launchpageimages', 'closed', 'open');
+    // }, 800);
+
+    setTimeout(function(){
+        replaceClass(target, 'invisible', 'visible');
+    }, 500);
+
+    setTimeout(function(){
+        replaceClass(container, 'invisible', 'visible');
+    }, 800);
+}
+
+// utility functions
+function addClass(id, newClass){
+    var el = document.getElementById(id);
+    var currentClass = el.className;
+    document.getElementById(id).className = currentClass + " " + newClass;
+}
+
+function removeClass(id, remClass){
+    var el = document.getElementById(id);
+    var currentClass = el.className;
+    document.getElementById(id).className = currentClass.replace(currentClass, remClass).trim();
+}
+
+function replaceClass(id, oldClass, newClass){
+    var el = document.getElementById(id);
+    var currentClass = el.className;
+    document.getElementById(id).className = currentClass.replace(oldClass, newClass).trim();
+}
+
+// TEST CODE ----------------------------------------------------------------
+
+function testPhoto(n){
+    var pId = brunchArr[n].pId;
+    log("Testing photo of " + brunchArr[n].title);
+    var request = {
+        placeId: pId
+    };
+    if(!service){
+        service = new google.maps.places.PlacesService(mapObj);
+    }
+    service.getDetails(request, testCallback);
+}
+
+// Fill the photUrls arrays
+function testCallback(place, status){
+    if (status == google.maps.places.PlacesServiceStatus.OK){
+        var photos = place.photos;
+        var url = photos[0].getUrl({'maxWidth':150, 'maxHeight':150});
+        document.getElementById('container_googlePhotos').innerHTML = "<img src='" + url + "'>";
+    }
 }
