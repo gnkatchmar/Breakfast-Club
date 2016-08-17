@@ -85,7 +85,7 @@ var brunchArr = [
     new brunchtracker("Muscadine", "1465 NE Prescott", "NE", "8:00 AM", "http://www.apizzascholls.com/", 45.555655, -122.650411, 'ChIJxyRiQCKnlVQRvIpTr7-TfU0'),
     new brunchtracker("Off the Waffle", "2601 SE Clinton", "SE", "8:00 AM", "http://offthewaffle.com/", 45.503733, -122.639479, 'ChIJ3fc-z4OglVQRBp6urOKAAFo'),
     new brunchtracker("Paradox Cafe", "3439 SE Belmont", "SE", "8:00 AM", "http://paradoxorganiccafe.com/", 45.516631, -122.628676, 'ChIJsUkMSJgKlVQR1RHj1QSed6E'),
-    new brunchtracker("Red Square Cafe", "4505 SE Belmont", "SE", "8:00 AM", "http://redsquarecafe.com/", 45.516729, -122.615956, 'ChIJnx8BCu6glVQR7YzxlFUea4Q'),
+    // new brunchtracker("Red Square Cafe", "4505 SE Belmont", "SE", "8:00 AM", "http://redsquarecafe.com/", 45.516729, -122.615956, 'ChIJnx8BCu6glVQR7YzxlFUea4Q'),
     new brunchtracker("Rocking Frog Cafe", "2511 SE Belmont", "SE", "8:00 AM", "http://rockingfrogpdx.com/", 45.516628, -122.639782, 'ChIJh0hXsJeglVQR5Qea2yIPJCQ'),
     new brunchtracker("Sanborns", "3200 SE Milwaukie", "SE", "8:00 AM", "http://www.sanbornsbreakfast.com/", 45.500164, -122.653984, 'ChIJ2_QGqHsKlVQRKXn2g-QE1Gs'),
     // new brunchtracker("Sckavone's", "4100 SE Division", "SE", "8:00 AM", "http://www.sckavones.com/", 45.504599, -122.620232, 'ChIJPZIV8ImglVQRR28uwYjH-pA'),

@@ -39,6 +39,7 @@ function initPhotos(){
 function getPlacePhotos(){
     var indx = getRandom(brunchArr.length);
     var placeObj = brunchArr[indx];
+    log("Querying GooglePlaces for " + brunchArr[indx].title + " | (brunchArr[index]) = " + indx);
 
     if(!placeObj.hasOwnProperty('imgs')){
         // log('getPlacePhotos');
@@ -56,6 +57,8 @@ function getPlacePhotos(){
         service.getDetails(request, callback);
     } else {
         console.log("This tracker already has images! Exiting...");
+        // Fix this: If a random number is a repeat try again,
+        // don't exit
     }
 }
 
@@ -81,10 +84,11 @@ function callback(place, status){
             for(var i=0; i<maxPics; i++){//limt to 2 images
                 if(photos[i]){
                     url = photos[i].getUrl({'maxWidth':size, 'maxHeight':size});
-                } else {
-                    log("There were no photos for this place.");
-                    maxPics++;
                 }
+                // else {
+                //     log("There were no photos for this place. Index = " + photosObj.indx);
+                //     maxPics++;
+                // }
                 // if no photos, do something else
                 sizedArr.push(url);
             }
