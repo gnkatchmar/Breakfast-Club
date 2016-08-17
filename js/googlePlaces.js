@@ -7,6 +7,10 @@ var photosObj = {
     photoSizes: [100, 300, 500, 800],//sizes: sm, md, lg, xl
 };
 
+log.p = function(t){
+    // log(t);
+};
+
 // Utility function
 function resetPhotosObj(){
     photosObj.global_pId = null;
@@ -27,7 +31,7 @@ function getTrackerObj(pId){
 // Utility function
 function getRandom(bounds){
     var rand = Math.floor(Math.random() * bounds);
-    log("Random num: " + rand);
+    log.p("Random num: " + rand);
     return rand;
 }
 
@@ -39,13 +43,13 @@ function initPhotos(){
 function getPlacePhotos(){
     var indx = getRandom(brunchArr.length);
     var placeObj = brunchArr[indx];
-    log("Querying GooglePlaces for " + brunchArr[indx].title + " | (brunchArr[index]) = " + indx);
+    log.p("Querying GooglePlaces for " + brunchArr[indx].title + " | (brunchArr[index]) = " + indx);
 
     if(!placeObj.hasOwnProperty('imgs')){
-        // log('getPlacePhotos');
+        // log.p('getPlacePhotos');
         photosObj.global_pId = placeObj.pId;
         photosObj.indx = indx;
-        // log("INDX " + photosObj.indx);
+        // log.p("INDX " + photosObj.indx);
 
         var request = {
             placeId: placeObj.pId
@@ -56,7 +60,7 @@ function getPlacePhotos(){
         }
         service.getDetails(request, callback);
     } else {
-        console.log("This tracker already has images! Exiting...");
+        log.p("This tracker already has images! Exiting...");
         // Fix this: If a random number is a repeat try again,
         // don't exit
     }
@@ -65,7 +69,7 @@ function getPlacePhotos(){
 // Fill the photUrls arrays
 function callback(place, status){
     if (status == google.maps.places.PlacesServiceStatus.OK){
-        console.log("CALLBACK INDX " + photosObj.indx);
+        log.p("CALLBACK INDX " + photosObj.indx);
         var photos = place.photos;
         var url;
         var urlMasterArr = [];
@@ -86,7 +90,7 @@ function callback(place, status){
                     url = photos[i].getUrl({'maxWidth':size, 'maxHeight':size});
                 }
                 // else {
-                //     log("There were no photos for this place. Index = " + photosObj.indx);
+                //     log.p("There were no photos for this place. Index = " + photosObj.indx);
                 //     maxPics++;
                 // }
                 // if no photos, do something else
@@ -98,19 +102,19 @@ function callback(place, status){
         brunchArr[photosObj.indx].imgs = urlMasterArr;
 
         // // draw photos on page1
-        log("drawing index " + photosObj.indx);
+        log.p("drawing index " + photosObj.indx);
         drawPhotos(brunchArr[photosObj.indx], 'md', 1);
         imgsFilled++;
 
         if(imgsFilled < 3){
             getPlacePhotos();
         }
-        // console.log('end callback');
+        // log.p('end callback');
     }
 }
 
 function drawPhotos(brunchObj, size, quantity){
-    log("Drawing photos for " + brunchObj.title);
+    log.p("Drawing photos for " + brunchObj.title);
     var activePhotoUrlArr;
 
     var indx = photosObj.indx;
@@ -121,13 +125,13 @@ function drawPhotos(brunchObj, size, quantity){
     if(brunchArr[indx].imgs[1].length > 0){
         photoUrl = brunchArr[indx].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
     } else {
-        log("No photos available for this location. Rolling again.");
+        log.p("No photos available for this location. Rolling again.");
         photoUrl = brunchArr[getRandom(brunchArr.length)].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
     }
     var n = imgsFilled+1;
     var target = 'pic' + n;
     var container = 'container_img' + imgsFilled;
-    log("Filling ID: " + n);
+    log.p("Filling ID: " + n);
 
     document.getElementById(target).innerHTML = "<figure id='" + container + "' class='invisible'><img src='" + photoUrl + "'></figure><figcaption><div class='f-title'>" + brunchObj.title + "</div><div class='f-time'>Open: " + brunchObj.opentime + "</div><div><a href='" + brunchObj.website + "' class='f-site' target='blank'>website</div></figcaption>";
     // document.getElementById('launchpageimages').display = block;
@@ -168,7 +172,7 @@ function replaceClass(id, oldClass, newClass){
 
 function testPhoto(n){
     var pId = brunchArr[n].pId;
-    log("Testing photo of " + brunchArr[n].title);
+    log.p("Testing photo of " + brunchArr[n].title);
     var request = {
         placeId: pId
     };
