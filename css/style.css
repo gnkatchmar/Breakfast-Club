@@ -157,3 +157,39 @@ form {
 #reviews {
   margin-bottom: 300px;
 }
+
+#container_btn_nearby {
+  height: 25px;
+}
+
+#btn_nearBy {
+  height: 25px;
+  width: 150px;
+  background-color: orange;
+  color: white;
+  text-align: center;
+  float: right;
+  cursor: pointer;
+}
+
+.feature-frame {
+    color: white;
+    background-color: black;
+    padding: 15px 5px;
+    margin: 20px;
+}
+
+figcaption {
+  text-align: center;
+  padding: 8px 0 0;
+}
+
+.f-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+figcaption a {
+  text-decoration: none;
+  color: orange;
+}

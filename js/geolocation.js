@@ -46,6 +46,7 @@ var log = function(t){
 
 // Event listener for form elements
 window.addEventListener('load', function(){
+    initPhotos();
     var formEl_nhood = document.forms.nhoodselect;
     document.getElementById('timeandlocation').addEventListener('change', function(e){
 
@@ -64,6 +65,10 @@ window.addEventListener('load', function(){
             selectedTime = parseInt(e.target.options[e.target.selectedIndex].text.replace(':', ''));
             visByCheckbox();
         }
+    });
+
+    document.getElementById('btn_nearBy').addEventListener('click', function(){
+        enable_geoloc();
     });
 });
 
@@ -149,10 +154,59 @@ function initMap() {
     var userQuad = "";
 
     // USER OPTS IN TO GEOLOCATION -------------------------------------
+//     if (navigator.geolocation){
+//       navigator.geolocation.getCurrentPosition(function(position){
+//
+// timer('start');
+//
+//         pos = {
+//           lat: position.coords.latitude,
+//           lng: position.coords.longitude
+//         };
+//
+//         // log("Current Lat, Lng: " + pos.lat + ", " + pos.lng);
+//         infoWindow.setPosition(pos);//center view on user location
+//         infoWindow.setContent('Location found.');
+//         mapObj.setCenter(pos);
+//         // infoWindow.open(mapObj);//shows location. Not necessarily accurate
+//
+//         // get current user location quadrant
+//         userQuad = getQuadrant();
+//         // log("Current user location: " + userQuad);
+//
+//         // check box matching user's geolocation
+//         for(var i=0; i<checkboxes.length; i++){
+//             // log("Quad checkbox: " + checkboxes[i].dataset.quad);
+//
+//             if(checkboxes[i].dataset.quad === userQuad){
+//                 checkboxes[i].checked = true;
+//
+//                 // show relevant quad
+//                 setMapOnAll('show', getMarkerObjs(userQuad));
+//             } else {
+//                 checkboxes[i].checked = false;
+//
+//                 // hide other quads
+//                 var quad = checkboxes[i].dataset.quad;
+//                 setMapOnAll('hide', getMarkerObjs(quad));
+//             }
+//         }
+//
+// timer('stop');
+//
+//       }, function() {
+//         handleLocationError(false, infoWindow, mapObj.getCenter());
+//       });
+//       // Browser doesn't support Geolocation
+//       handleLocationError(false, infoWindow, mapObj.getCenter());
+//     }
+}
+
+function enable_geoloc(){
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position){
 
-timer('start');
+// timer('start');
 
         pos = {
           lat: position.coords.latitude,
@@ -187,14 +241,16 @@ timer('start');
             }
         }
 
-timer('stop');
+// timer('stop');
 
       }, function() {
         handleLocationError(false, infoWindow, mapObj.getCenter());
       });
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, mapObj.getCenter());
-    }
+  } else {
+      alert("Your browser doesn't seem to support geolocation. Bummer.");
+  }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos){
