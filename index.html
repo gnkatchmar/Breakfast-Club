@@ -43,7 +43,15 @@
     <section id="searchpage">
         <a name="startPage"></a>
         <nav id="searchform">
-            <h2 id="timeandlocationheader"> Select time and location </h2>
+            <h2 id="timeandlocationheader"> Select location and time</h2>
+            <div>
+                <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false">
+                <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked>SE Portland<br>
+                <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked>NE Portland<br>
+                <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked>Downtown Portland<br>
+                <input type="submit" value="Submit Search">
+                </form>
+            </div>
             <div id="timeandlocation">
                 <div id="timeselect">
                     <form name="timeselect">
@@ -65,25 +73,17 @@
                     </form>
                 </div>
 
-                <div>
-                    <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false">
-                    <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked>SE Portland<br>
-                    <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked>NE Portland<br>
-                    <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked>Downtown Portland<br>
-                    <input type="submit" value="Submit Search">
-                    </form>
-                </div>
                 <p></p>
 				<section>
 				<table id="restaurantListTable">
 				</table>
 				</section>
-                <div id="buttondiv">
+                <!--<div id="buttondiv">
                     <button type="button" onclick="">Restaurant List</button>
                     <button type="button" onclick="">Advanced Search</button>
                     <button type="button" onclick="">Repeat Search</button>
                     <button type="button" onclick="">Quit</button>
-                </div>
+                </div>-->
             </div>
             <h2 id="mapheader"> Brunch Map </h2>
             <nav id="map-nav">
