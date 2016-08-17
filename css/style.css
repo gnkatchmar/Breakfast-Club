@@ -146,11 +146,10 @@ form {
 
 /*#map {
   margin: 30px;
-<<<<<<< HEAD
 }*/
 
 #searchpage{
-  /*display: none;*/
+    /*display: none;*/
 /*   margin-top: 400px; */
 /*  added to remove launch page conflict*/
 }
@@ -177,7 +176,7 @@ form {
 }
 
 #reviews {
-  margin-bottom: 300px;
+    margin-bottom: 300px;
 }
 
 #container_btn_nearby {
@@ -227,4 +226,11 @@ figcaption a {
 
 .visible {
     opacity: 1.0;
+}
+
+.none {
+    display: none;
+}
+.block {
+    display: block;
 }
