@@ -66,9 +66,22 @@ if (localStorage.getItem("cb2")) {
 function test2 (review) {
   var e = document.getElementById("restdropdown");
   var restChoice = e.options[e.selectedIndex].text;
-  console.log(restChoice);console.log(review.value);
+  console.log(restChoice);
+  console.log(review.value);
   var f = document.getElementById("reviewtext").value;
   console.log(f);
-
- }
-
+  
+  for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
+    if (brunchArr[i].title === restChoice) {
+      if (review.value === "recommend") {
+        brunchArr[i].upvotes++;
+        console.log(brunchArr[i]);
+      } else if (review.value === "notrecommend") {
+        brunchArr[i].downvotes++;
+        console.log(brunchArr[i]);
+      } //if/else if recommend 
+    } //if title ==
+        
+    } //for
+}
+  
