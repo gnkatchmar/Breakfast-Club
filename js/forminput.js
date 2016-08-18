@@ -47,44 +47,45 @@ if (localStorage.getItem("cb2")) {
   document.getElementById("cb2").checked = checked;
 }
 
-function reviewPage (review) {
-  var e = document.getElementById("restdropdown");
-  var restChoice = e.options[e.selectedIndex].text;
-  var restText = document.getElementById("reviewtext").value;
+function reviewOutput () {
   var thumbup = "\u{1F44D}";
   var thumbdown = "\u{1F44E}";
-
+  rptContent.innerHTML = "";
+  
   //load or set local storage
   if (localStorage.getItem("votes") === null) {
     localStorage.setItem("votes",JSON.stringify(brunchArr));
   } else {
     brunchArr = JSON.parse(localStorage.getItem("votes"));
   }
+  
+  for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
+    if (brunchArr[i].upvotes > 0 || brunchArr[i].downvotes > 0) {
+      var recs = "";
+      if (brunchArr[i].upvotes > 0) {
+        for (var v=0; v < brunchArr[i].upvotes; v++) {
+          recs += thumbup;
+        } //for upvotes
+        recs += " ";
+      } //if upvotes
+      if (brunchArr[i].downvotes > 0) {
+        for (var w=0; w < brunchArr[i].downvotes; w++) {
+          recs += thumbdown;
+        } //for downvotes
+      } //if downvotes
+      rptContent.innerHTML += "<br>" + brunchArr[i].title + "<br>";
+      rptContent.innerHTML += recs + "<br>";
+      rptContent.innerHTML += brunchArr[i].restcomment + "<br>";
+    } // if any votes
+  } //for brunchArr
+}
 
-   //helper function for text output
-  function reviewOutput () {
-    rptContent.innerHTML = "";
-    for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
-      if (brunchArr[i].upvotes > 0 || brunchArr[i].downvotes > 0) {
-        var recs = "";
-        if (brunchArr[i].upvotes > 0) {
-          for (var v=0; v < brunchArr[i].upvotes; v++) {
-            recs += thumbup;
-          } //for upvotes
-          recs += " ";
-        } //if upvotes
-        if (brunchArr[i].downvotes > 0) {
-          for (var w=0; w < brunchArr[i].downvotes; w++) {
-            recs += thumbdown;
-          } //for downvotes
-        } //if downvotes
-        rptContent.innerHTML += "<br>" + brunchArr[i].title + "<br>";
-        rptContent.innerHTML += recs + "<br>";
-        rptContent.innerHTML += brunchArr[i].restcomment + "<br>";
-      } // if any votes
-    } //for brunchArr
-  }
-reviewOutput();
+function reviewPage (review) {
+  var e = document.getElementById("restdropdown");
+  var restChoice = e.options[e.selectedIndex].text;
+  var restText = document.getElementById("reviewtext").value;
+ 
+  reviewOutput();
 
   //identify and update proper array member and local store
   for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
@@ -96,8 +97,7 @@ reviewOutput();
         brunchArr[i].downvotes++;
         brunchArr[i].restcomment += (' "' + restText + '"');
       } //if/else if recommend
-      console.log(brunchArr[i]);
-      localStorage.setItem("votes",JSON.stringify(brunchArr));
+    localStorage.setItem("votes",JSON.stringify(brunchArr));
     } //if title ==
   } //for
 
