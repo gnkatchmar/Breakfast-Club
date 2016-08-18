@@ -51,6 +51,9 @@ function reviewPage (review) {
   var e = document.getElementById("restdropdown");
   var restChoice = e.options[e.selectedIndex].text;
   var restText = document.getElementById("reviewtext").value;
+  var thumbup = "\u{1F44D}";
+  var thumbdown = "\u{1F44E}";
+ 
     
   //load or set local storage
   if (localStorage.getItem("votes") == null) {
@@ -64,16 +67,25 @@ function reviewPage (review) {
     rptContent.innerHTML = "";
     for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
       if (brunchArr[i].upvotes > 0 || brunchArr[i].downvotes > 0) {
-        reviewText = brunchArr[i].title + ": " + brunchArr[i].upvotes + " recommend and " + brunchArr[i].downvotes + " don't recommend. " + brunchArr[i].restcomment;
-        console.log(reviewText);
-        var rev = document.createElement("p");
-        rptContent.appendChild(rev);
-        var revtext = document.createTextNode(reviewText);
-        rev.appendChild(revtext);
-      } //if votes
-    } //for  
+        var recs = "";
+        if (brunchArr[i].upvotes > 0) {
+          for (var v=0; v < brunchArr[i].upvotes; v++) {
+            recs += thumbup;
+          } //for upvotes
+          recs += " ";
+        } //if upvotes
+        if (brunchArr[i].downvotes > 0) {
+          for (var v=0; v < brunchArr[i].downvotes; v++) {
+            recs += thumbdown;
+          } //for downvotes
+        } //if downvotes
+        rptContent.innerHTML += "<br>" + brunchArr[i].title + "<br>";
+        rptContent.innerHTML += recs + "<br>";
+        rptContent.innerHTML += brunchArr[i].restcomment + "<br>";
+      } // if any votes
+    } //for brunchArr 
   } 
-  
+ 
   reviewOutput();
   
   //identify and update proper array member and local store
