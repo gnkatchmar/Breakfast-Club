@@ -11,11 +11,13 @@
 <body>
     <header>
         <h1>Portland Brunch Finder</h1>
+        <nav id="nav_main">
           <ul>
-            <li><a href="#startPage">Start</a></li>
-            <li><a href="#listAndMapPage">List and Map</a></li>
-            <li><a href="#reviewsPage">Reviews</a></li>
+            <li id="nav-home"><a href="#launchpage">Start</a></li>
+            <li id="nav-search"><a href="#searchpage">List and Map</a></li>
+            <li id="nav-review"><a href="#reviews">Reviews</a></li>
           </ul>
+      </nav>
     </header>
     <section id="launchpage">
         <div id="container_btn_nearby"><div id="btn_nearBy">Get Local</div></div>
@@ -36,7 +38,7 @@
     <!-- PAGE BOUNDARY -->
     <section id="searchpage" class="none">
         <a name="startPage"></a>
-        <nav id="searchform">
+        <!-- <nav id="searchform"> -->
             <h2 id="timeandlocationheader"> Select location and time</h2>
             <div>
                 <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false">
@@ -80,10 +82,10 @@
                 </div>-->
             </div>
             <h2 id="mapheader"> Brunch Map </h2>
-            <nav id="map-nav">
+            <!-- <nav id="map-nav">
                 <a href="#startPage"></a>
                 <a href="#reviewsPage"></a>
-            </nav>
+            </nav> -->
             <div id="map"></div>
             <a name="listAndMapPage"></a>
 
@@ -212,10 +214,10 @@
       </div>
         <br>
       <div id="review-content"></div>
-        <nav id="reviews-nav">
+        <!-- <nav id="reviews-nav">
             <a href="#startPage"></a>
             <a href="#listAndMapPage"></a>
-        </nav>
+        </nav> -->
 
     </section>
 

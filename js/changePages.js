@@ -21,25 +21,41 @@ function display(id, state){
 function visPage(pageId){
     switch(pageId){
         case 'launchpage':
-            display(pageId, 1);
+            display('launchpage', 1);
             display('searchpage', 0);
             display('reviews', 0);
         break;
 
         case 'searchpage':
             display('launchpage', 0);
-            display(pageId, 1);
-            display('reviews', 1);
+            display('searchpage', 1);
+            display('reviews', 0);
             // refresh map
             google.maps.event.trigger(mapObj, 'resize');
         break;
 
         case 'reviews':
-            display('launchpage', 1);
+            display('launchpage', 0);
             display('searchpage', 0);
-            display(pageId, 0);
+            display('reviews', 1);
         break;
     }
 }
 
-document.getElementById('AdvancedSearch').addEventListener('click', function(){visPage('searchpage');});
+document.getElementById('nav_main').addEventListener('click', function(e){
+    // log(e.target.id);
+    switch(e.target.id){
+        case "nav-home":
+            visPage('launchpage');
+        break;
+
+        case "nav-search":
+            visPage('searchpage');
+        break;
+
+        case "nav-review":
+            visPage('reviews');
+        break;
+    }
+    visPage('searchpage');
+});

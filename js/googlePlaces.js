@@ -75,7 +75,7 @@ function getPlacePhotos(){
     var placeObj = active_BrunchArr[indx];
     log.p("Querying GooglePlaces for " + active_BrunchArr[indx].title + " | (brunchArr_Geo[index]) = " + indx);
 
-    if(!placeObj.hasOwnProperty('imgs')){
+    // if(!placeObj.hasOwnProperty('imgs')){
         // log.p('getPlacePhotos');
         photosObj.global_pId = placeObj.pId;
         photosObj.indx = indx;
@@ -89,11 +89,6 @@ function getPlacePhotos(){
             service = new google.maps.places.PlacesService(mapObj);
         }
         service.getDetails(request, callback);
-    } else {
-        log.p("This tracker already has images! Exiting...");
-        // Fix this: If a random number is a repeat try again,
-        // don't exit
-    }
 }
 
 // Fill the photUrls arrays
