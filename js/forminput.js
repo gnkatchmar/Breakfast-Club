@@ -48,17 +48,17 @@ if (localStorage.getItem("cb2")) {
 }
 
 function reviewOutput () {
-  var thumbup = "<img src='/img/thumbsup.jpg'>";
-  var thumbdown = "<img src ='/img/thumbsdown.jpg'>";
+  var thumbup = "<img src='img/thumbsup.jpg'>";
+  var thumbdown = "<img src='img/thumbsdown.jpg'>";
   rptContent.innerHTML = "";
-  
+
   //load or set local storage
   if (localStorage.getItem("votes") === null) {
     localStorage.setItem("votes",JSON.stringify(brunchArr));
   } else {
     brunchArr = JSON.parse(localStorage.getItem("votes"));
   }
-  
+
   for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
     if (brunchArr[i].upvotes > 0 || brunchArr[i].downvotes > 0) {
       var recs = "";
@@ -84,7 +84,7 @@ function reviewPage (review) {
   var e = document.getElementById("restdropdown");
   var restChoice = e.options[e.selectedIndex].text;
   var restText = document.getElementById("reviewtext").value;
- 
+
   reviewOutput();
 
   //identify and update proper array member and local store
