@@ -135,7 +135,8 @@ function initMap() {
     infoWindow = new google.maps.InfoWindow({map: mapObj});
     mapObj = new google.maps.Map(document.getElementById('map'), {
         center: mapOptions.cityCenter.coords,//initializes at city center
-        zoom: mapOptions.cityCenter.zoom
+        zoom: mapOptions.cityCenter.zoom,
+        scrollwheel: false
     });
 
     // convert all brunchtrackers to marker objects
@@ -143,54 +144,6 @@ function initMap() {
 
     // get checkboxes, prepare for geolocating user
     checkboxes_geo = document.querySelectorAll('input[type=checkbox]');
-
-    // USER OPTS IN TO GEOLOCATION -------------------------------------
-//     if (navigator.geolocation){
-//       navigator.geolocation.getCurrentPosition(function(position){
-//
-// timer('start');
-//
-//         pos = {
-//           lat: position.coords.latitude,
-//           lng: position.coords.longitude
-//         };
-//
-//         // log.g("Current Lat, Lng: " + pos.lat + ", " + pos.lng);
-//         infoWindow.setPosition(pos);//center view on user location
-//         infoWindow.setContent('Location found.');
-//         mapObj.setCenter(pos);
-//         // infoWindow.open(mapObj);//shows location. Not necessarily accurate
-//
-//         // get current user location quadrant
-//         userQuad = getQuadrant();
-//         // log.g("Current user location: " + userQuad);
-//
-//         // check box matching user's geolocation
-//         for(var i=0; i<checkboxes.length; i++){
-//             // log.g("Quad checkbox: " + checkboxes[i].dataset.quad);
-//
-//             if(checkboxes[i].dataset.quad === userQuad){
-//                 checkboxes[i].checked = true;
-//
-//                 // show relevant quad
-//                 setMapOnAll('show', getMarkerObjs(userQuad));
-//             } else {
-//                 checkboxes[i].checked = false;
-//
-//                 // hide other quads
-//                 var quad = checkboxes[i].dataset.quad;
-//                 setMapOnAll('hide', getMarkerObjs(quad));
-//             }
-//         }
-//
-// timer('stop');
-//
-//       }, function() {
-//         handleLocationError(false, infoWindow, mapObj.getCenter());
-//       });
-//       // Browser doesn't support Geolocation
-//       handleLocationError(false, infoWindow, mapObj.getCenter());
-//     }
 }
 
 function enable_geoloc(){
