@@ -38,7 +38,7 @@ function visPage(pageId){
             display('launchpage', 0);
             display('searchpage', 0);
             display('reviews', 1);
-            // reviewOutput();
+            reviewOutput();
         break;
     }
 }
