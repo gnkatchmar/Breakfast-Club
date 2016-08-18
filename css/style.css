@@ -8,8 +8,7 @@ html, body {
 
 ul {
   list-style-type: none;
-  margin-left: 50px;
-  padding: 0;
+  padding-left: 65px;
   background-color: #ff7f33;
   overflow: hidden;
   display: inline-block;
@@ -17,17 +16,24 @@ ul {
   z-index: 1;
   top: 50px;
   left: 0;
+  width: 100%;
+  opacity: 0.85;
 
 }
 
 li {
   float: left;
-  border-right: 7px solid lightyellow;
+  border-right: 3px solid lightyellow;
   }
 
-li:last-child {
+li:first-child {
+  border-left: 3px solid lightyellow;
+}
+
+/*li:last-child {
   border-right: none;
 }
+*/
 
 li a {
   padding: 10px 10px;
