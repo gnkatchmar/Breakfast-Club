@@ -11,7 +11,7 @@ var photosObj = {
 };
 
 log.p = function(t){
-    log(t);
+    // log(t);
 };
 
 // Utility function
