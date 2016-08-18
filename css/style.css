@@ -17,11 +17,12 @@ html, body {
 
 ul {
   list-style-type: none;
-  margin-left: 50px;
+  margin-left: 30px;
   padding: 0;
-  background-color: tomato;
+  background-color: #ff7f33;
   overflow: hidden;
   display: inline-block;
+  position: fixed;
 }
 
 li {
@@ -37,6 +38,7 @@ li a {
   padding: 10px 10px;
   text-align: center;
   display: block;
+  color: white;
 }
 
 #searchpage {
@@ -105,6 +107,7 @@ form {
   position: absolute;
   z-index: 5;
   width: 100%;
+  margin-top: 75px;
 }
 
 #launchpageimages {
