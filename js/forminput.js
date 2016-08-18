@@ -13,7 +13,7 @@ var rptContent = document.getElementById("review-content");
 //time select listener
 document.getElementById("dropdown").onchange = function() {
     localStorage.setItem('dropdown', document.getElementById("dropdown").value);
-}
+};
 
 if (localStorage.getItem('dropdown')) {
     document.getElementById("dropdown").options[localStorage.getItem('dropdown')].selected = true;
@@ -23,7 +23,7 @@ if (localStorage.getItem('dropdown')) {
 document.getElementById("cb0").onchange = function() {
   var checkbox = document.getElementById("cb0");
   localStorage.setItem("cb0", checkbox.checked);
-}
+};
 if (localStorage.getItem("cb0")) {
   var checked = JSON.parse(localStorage.getItem("cb0"));
   document.getElementById("cb0").checked = checked;
@@ -32,7 +32,7 @@ if (localStorage.getItem("cb0")) {
 document.getElementById("cb1").onchange = function() {
   var checkbox = document.getElementById("cb1");
   localStorage.setItem("cb1", checkbox.checked);
-}
+};
 if (localStorage.getItem("cb1")) {
   var checked = JSON.parse(localStorage.getItem("cb1"));
   document.getElementById("cb1").checked = checked;
@@ -41,7 +41,7 @@ if (localStorage.getItem("cb1")) {
 document.getElementById("cb2").onchange = function() {
   var checkbox = document.getElementById("cb2");
   localStorage.setItem("cb2", checkbox.checked);
-}
+};
 if (localStorage.getItem("cb2")) {
   var checked = JSON.parse(localStorage.getItem("cb2"));
   document.getElementById("cb2").checked = checked;
@@ -51,14 +51,14 @@ function reviewPage (review) {
   var e = document.getElementById("restdropdown");
   var restChoice = e.options[e.selectedIndex].text;
   var restText = document.getElementById("reviewtext").value;
-    
+
   //load or set local storage
-  if (localStorage.getItem("votes") == null) {
+  if (localStorage.getItem("votes") === null) {
     localStorage.setItem("votes",JSON.stringify(brunchArr));
   } else {
     brunchArr = JSON.parse(localStorage.getItem("votes"));
   }
-  
+
    //helper function for text output
   function reviewOutput () {
     rptContent.innerHTML = "";
@@ -71,11 +71,11 @@ function reviewPage (review) {
         var revtext = document.createTextNode(reviewText);
         rev.appendChild(revtext);
       } //if votes
-    } //for  
-  } 
-  
+    } //for
+  }
+
   reviewOutput();
-  
+
   //identify and update proper array member and local store
   for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
     if (brunchArr[i].title === restChoice) {
@@ -90,6 +90,6 @@ function reviewPage (review) {
       localStorage.setItem("votes",JSON.stringify(brunchArr));
     } //if title ==
   } //for
-  
-  reviewOutput(); 
+
+  reviewOutput();
 }

@@ -71,7 +71,7 @@ function getPlacePhotos(){
         // proceed, changing all future refs to brunchArr to activeArr switch var
     }
     var indx = getRandom(active_BrunchArr.length);
-    log.p("active_BrunchArr = " + active_BrunchArr);
+    // log.p("active_BrunchArr = " + active_BrunchArr);
     var placeObj = active_BrunchArr[indx];
     log.p("Querying GooglePlaces for " + active_BrunchArr[indx].title + " | (brunchArr_Geo[index]) = " + indx);
 

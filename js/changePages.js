@@ -38,13 +38,14 @@ function visPage(pageId){
             display('launchpage', 0);
             display('searchpage', 0);
             display('reviews', 1);
+            // reviewOutput();
         break;
     }
 }
 
 document.getElementById('nav_main').addEventListener('click', function(e){
-    // log(e.target.id);
-    switch(e.target.id){
+    log(e.target.id);
+    switch(e.target.id.toLowerCase()){
         case "nav-home":
             visPage('launchpage');
         break;
