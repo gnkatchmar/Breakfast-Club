@@ -17,12 +17,16 @@ html, body {
 
 ul {
   list-style-type: none;
-  margin-left: 30px;
+  margin-left: 50px;
   padding: 0;
   background-color: #ff7f33;
   overflow: hidden;
   display: inline-block;
   position: fixed;
+  z-index: 1;
+  top: 50px;
+  left: 0;
+
 }
 
 li {
@@ -39,6 +43,11 @@ li a {
   text-align: center;
   display: block;
   color: white;
+  text-decoration: none;
+}
+
+li a:hover{
+  background-color: green;
 }
 
 li a hover:not(.active) {
