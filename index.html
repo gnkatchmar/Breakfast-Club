@@ -18,29 +18,27 @@
           </ul>
     </header>
     <section id="launchpage">
+        <div id="container_btn_nearby"><div id="btn_nearBy">Get Local</div></div>
         <div id="container_googlePhotos"></div><!--For testing. This can be commented out.-->
-      <div id = "launchpageimages">
-      <figure id = "pic1">
-      </figure>
+        <div id="imgWrapper">
+          <div id="launchpageimages">
+            <div id="pic1" class="feature-frame invisible"></div>
+            <div id="pic2" class="feature-frame invisible"></div>
+            <div id="pic3" class="feature-frame invisible"></div>
+          </div>
+        </div>
 
-       <figure id = "pic2">
-        </figure>
-
-        <figure id = "pic3">
-        </figure>
-      </div>
-
-      <p> Click on restuarnt name to go to the site for more information. The restaurant will open in a new tab. To return to the Portalnd Brunch Finder app, click on the tab in the upper left hand corner of the screen.
+      <p> Click on restaurant name to go to the site for more information. The restaurant will open in a new tab. To return to the Portland Brunch Finder app, click on the tab in the upper left hand corner of the screen.
 
 
       <div id="currentPosition"></div>
       <div id="launchcontent">
         <p>Generated content goes here</p>
       </div>
-        <input type ="button" value = "Advanced Search" id = "AdvancedSearch">
+        <input type="button" value="Advanced Search" id="AdvancedSearch">
     </section>
     <!-- PAGE BOUNDARY -->
-    <section id="searchpage">
+    <section id="searchpage" class="none">
         <a name="startPage"></a>
         <nav id="searchform">
             <h2 id="timeandlocationheader"> Select location and time</h2>
@@ -49,7 +47,7 @@
                 <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked>SE Portland<br>
                 <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked>NE Portland<br>
                 <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked>Downtown Portland<br>
-                <input type="submit" value="Submit Search">
+<!--                <input type="submit" value="Submit Search">-->
                 </form>
             </div>
             <div id="timeandlocation">
@@ -94,7 +92,7 @@
             <a name="listAndMapPage"></a>
 
     </section>
-    <section id="reviews">
+    <section id="reviews" class="none">
         <h2 id="reviews-header"> Reviews </h2>
         <a name="reviewsPage"></a>
         <div id="restselect">
@@ -205,26 +203,19 @@
                   </select>
             </form>
             <br>
-            <form name = "votes"  onsubmit = "test2(vote); return false">
+            <form name = "votes"  onsubmit = "reviewPage(vote); return false">
                 <input type="radio" name="vote" value="recommend"> Recommend<br>
                 <input type="radio" name="vote" value="notrecommend"> Do Not Recommend<br>
                 <br>
-                <textarea rows="10" cols="50" id="reviewtext">Please tell us about your brunch experience with this restaurant.
-                </textarea>
+                <p>How was your brunch here?</p>
+                <textarea rows="10" cols="50" id="reviewtext"></textarea>
                 <br>
                 <input type="submit" value="Submit Review">
             </form>
 
       </div>
         <br>
-
-       //displaying something here for now
-      <h4>Screen Door, 5 recommendations, 1 non-recommendation.</h4>
-      <p>"I have been here twice and both times was blown away by the food. We were intrigued by the fried chicken and waffle and decided to order one for the three of us. WOW. I've never had anything like it. The only negative point I would make is that the food takes a while. I've waited 30-40 minutes for my meal there before. Granted, it is a rather busy place so it's to be expected. Regardless, it is certainly worth the wait for some quality southern cuisine."</p>
-      <p></p>
-      <h4>Doug Fir Lounge, 3 recommendations, 2 non-recommendations.</h4>
-      <p>"A one word review of Doug Fir? Reliable. I've been here a good number of times, and every time it's been perfectly fine food. They serve breakfast late, until 3pm. I'm sure this is to better accommodate the rock and roll lifestyle that they're trying to cultivate, but for me it works out because dang I love me some eggs Benedict, and having them at a business lunch is the best thing ever. Also, I can recommend their Columbia scramble. But be warned, you really REALLY have to like dill."</p>
-
+      <div id="review-content"></div>
         <nav id="reviews-nav">
             <a href="#startPage"></a>
             <a href="#listAndMapPage"></a>
@@ -239,7 +230,8 @@
 <script type="text/javascript" src="js/forminput.js"></script>
 <script type="text/javascript" src="js/googlePlaces.js"></script>
 <script type="text/javascript" src="js/launchpage.js"></script>
-<script type = "text/javascript" src= "js/RndImgs.js"></script>
+<!-- <script type = "text/javascript" src= "js/RndImgs.js"></script> -->
 <script type="text/javascript" src="js/table.js"></script>
-
+<script type="text/javascript" src="js/featuredPlaces.js"></script>
+<script type="text/javascript" src="js/changePages.js"></script>
 </html>
