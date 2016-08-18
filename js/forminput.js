@@ -48,8 +48,8 @@ if (localStorage.getItem("cb2")) {
 }
 
 function reviewOutput () {
-  var thumbup = "\u{1F44D}";
-  var thumbdown = "\u{1F44E}";
+  var thumbup = "<img src='/img/thumbsup.jpg'>";
+  var thumbdown = "<img src ='/img/thumbsdown.jpg'>";
   rptContent.innerHTML = "";
   
   //load or set local storage
