@@ -27,7 +27,7 @@ ul {
 
 li {
   float: left;
-  border-right: 4px solid lightyellow;
+  border-right: 7px solid lightyellow;
   }
 
 li:last-child {
