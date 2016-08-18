@@ -11,11 +11,13 @@
 <body>
     <header>
         <h1>Portland Brunch Finder</h1>
+        <nav id="nav_main">
           <ul>
-            <li><a href="#startPage">Start</a></li>
-            <li><a href="#listAndMapPage">List and Map</a></li>
-            <li><a href="#reviewsPage">Reviews</a></li>
+            <li><a href="#launchpage" id="nav-home">Start</a></li>
+            <li><a href="#searchpage" id="nav-search">List and Map</a></li>
+            <li><a href="#reviews" id="nav-review">Reviews</a></li>
           </ul>
+      </nav>
     </header>
     <section id="launchpage">
         <div id="container_btn_nearby"><div id="btn_nearBy">Get Local</div></div>
@@ -28,29 +30,25 @@
           </div>
         </div>
 
-      <p> Click on restaurant name to go to the site for more information. The restaurant will open in a new tab. To return to the Portland Brunch Finder app, click on the tab in the upper left hand corner of the screen.
-
-
       <div id="currentPosition"></div>
       <div id="launchcontent">
-        <p>Generated content goes here</p>
       </div>
-        <input type="button" value="Advanced Search" id="AdvancedSearch">
+        <!-- <input type="button" value="Advanced Search" id="AdvancedSearch"> -->
     </section>
     <!-- PAGE BOUNDARY -->
     <section id="searchpage" class="none">
-        <a name="startPage"></a>
-        <nav id="searchform">
-            <h2 id="timeandlocationheader"> Select location and time</h2>
+        <!-- <a name="startPage"></a> -->
+        <!-- <nav id="searchform"> -->
+            <div id="map"></div>
             <div>
-                <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false">
-                <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked>SE Portland<br>
-                <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked>NE Portland<br>
-                <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked>Downtown Portland<br>
-<!--                <input type="submit" value="Submit Search">-->
-                </form>
-            </div>
             <div id="timeandlocation">
+                <h2 id="timeandlocationheader"> Select location and time</h2>
+                <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false">
+                    <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked>SE Portland<br>
+                    <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked>NE Portland<br>
+                    <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked>Downtown Portland<br>
+    <!--            <input type="submit" value="Submit Search">-->
+                </form>
                 <div id="timeselect">
                     <form name="timeselect">
                         <select id="dropdown">
@@ -70,11 +68,10 @@
                         </select>
                     </form>
                 </div>
-
-                <p></p>
+            </div>
+                <!-- <p></p> -->
 				<section>
-				<table id="restaurantListTable">
-				</table>
+				    <table id="restaurantListTable"></table>
 				</section>
                 <!--<div id="buttondiv">
                     <button type="button" onclick="">Restaurant List</button>
@@ -82,14 +79,12 @@
                     <button type="button" onclick="">Repeat Search</button>
                     <button type="button" onclick="">Quit</button>
                 </div>-->
-            </div>
-            <h2 id="mapheader"> Brunch Map </h2>
-            <nav id="map-nav">
+            <!-- <h2 id="mapheader"> Brunch Map </h2> -->
+            <!-- <nav id="map-nav">
                 <a href="#startPage"></a>
                 <a href="#reviewsPage"></a>
-            </nav>
-            <div id="map"></div>
-            <a name="listAndMapPage"></a>
+            </nav> -->
+            <!-- <a name="listAndMapPage"></a> -->
 
     </section>
     <section id="reviews" class="none">
@@ -216,10 +211,10 @@
       </div>
         <br>
       <div id="review-content"></div>
-        <nav id="reviews-nav">
+        <!-- <nav id="reviews-nav">
             <a href="#startPage"></a>
             <a href="#listAndMapPage"></a>
-        </nav>
+        </nav> -->
 
     </section>
 
@@ -229,9 +224,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
 <script type="text/javascript" src="js/forminput.js"></script>
 <script type="text/javascript" src="js/googlePlaces.js"></script>
-<script type="text/javascript" src="js/launchpage.js"></script>
+<!-- <script type="text/javascript" src="js/launchpage.js"></script> -->
 <!-- <script type = "text/javascript" src= "js/RndImgs.js"></script> -->
 <script type="text/javascript" src="js/table.js"></script>
-<script type="text/javascript" src="js/featuredPlaces.js"></script>
 <script type="text/javascript" src="js/changePages.js"></script>
 </html>

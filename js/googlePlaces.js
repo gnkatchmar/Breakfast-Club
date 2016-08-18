@@ -1,4 +1,7 @@
 var service;
+var geo_enabled = false;
+var active_BrunchArr;
+var brunchArr_Geo = [];
 var imgsFilled = 0;
 var photosObj = {
     global_pId: null,
@@ -8,7 +11,7 @@ var photosObj = {
 };
 
 log.p = function(t){
-    // log(t);
+    log(t);
 };
 
 // Utility function
@@ -35,17 +38,44 @@ function getRandom(bounds){
     return rand;
 }
 
+// Get subset of brunch array that match quadrant
+function getBrunchObjs(quad){
+    log.g("Getting brunches in " + quad);
+    var subsetArr = [];
+    for(var i=0; i<brunchArr.length; i++){
+        if(brunchArr[i].nhd === quad){
+            subsetArr.push(brunchArr[i]);
+            log.g(quad);
+        }
+    }
+    return subsetArr;
+}
+
 function initPhotos(){
     getPlacePhotos();
 }
 
 // Fill photoUrls arrays with images of brunchtracker with this pId
 function getPlacePhotos(){
-    var indx = getRandom(brunchArr.length);
-    var placeObj = brunchArr[indx];
-    log.p("Querying GooglePlaces for " + brunchArr[indx].title + " | (brunchArr[index]) = " + indx);
+    if(!geo_enabled){
+        active_BrunchArr = brunchArr;
+        // indx = getRandom(brunchArr.length);
+    } else {// geolocation enabled
+        // get subset of brunchArr, put to brunchArr_Geo
+        log.p("geo enabled!");
+        brunchArr_Geo = getBrunchObjs(userQuad);
+        active_BrunchArr = brunchArr_Geo;
+        // indx = getRandom(brunchArr_Geo.length);
+        // get length of that array
+        // get random bounded by that num
+        // proceed, changing all future refs to brunchArr to activeArr switch var
+    }
+    var indx = getRandom(active_BrunchArr.length);
+    // log.p("active_BrunchArr = " + active_BrunchArr);
+    var placeObj = active_BrunchArr[indx];
+    log.p("Querying GooglePlaces for " + active_BrunchArr[indx].title + " | (brunchArr_Geo[index]) = " + indx);
 
-    if(!placeObj.hasOwnProperty('imgs')){
+    // if(!placeObj.hasOwnProperty('imgs')){
         // log.p('getPlacePhotos');
         photosObj.global_pId = placeObj.pId;
         photosObj.indx = indx;
@@ -59,11 +89,6 @@ function getPlacePhotos(){
             service = new google.maps.places.PlacesService(mapObj);
         }
         service.getDetails(request, callback);
-    } else {
-        log.p("This tracker already has images! Exiting...");
-        // Fix this: If a random number is a repeat try again,
-        // don't exit
-    }
 }
 
 // Fill the photUrls arrays
@@ -99,11 +124,11 @@ function callback(place, status){
             urlMasterArr.push(sizedArr);
         }
         // attach imgs property to brunch object
-        brunchArr[photosObj.indx].imgs = urlMasterArr;
+        active_BrunchArr[photosObj.indx].imgs = urlMasterArr;
 
         // // draw photos on page1
         log.p("drawing index " + photosObj.indx);
-        drawPhotos(brunchArr[photosObj.indx], 'md', 1);
+        drawPhotos(active_BrunchArr[photosObj.indx], 'md', 1);
         imgsFilled++;
 
         if(imgsFilled < 3){
@@ -118,15 +143,15 @@ function drawPhotos(brunchObj, size, quantity){
     var activePhotoUrlArr;
 
     var indx = photosObj.indx;
-    var website = brunchArr[indx].website;
-    var title = brunchArr[indx].title;
-    var openTime = brunchArr[indx].opentime;
+    var website = active_BrunchArr[indx].website;
+    var title = active_BrunchArr[indx].title;
+    var openTime = active_BrunchArr[indx].opentime;
     var photoUrl;
-    if(brunchArr[indx].imgs[1].length > 0){
-        photoUrl = brunchArr[indx].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
+    if(active_BrunchArr[indx].imgs[1].length > 0){
+        photoUrl = active_BrunchArr[indx].imgs[1][getRandom(active_BrunchArr[indx].imgs[1].length)];
     } else {
         log.p("No photos available for this location. Rolling again.");
-        photoUrl = brunchArr[getRandom(brunchArr.length)].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
+        photoUrl = active_BrunchArr[getRandom(active_brunchArr.length)].imgs[1][getRandom(active_BrunchArr[indx].imgs[1].length)];
     }
     var n = imgsFilled+1;
     var target = 'pic' + n;
