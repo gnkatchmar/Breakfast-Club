@@ -40,12 +40,17 @@ var mapOptions = {
     }
 };
 
+// utility function
 var log = function(t){
     console.log(t);
+};
+log.g = function(t){
+    // log(t);
 };
 
 // Event listener for form elements
 window.addEventListener('load', function(){
+    initPhotos();
     var formEl_nhood = document.forms.nhoodselect;
     document.getElementById('timeandlocation').addEventListener('change', function(e){
 
@@ -64,6 +69,10 @@ window.addEventListener('load', function(){
             selectedTime = parseInt(e.target.options[e.target.selectedIndex].text.replace(':', ''));
             visByCheckbox();
         }
+    });
+
+    document.getElementById('btn_nearBy').addEventListener('click', function(){
+        enable_geoloc();
     });
 });
 
@@ -86,7 +95,7 @@ function visByCheckbox(){
 }
 
 function zoomTo(quadArr){
-    console.log(quadArr);
+    log.g("Quad arr: " + quadArr);
     var options;
     if(quadArr.length === 1){
         options = mapOptions[quadArr[0]];
@@ -107,18 +116,18 @@ function zoomTo(quadArr){
 
 // find center if multiple quads checked
 // prepare for all relevant markers to be placed
-function getMultiCenter(coordsArr){
-    var x, y;
-    // If two sets of coords, subtract one from the other in each lat lng
-    if(coordsArr.length == 2){
-        x = (coordsArr[0][0] + coordsArr[1][0]) / 2;
-        y = (coordsArr[0][1] + coordsArr[0][1]) / 2;
-    } else {
-        // log("coordsArr length: " + coordsArr.length);
-    }
-    return {lat: x, lng: y};
-    // If three or more coords, create shape and find center of shape
-}
+// function getMultiCenter(coordsArr){
+//     var x, y;
+//     // If two sets of coords, subtract one from the other in each lat lng
+//     if(coordsArr.length == 2){
+//         x = (coordsArr[0][0] + coordsArr[1][0]) / 2;
+//         y = (coordsArr[0][1] + coordsArr[0][1]) / 2;
+//     } else {
+//         // log.g("coordsArr length: " + coordsArr.length);
+//     }
+//     return {lat: x, lng: y};
+//     // If three or more coords, create shape and find center of shape
+// }
 
 var timerStart, timerEnd;
 function timer(mode){
@@ -149,17 +158,66 @@ function initMap() {
     var userQuad = "";
 
     // USER OPTS IN TO GEOLOCATION -------------------------------------
+//     if (navigator.geolocation){
+//       navigator.geolocation.getCurrentPosition(function(position){
+//
+// timer('start');
+//
+//         pos = {
+//           lat: position.coords.latitude,
+//           lng: position.coords.longitude
+//         };
+//
+//         // log.g("Current Lat, Lng: " + pos.lat + ", " + pos.lng);
+//         infoWindow.setPosition(pos);//center view on user location
+//         infoWindow.setContent('Location found.');
+//         mapObj.setCenter(pos);
+//         // infoWindow.open(mapObj);//shows location. Not necessarily accurate
+//
+//         // get current user location quadrant
+//         userQuad = getQuadrant();
+//         // log.g("Current user location: " + userQuad);
+//
+//         // check box matching user's geolocation
+//         for(var i=0; i<checkboxes.length; i++){
+//             // log.g("Quad checkbox: " + checkboxes[i].dataset.quad);
+//
+//             if(checkboxes[i].dataset.quad === userQuad){
+//                 checkboxes[i].checked = true;
+//
+//                 // show relevant quad
+//                 setMapOnAll('show', getMarkerObjs(userQuad));
+//             } else {
+//                 checkboxes[i].checked = false;
+//
+//                 // hide other quads
+//                 var quad = checkboxes[i].dataset.quad;
+//                 setMapOnAll('hide', getMarkerObjs(quad));
+//             }
+//         }
+//
+// timer('stop');
+//
+//       }, function() {
+//         handleLocationError(false, infoWindow, mapObj.getCenter());
+//       });
+//       // Browser doesn't support Geolocation
+//       handleLocationError(false, infoWindow, mapObj.getCenter());
+//     }
+}
+
+function enable_geoloc(){
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position){
 
-timer('start');
+// timer('start');
 
         pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
 
-        // log("Current Lat, Lng: " + pos.lat + ", " + pos.lng);
+        // log.g("Current Lat, Lng: " + pos.lat + ", " + pos.lng);
         infoWindow.setPosition(pos);//center view on user location
         infoWindow.setContent('Location found.');
         mapObj.setCenter(pos);
@@ -167,11 +225,11 @@ timer('start');
 
         // get current user location quadrant
         userQuad = getQuadrant();
-        // log("Current user location: " + userQuad);
+        // log.g("Current user location: " + userQuad);
 
         // check box matching user's geolocation
         for(var i=0; i<checkboxes.length; i++){
-            // log("Quad checkbox: " + checkboxes[i].dataset.quad);
+            // log.g("Quad checkbox: " + checkboxes[i].dataset.quad);
 
             if(checkboxes[i].dataset.quad === userQuad){
                 checkboxes[i].checked = true;
@@ -187,14 +245,16 @@ timer('start');
             }
         }
 
-timer('stop');
+// timer('stop');
 
       }, function() {
         handleLocationError(false, infoWindow, mapObj.getCenter());
       });
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, mapObj.getCenter());
-    }
+  } else {
+      alert("Your browser doesn't seem to support geolocation. Bummer.");
+  }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos){
@@ -238,7 +298,7 @@ function getBrunchObjs(quad){
 
 function getMarkerObjs(quad){
     var quadMarkerArr;
-    // log("Fetching quad: " + quad );
+    // log.g("Fetching quad: " + quad );
     switch(quad){
         case 'NE':
             quadMarkerArr = markerArr_NE;
@@ -291,13 +351,13 @@ function convertAllToMarkers(){
 
 // Sets the map on all markers in the array.
  function setMapOnAll(vis, markerArr){
-    // log("marker array length: " + markerArr.length);
+    // log.g("marker array length: " + markerArr.length);
    for(var i=0; i < markerArr.length; i++) {
        if(vis === 'show'){
            if(selectedTime){
-            //    log('selectedTime: ' + selectedTime);
+            //    log.g('selectedTime: ' + selectedTime);
                if(parseInt(markerArr[i].openTime.replace(':', '')) <= selectedTime){
-                //    log(parseInt(markerArr[i].openTime.replace(':', '')));
+                //    log.g(parseInt(markerArr[i].openTime.replace(':', '')));
                    markerArr[i].setMap(mapObj);
                } else {
                    markerArr[i].setMap(null);

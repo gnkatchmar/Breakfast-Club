@@ -10,37 +10,38 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
   this.pId = placeId;
   this.upvotes = 0;
   this.downvotes = 0;
-  this.addInfo = function() {
-
+  this.restcomment ="";
+  
+  //advanced search table generation method
+  this.addInfo = function(){
 	var locationRow = document.createElement("tr");
 	var nameCell = document.createElement("td");
 			nameCell.innerText = this.title;
 			locationRow.appendChild(nameCell);
-			
+
 	var opentimeCell = document.createElement("td");
 			opentimeCell.innerText = this.opentime;
-			locationRow.appendChild(opentimeCell);		
-			
-			
+			locationRow.appendChild(opentimeCell);
+
+
 	var addressCell = document.createElement("td");
 			addressCell.innerText = this.address;
-			locationRow.appendChild(addressCell);			
+			locationRow.appendChild(addressCell);
 
 
-	var websiteCell = document.createElement("td");		
+	var websiteCell = document.createElement("td");
 			websiteCell.innerHTML = "<a href=" +this.website +" target='_blank'>" + this.website + "</a>";
 			locationRow.appendChild(websiteCell);
-			
 
 	var table = document.getElementById("restaurantListTable");
-			table.appendChild(locationRow);				
+			table.appendChild(locationRow);
 	};
 };
 
 var brunchArr = [
     new brunchtracker("Original Hotcake House", "1002 SE Powell", "SE", "12:00 AM", "http://www.hotcakehouse.com/", 45.50114, -122.65558, 'ChIJ7ctb9noKlVQRUDHDKivog2g'),
     new brunchtracker("My Father's Place", "523 SE Grand", "SE", "6:00 AM", "http://myfathersplacepdx.com/", 45.519033, -122.660868, 'ChIJVwSCGqeglVQR7NxbQKUascY'),
-    new brunchtracker("Cameo Cafe", "8111 NE Sandy", "NE", "6:30 AM", "http://www.cameocafe.com/", 45.55226, -122.579407),
+    new brunchtracker("Cameo Cafe", "8111 NE Sandy", "NE", "6:30 AM", "http://www.cameocafe.com/", 45.55226, -122.579407, 'ChIJC1Rc51GhlVQRi--jcc2M39g'),
     new brunchtracker("Bottle + Kitchen", "50 SW Morrison", "SW", "7:00 AM", "http://www.bottlekitchen.com/", 45.517373, -122.673259, 'ChIJC1Rc51GhlVQRi--jcc2M39g'),
     new brunchtracker("Cadillac Cafe", "1801 NE Broadway", "NE", "7:00 AM", "http://cadillaccafepdx.com/", 45.535249, -122.647447, 'ChIJOZHEj8qglVQRZ1kRodWvq4Y'),
     new brunchtracker("Cup & Saucer Cafe", "3566 SE Hawthorne", "SE", "7:00 AM", "http://www.cupandsaucercafe.com/#!map/clav", 45.511915, -122.627226, 'ChIJcylr9o2glVQRBR9ex8drm0I'),
@@ -50,7 +51,7 @@ var brunchArr = [
     new brunchtracker("Rain or Shine Coffeehouse", "5941 SE Division", "SE", "7:00 AM", "http://www.pinestatebiscuits.com/", 45.505491, -122.601835, 'ChIJzXbStF6glVQRAiQsYc84F7w'),
     new brunchtracker("Spielman Coffee Roaster & Bagels (SE Division)", "2128 SE Division", "SE", "7:00 AM", "http://www.spielmanbagels.com/", 45.504654, -122.643945, 'ChIJu00Q7YKglVQRT7Az8Ewt3M8'),
     new brunchtracker("St. Honore Bakery", "3333 SE Division", "SE", "7:00 AM", "http://www.cricketcafe.pdx", 45.504943, -122.630794, 'ChIJsw68bYaglVQR18drjIMwens'),
-    new brunchtracker("Tom's Restaurant", "3871 SE Division", "SE", "7:00 AM", "http://www.tomsrestaurant.net", 45.505019, -122.622889, 'ChIJH8MdromglVQR5iwNUflT'),
+    // new brunchtracker("Tom's Restaurant", "3871 SE Division", "SE", "7:00 AM", "http://www.tomsrestaurant.net", 45.505019, -122.622889, 'ChIJH8MdromglVQR5iwNUflT'),
     new brunchtracker("Spielman Coffee Roaster & Bagels (NE Broadway)", "2200 NE Broadway", "NE", "7:00 AM", "http://www.spielmanbagels.com/", 45.534779, -122.642674, 'ChIJTUNDuMuglVQRTQrMmmXDDbk'),
     new brunchtracker("Cricket Cafe", "3159 SE 32nd", "SE", "7:30 AM", "http://www.cricketcafe.pdx", 45.501961, -122.632574, 'ChIJta3wE5SglVQRVpH_ixw-WIg'),
     new brunchtracker("Jam", "2239 SE Hawthorne", "SE", "7:30 AM", "http://www.jamonhawthorne.com", 45.512245, -122.642719, 'ChIJi4fI1ZuglVQRKfnLrpsIJN8'),
@@ -60,7 +61,7 @@ var brunchArr = [
     new brunchtracker("Batter Griddle & Drinkery", "4425 NE Fremont", "NE", "8:00 AM", "http://www.batterpdx.com", 45.548422, -122.617843, 'ChIJn26KEdOmlVQRqxDEd1zGNRw'),
     new brunchtracker("Bread and Ink Cafe", "3610 SE Hawthorne", "SE", "8:00 AM", "http://www.breadandinkcafe.com", 45.511934, -122.626527, 'ChIJpbw-9I2glVQRpQUQ4z1a04Q'),
     new brunchtracker("Bridges Cafe", "2316 NE MLK", "NE", "8:00 AM", "http://www.bridgescafeandcatering.net", 45.539832, -122.66116, 'ChIJ87ftZUinlVQRW1QmvjeymYQ'),
-    new brunchtracker("Casa Maria", "3035 SE Division ", "SE", "8:00 AM", "http://casamiaondivision.com/", 45.504988, -122.633949, ''),
+    // new brunchtracker("Casa Maria", "3035 SE Division ", "SE", "8:00 AM", "http://casamiaondivision.com/", 45.504988, -122.633949, ''),
     new brunchtracker("Cheese & Crack Shop", "22 SE 28th", "SE", "8:00 AM", "http://www.cheeseandcrack.com", 45.522443, -122.637143, 'ChIJp5V-Ar-glVQR4YOIy-o0qzU'),
     new brunchtracker("City State Diner", "128 NE 28th", "NE", "8:00 AM", "http://www.citystatediner.com", 45.52405, -122.637063, 'ChIJoUGSN7-glVQRUNbGky0NFPo'),
     new brunchtracker("Coquine", "6839 SE Belmont", "SE", "8:00 AM", "http://www.coquinepdx.com", 45.517096, -122.592392, 'ChIJj5vTbf6glVQRafj1UTq2hk4'),
@@ -80,10 +81,10 @@ var brunchArr = [
     new brunchtracker("Muscadine", "1465 NE Prescott", "NE", "8:00 AM", "http://www.apizzascholls.com/", 45.555655, -122.650411, 'ChIJxyRiQCKnlVQRvIpTr7-TfU0'),
     new brunchtracker("Off the Waffle", "2601 SE Clinton", "SE", "8:00 AM", "http://offthewaffle.com/", 45.503733, -122.639479, 'ChIJ3fc-z4OglVQRBp6urOKAAFo'),
     new brunchtracker("Paradox Cafe", "3439 SE Belmont", "SE", "8:00 AM", "http://paradoxorganiccafe.com/", 45.516631, -122.628676, 'ChIJsUkMSJgKlVQR1RHj1QSed6E'),
-    new brunchtracker("Red Square Cafe", "4505 SE Belmont", "SE", "8:00 AM", "http://redsquarecafe.com/", 45.516729, -122.615956, 'ChIJnx8BCu6glVQR7YzxlFUea4Q'),
+    // new brunchtracker("Red Square Cafe", "4505 SE Belmont", "SE", "8:00 AM", "http://redsquarecafe.com/", 45.516729, -122.615956, 'ChIJnx8BCu6glVQR7YzxlFUea4Q'),
     new brunchtracker("Rocking Frog Cafe", "2511 SE Belmont", "SE", "8:00 AM", "http://rockingfrogpdx.com/", 45.516628, -122.639782, 'ChIJh0hXsJeglVQR5Qea2yIPJCQ'),
     new brunchtracker("Sanborns", "3200 SE Milwaukie", "SE", "8:00 AM", "http://www.sanbornsbreakfast.com/", 45.500164, -122.653984, 'ChIJ2_QGqHsKlVQRKXn2g-QE1Gs'),
-    new brunchtracker("Sckavone's", "4100 SE Division", "SE", "8:00 AM", "http://www.sckavones.com/", 45.504599, -122.620232, 'ChIJPZIV8ImglVQRR28uwYjH-pA'),
+    // new brunchtracker("Sckavone's", "4100 SE Division", "SE", "8:00 AM", "http://www.sckavones.com/", 45.504599, -122.620232, 'ChIJPZIV8ImglVQRR28uwYjH-pA'),
     new brunchtracker("Slappy Cakes", "4246 SE Belmont", "SE", "8:00 AM", "http://slappycakes.com/", 45.51635, -122.618531, 'ChIJc1LuuO2glVQRFeFM-TqD_PA'),
     new brunchtracker("Tabor Bread", "5051 SE Hawthorne", "SE", "8:00 AM", "http://www.taborbread.com/", 45.512257, -122.610575, 'ChIJazvA__OglVQRSNySeFVV5XA'),
     new brunchtracker("Toast", "5222 SE 52nd", "SE", "8:00 AM", "http://www.toastpdx.com/", 45.485147, -122.608612, 'ChIJM2_26AyglVQRWQ-7QfC11MY'),
