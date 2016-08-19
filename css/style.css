@@ -207,16 +207,6 @@ nav li hover:not(.active) {
   margin: 5px;
 }
 
-/*.fadeout{
-  opacity: 0;
-  transition: opacity  1s;
-}
-
-.fadein{
-  opacity:1;
-  transition: opacity  1s .25s;
-}*/
-
 .hide{
   opacity: 0;
 }
