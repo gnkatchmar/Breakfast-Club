@@ -227,13 +227,14 @@ li a hover:not(.active) {
 }
 
 
-#container_btn_nearby {
+#container_btns_secondary {
   height: 25px;
 }
 
-#btn_nearBy {
+.btns_secondary {
   height: 25px;
   width: 150px;
+  line-height: 25px;
   background-color: orange;
   color: white;
   text-align: center;
