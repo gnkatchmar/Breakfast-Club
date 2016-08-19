@@ -101,7 +101,6 @@ var brunchArr = [
     new brunchtracker("Night Light Lounge", "2100 SE Clinton", "SE", "10:00 AM", "http://www.nightlightlounge.net/", 45.503251,  -122.644453,  'ChIJjfxsgngKlVQR82RQeNwhjmI'),
     new brunchtracker("Off the Waffle", "2601 SE Clinton", "SE", "8:00 AM", "http://offthewaffle.com/", 45.503733,  -122.639479,  'ChIJ3fc-z4OglVQRBp6urOKAAFo'),
     new brunchtracker("Olympic Provisions", "107 SE Washington", "SE", "10:00 AM", "http://www.olympiaprovisions.com/", 45.519022,  -122.664279,  'ChIJDzuJgKeglVQRXyGLZ_NJERA'),
-    new brunchtracker("Original Hotcake House", "1002 SE Powell", "SE", "12:00 AM", "http://www.hotcakehouse.com/", 45.50114,  -122.65558,  'ChIJ7ctb9noKlVQRUDHDKivog2g'),
     new brunchtracker("Oso Market + Bar", "726 SE Grand", "SE", "10:00 AM", "http://osomarket.com/", 45.517505,  -122.66041,  'ChIJNwaiSaeglVQRDRpFPHiB2y8'),
     new brunchtracker("Pambiche", "2811 NE Glisan", "NE", "9:00 AM", "http://www.pambiche.com/", 45.526632,  -122.636827,  'ChIJF01MZceglVQRCidFEomPY2k'),
     new brunchtracker("Paradox Cafe", "3439 SE Belmont", "SE", "8:00 AM", "http://paradoxorganiccafe.com/", 45.516631,  -122.628676,  'ChIJsUkMSJgKlVQR1RHj1QSed6E'),

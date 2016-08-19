@@ -1,11 +1,4 @@
-//document.getElementById("timeselect").addEventListener()
-
-
 document.getElementById("dropdown").addEventListener("change", getIndex);
-
-function myFunction() {
-    console.log("this is a test");
-}
 
 function getIndex() {
 	var tableContainer = document.getElementById("restaurantListTable");
@@ -13,32 +6,26 @@ function getIndex() {
 	
     var selectDropDown = document.getElementById("dropdown");
 	var userSelectTime = selectDropDown.options[selectDropDown.selectedIndex].text;
-	console.log("this is a time selected "+ parseInt(userSelectTime));
 	
 	// check if SE is checked or not, if yes set the variable to "SE"
 	var SEboxChecked = document.getElementById("cb0").checked;
 	if (SEboxChecked == true){
-		console.log("se is true");
 		var SEboxTrue = "SE";
-		console.log("SEboxTrue is "+ SEboxTrue);
+		var originalHotcakes = new brunchtracker("Original Hotcake House", "1002 SE Powell", "SE", "12:00 AM", "http://www.hotcakehouse.com/", 45.50114,  -122.65558,  'ChIJ7ctb9noKlVQRUDHDKivog2g');
+		originalHotcakes.addInfo();
 	}
 	
 	// check if NE is checked or not, if yes set the variable to "NE"
 	var NEboxChecked = document.getElementById("cb1").checked;
 	if (NEboxChecked == true){
-		console.log("ne is true");
 		var NEboxTrue = "NE";
-		console.log("NEboxTrue is "+ NEboxTrue);
 	}
-		console.log("this is ne box " + NEboxChecked);
-	
+			
 	// check if SW is checked or not, if yes set the variable to "SW"
 	var SWboxChecked = document.getElementById("cb2").checked;
 	console.log("this is sw box " + SWboxChecked);
 	if (SWboxChecked == true){
-		console.log("sw is true");
 		var SWboxTrue = "SW";
-		console.log("SWboxTrue is "+ SWboxTrue);
 	}
 
 	// if SE is selected print out se restaurants
