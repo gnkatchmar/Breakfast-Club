@@ -1,5 +1,4 @@
-/*Base Styles*/
-
+/*////////Base Styles////////*/
 * {
    margin: 0px;
    padding: 0px;
@@ -21,8 +20,9 @@ h1  {
 }
 
 form {
-  margin-left: 20px;
-  font-family: arial;
+    margin-left: 20px;
+    font-family: arial;
+    font-size: smaller;
 }
 
 section {
@@ -83,15 +83,24 @@ li {
   border-right: 3px solid lightyellow;
   }
 
+/*////////Review Page Styles////////*/
+#restselect {
+  border-style: solid;
+  margin: 20px 0 10px 0;
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+}
+
+#reviews {
+    margin-top: 150px;
+    margin-left: 20px;
+}
+
+
 
 li:first-child {
   border-left: 3px solid lightyellow;
 }
-
-/*li:last-child {
-  border-right: none;
-}
-*/
 
 li a {
   padding: 10px 10px;
@@ -137,7 +146,7 @@ li a:hover:not(.active) {
     width: 100%;
 }
 
-#timeandlocation, #restselect {
+#timeandlocation {
   border-style: solid;
   margin: 20px 0 0 20px;
   padding: 10px 10px 10px 0;
@@ -158,10 +167,6 @@ li a:hover:not(.active) {
   margin-left: 20px;
 }
 
-#reviews-header {
-  margin-left: 20px;
-}
-
 #map-nav {
   margin-left: 20px;
 }
@@ -169,9 +174,6 @@ li a:hover:not(.active) {
 #reviews-nav {
   margin-left: 20px;
 }
-
-
-
 
 #launchpage {
   font-family: 'Raleway' , sans-serif;
@@ -224,32 +226,15 @@ li a:hover:not(.active) {
 
 #launchcontent {
   font-family: 'Raleway' , sans-serif;
-  /*background-color: lightgreen;*/
 
 }
-
-/*
-#searchform {
-  background-color:
-
-}
-*/
 
 #buttondiv {
   margin: 5px;
-
 }
 
-/*#map {
-  margin: 30px;
-}*/
-
-/*#searchpage{*/
-    /*display: none;*/
-/*   margin-top: 400px; */
-/*  added to remove launch page conflict*/
-/*}*/
-
+/*
+transitions for original launch page
 .fadeout{
   opacity: 0;
   transition: opacity  1s;
@@ -259,6 +244,7 @@ li a:hover:not(.active) {
   opacity:1;
   transition: opacity  1s .25s;
 }
+*/
 
 .hide{
   opacity: 0;
@@ -268,25 +254,24 @@ li a:hover:not(.active) {
   margin: 5px;
 }
 
-#nhoodselect {
-}
 
-#reviews {
-    margin-top: 100px;
-}
-
-#container_btn_nearby {
+#wrapper_btns_secondary {
   height: 25px;
 }
 
-#btn_nearBy {
-  height: 25px;
-  width: 150px;
-  background-color: orange;
-  color: white;
-  text-align: center;
-  float: right;
-  cursor: pointer;
+#container_btns_secondary {
+    text-align: right;
+}
+
+.btns_secondary {
+    height: 25px;
+    width: 150px;
+    line-height: 25px;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .feature-frame {
@@ -316,7 +301,7 @@ figcaption a {
   color: orange;
 }
 
-/*display states for page transitions*/
+/*////////Change Page Transitions////////*/
 .invisible {
     opacity: 0;
 }

@@ -1,41 +1,39 @@
 //object constructor
 var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, placeId) {
-  this.title = title;
-  this.address = address;
-  this.nhd = nhd;
-  this.opentime = opentime;
-  this.website = website;
-  this.lat = lat;
-  this.lng = lng;
-  this.pId = placeId;
-  this.upvotes = 0;
-  this.downvotes = 0;
-  this.restcomment ="";
+    this.title = title;
+    this.address = address;
+    this.nhd = nhd;
+    this.opentime = opentime;
+    this.website = website;
+    this.lat = lat;
+    this.lng = lng;
+    this.pId = placeId;
+    this.upvotes = 0;
+    this.downvotes = 0;
+    this.restcomment ="";
   
-  //advanced search table generation method
-  this.addInfo = function(){
-	var locationRow = document.createElement("tr");
-	var nameCell = document.createElement("td");
-			nameCell.innerText = this.title;
-			locationRow.appendChild(nameCell);
+    //advanced search table generation method
+    this.addInfo = function(){
+    var locationRow = document.createElement("tr");
+    var nameCell = document.createElement("td");
+    nameCell.innerText = this.title;
+    locationRow.appendChild(nameCell);
 
-	var opentimeCell = document.createElement("td");
-			opentimeCell.innerText = this.opentime;
-			locationRow.appendChild(opentimeCell);
+    var opentimeCell = document.createElement("td");
+    opentimeCell.innerText = this.opentime;
+    locationRow.appendChild(opentimeCell);
 
+    var addressCell = document.createElement("td");
+    addressCell.innerText = this.address;
+    locationRow.appendChild(addressCell);
 
-	var addressCell = document.createElement("td");
-			addressCell.innerText = this.address;
-			locationRow.appendChild(addressCell);
+    var websiteCell = document.createElement("td");
+    websiteCell.innerHTML = "<a href=" +this.website +" target='_blank'>" + this.website + "</a>";
+    locationRow.appendChild(websiteCell);
 
-
-	var websiteCell = document.createElement("td");
-			websiteCell.innerHTML = "<a href=" +this.website +" target='_blank'>" + this.website + "</a>";
-			locationRow.appendChild(websiteCell);
-
-	var table = document.getElementById("restaurantListTable");
-			table.appendChild(locationRow);
-	};
+    var table = document.getElementById("restaurantListTable");
+    table.appendChild(locationRow);
+    };
 };
 
 var brunchArr = [
@@ -148,3 +146,103 @@ var brunchArr = [
     new brunchtracker("Ya Hala", "8005 SE Stark", "SE", "9:00 AM", "http://yahalarestaurant.com/", 45.51931,  -122.581254,  'ChIJCRER3AahlVQRSjE0phkAs2Y'),
     new brunchtracker("Zell's Cafe", "1300 SE Morrison", "SE", "8:00 AM", "http://www.zellscafe.com/", 45.517043,  -122.652403,  'ChIJQYyi1KOglVQRS2A-s6kwbok'),
 ];
+
+//Search form local storage
+var reviewText = "";
+var rptContent = document.getElementById("review-content");
+
+//time select listener
+document.getElementById("dropdown").onchange = function() {
+    localStorage.setItem('dropdown', document.getElementById("dropdown").value);
+};
+
+if (localStorage.getItem('dropdown')) {
+    document.getElementById("dropdown").options[localStorage.getItem('dropdown')].selected = true;
+}
+
+//tried to compact within loop, but each .onchange listener needs to "live" separately
+document.getElementById("cb0").onchange = function() {
+    var checkbox = document.getElementById("cb0");
+    localStorage.setItem("cb0", checkbox.checked);
+};
+if (localStorage.getItem("cb0")) {
+    var checked = JSON.parse(localStorage.getItem("cb0"));
+    document.getElementById("cb0").checked = checked;
+}
+
+document.getElementById("cb1").onchange = function() {
+    var checkbox = document.getElementById("cb1");
+    localStorage.setItem("cb1", checkbox.checked);
+};
+if (localStorage.getItem("cb1")) {
+    var checked = JSON.parse(localStorage.getItem("cb1"));
+    document.getElementById("cb1").checked = checked;
+}
+
+document.getElementById("cb2").onchange = function() {
+    var checkbox = document.getElementById("cb2");
+    localStorage.setItem("cb2", checkbox.checked);
+};
+if (localStorage.getItem("cb2")) {
+    var checked = JSON.parse(localStorage.getItem("cb2"));
+    document.getElementById("cb2").checked = checked;
+}
+
+//Review page output
+function reviewOutput () {
+    var thumbup = "<img src='img/thumbsup.jpg'>";
+    var thumbdown = "<img src='img/thumbsdown.jpg'>";
+    rptContent.innerHTML = "";
+
+    //load or set local storage
+    if (localStorage.getItem("votes") === null) {
+        localStorage.setItem("votes",JSON.stringify(brunchArr));
+    } else {
+        brunchArr = JSON.parse(localStorage.getItem("votes"));
+    }
+
+    for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
+        if (brunchArr[i].upvotes > 0 || brunchArr[i].downvotes > 0) {
+            var recs = "";
+            if (brunchArr[i].upvotes > 0) {
+                for (var v=0; v < brunchArr[i].upvotes; v++) {
+                    recs += thumbup;
+                } //for upvotes
+            } //if upvotes
+            if (brunchArr[i].downvotes > 0) {
+                for (var w=0; w < brunchArr[i].downvotes; w++) {
+                    recs += thumbdown;
+                } //for downvotes
+            } //if downvotes
+            rptContent.innerHTML += "<br>" + brunchArr[i].title + "<br>";
+            rptContent.innerHTML += recs + "<br>";
+            rptContent.innerHTML += brunchArr[i].restcomment + "<br>";
+        } // if any votes
+    } //for brunchArr
+}
+
+//Review page process
+function reviewPage (review) {
+    var e = document.getElementById("restdropdown");
+    var restChoice = e.options[e.selectedIndex].text;
+    var restText = document.getElementById("reviewtext").value;
+
+    reviewOutput();
+
+    //identify and update proper array member and local store
+    for (var i=0, iLen=brunchArr.length; i<iLen; i++) {
+        if (brunchArr[i].title === restChoice) {
+            if (review.value === "recommend") {
+                brunchArr[i].upvotes++;
+                brunchArr[i].restcomment += (' "' + restText + '"');
+            } else if (review.value === "notrecommend") {
+                brunchArr[i].downvotes++;
+                brunchArr[i].restcomment += (' "' + restText + '"');
+            } //if/else if recommend
+            localStorage.setItem("votes",JSON.stringify(brunchArr));
+        } //if title ==
+    } //for
+
+    reviewOutput();
+}
+
