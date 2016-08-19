@@ -44,13 +44,11 @@
             <div>
             <div id="timeandlocation">
                 <h3 id="timeandlocationheader"> Select location and time</h3>
-                <br>
                 <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false">
                     <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked> SE Portland<br>
                     <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked> NE Portland<br>
                     <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked> Downtown Portland<br>
                 </form>
-                <br>
                 <div id="timeselect">
                     <form name="timeselect">
                         <select id="dropdown">
@@ -195,20 +193,17 @@
                       <option value="108">Zell's Cafe</option>
                   </select>
             </form>
-            <br>
             <form name = "votes"  onsubmit = "reviewPage(vote); return false">
                 <input type="radio" name="vote" value="recommend"> Recommend<br>
                 <input type="radio" name="vote" value="notrecommend"> Don't Recommend<br>
-                <br>
                 <p>How was your brunch here?</p>
                 <textarea rows="10" cols="50" id="reviewtext"></textarea>
-              <p> </p>
                 <input type="submit" value="Submit Review">
             </form>
 
       </div>
         <br>
-      <div id="review-content"></div>
+      <div id="review-content"><p></p></div>
         <!-- <nav id="reviews-nav">
             <a href="#startPage"></a>
             <a href="#listAndMapPage"></a>

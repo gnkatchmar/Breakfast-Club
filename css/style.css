@@ -1,5 +1,4 @@
-/*Base Styles*/
-
+/////////*Base Styles*/////////
 * {
    margin: 0px;
    padding: 0px;
@@ -16,8 +15,9 @@ h1  {
 }
 
 form {
-  margin-left: 20px;
-  font-family: arial;
+    margin-left: 20px;
+    font-family: arial;
+    font-size: smaller;
 }
 
 body  {
@@ -49,6 +49,20 @@ li {
   float: left;
   border-right: 3px solid lightyellow;
   }
+
+/////////*Review Page Styles*/////////
+#restselect {
+  border-style: solid;
+  margin: 20px 0 10px 0;
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+}
+
+#reviews {
+    margin-top: 150px;
+    margin-left: 20px;
+}
+
 
 
 
@@ -103,7 +117,7 @@ li a hover:not(.active) {
     width: 100%;
 }
 
-#timeandlocation, #restselect {
+#timeandlocation {
   border-style: solid;
   margin: 20px 0 0 20px;
   padding: 10px 10px 10px 0;
@@ -121,10 +135,6 @@ li a hover:not(.active) {
 }
 
 #mapheader {
-  margin-left: 20px;
-}
-
-#reviews-header {
   margin-left: 20px;
 }
 
@@ -193,27 +203,10 @@ li a hover:not(.active) {
 
 }
 
-/*
-#searchform {
-  background-color:
-
-}
-*/
-
 #buttondiv {
   margin: 5px;
 
 }
-
-/*#map {
-  margin: 30px;
-}*/
-
-/*#searchpage{*/
-    /*display: none;*/
-/*   margin-top: 400px; */
-/*  added to remove launch page conflict*/
-/*}*/
 
 .fadeout{
   opacity: 0;
@@ -233,12 +226,6 @@ li a hover:not(.active) {
   margin: 5px;
 }
 
-#nhoodselect {
-}
-
-#reviews {
-    margin-top: 100px;
-}
 
 #container_btn_nearby {
   height: 25px;
@@ -281,7 +268,7 @@ figcaption a {
   color: orange;
 }
 
-/*display states for page transitions*/
+/////////*Change Page Transitions*/////////
 .invisible {
     opacity: 0;
 }
