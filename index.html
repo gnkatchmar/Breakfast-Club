@@ -21,7 +21,10 @@
       </nav>
     </header>
     <section id="launchpage">
-        <div id="container_btn_nearby"><div id="btn_nearBy">Get Local</div></div>
+        <div id="container_btns_secondary">
+            <div id="btn_refresh" class="btns_secondary">Next3</div>
+            <div id="btn_nearBy" class="btns_secondary">Nearby</div>
+        </div>
         <div id="container_googlePhotos"></div><!--For testing. This can be commented out.-->
         <div id="imgWrapper">
           <div id="launchpageimages">
@@ -34,12 +37,9 @@
       <div id="currentPosition"></div>
       <div id="launchcontent">
       </div>
-        <!-- <input type="button" value="Advanced Search" id="AdvancedSearch"> -->
     </section>
     <!-- PAGE BOUNDARY -->
     <section id="searchpage" class="none">
-        <!-- <a name="startPage"></a> -->
-        <!-- <nav id="searchform"> -->
             <div id="map"></div>
             <div>
             <div id="timeandlocation">
@@ -48,7 +48,6 @@
                     <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked>SE Portland<br>
                     <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked>NE Portland<br>
                     <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked>Downtown Portland<br>
-    <!--            <input type="submit" value="Submit Search">-->
                 </form>
                 <div id="timeselect">
                     <form name="timeselect">
@@ -70,23 +69,9 @@
                     </form>
                 </div>
             </div>
-                <!-- <p></p> -->
-				<section>
-				    <table id="restaurantListTable"></table>
-				</section>
-                <!--<div id="buttondiv">
-                    <button type="button" onclick="">Restaurant List</button>
-                    <button type="button" onclick="">Advanced Search</button>
-                    <button type="button" onclick="">Repeat Search</button>
-                    <button type="button" onclick="">Quit</button>
-                </div>-->
-            <!-- <h2 id="mapheader"> Brunch Map </h2> -->
-            <!-- <nav id="map-nav">
-                <a href="#startPage"></a>
-                <a href="#reviewsPage"></a>
-            </nav> -->
-            <!-- <a name="listAndMapPage"></a> -->
-
+			<section>
+			    <table id="restaurantListTable"></table>
+			</section>
     </section>
     <section id="reviews" class="none">
         <h2 id="reviews-header"> Reviews </h2>
@@ -219,11 +204,6 @@
       </div>
         <br>
       <div id="review-content"></div>
-        <!-- <nav id="reviews-nav">
-            <a href="#startPage"></a>
-            <a href="#listAndMapPage"></a>
-        </nav> -->
-
     </section>
 
 </body>

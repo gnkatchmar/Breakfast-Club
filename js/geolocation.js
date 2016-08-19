@@ -95,6 +95,9 @@ window.addEventListener('load', function(){
     document.getElementById('btn_nearBy').addEventListener('click', function(){
         enable_geoloc();
     });
+    document.getElementById('btn_refresh').addEventListener('click', function(){
+        getPlacePhotos();
+    });
 });
 
 function visByCheckbox(){
@@ -194,7 +197,6 @@ function enable_geoloc(){
         log.g("Current user location: " + userQuad);
 
         // reload featured photos to show nearby options
-        imgsFilled = 0;
         getPlacePhotos();
 
         // check box matching user's geolocation

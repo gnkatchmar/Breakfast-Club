@@ -122,6 +122,8 @@ function callback(place, status){
 
         if(imgsFilled < 3){
             getPlacePhotos();
+        } else {
+            imgsFilled = 0;
         }
         // log.p('end callback');
     }
@@ -147,12 +149,7 @@ function drawPhotos(brunchObj, size, quantity){
     var container = 'container_img' + imgsFilled;
     // log.p("Filling ID: " + n);
 
-    document.getElementById(target).innerHTML = "<figure id='" + container + "' class='invisible'><img src='" + photoUrl + "'></figure><figcaption><div class='f-title'>" + brunchObj.title + "</div><div class='f-time'>Open: " + brunchObj.opentime + "</div><div><a href='" + brunchObj.website + "' class='f-site' target='blank'>website</div></figcaption>";
-    // document.getElementById('launchpageimages').display = block;
-
-    // setTimeout(function(){
-    //     replaceClass('launchpageimages', 'closed', 'open');
-    // }, 800);
+    document.getElementById(target).innerHTML = "<figure id='" + container + "' class='invisible'><img src='" + photoUrl + "'></figure><figcaption><div class='f-title'>" + brunchObj.title + "</div><div class='f-time'>Opens: " + brunchObj.opentime + "</div><div><a href='" + brunchObj.website + "' class='f-site' target='blank'>website</div></figcaption>";
 
     setTimeout(function(){
         replaceClass(target, 'invisible', 'visible');
