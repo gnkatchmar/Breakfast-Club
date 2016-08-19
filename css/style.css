@@ -199,6 +199,8 @@ li a hover:not(.active) {
   margin: 5px;
 }
 
+/*
+transitions for original launch page
 .fadeout{
   opacity: 0;
   transition: opacity  1s;
@@ -208,6 +210,7 @@ li a hover:not(.active) {
   opacity:1;
   transition: opacity  1s .25s;
 }
+*/
 
 .hide{
   opacity: 0;
