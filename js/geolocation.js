@@ -160,7 +160,7 @@ function initMap() {
     // get checkboxes, prepare for geolocating user
     checkboxes_geo = document.querySelectorAll('input[type=checkbox]');
     // clear checkboxes
-    clearCheckBoxes();
+//    clearCheckBoxes();
 }
 
 function clearCheckBoxes(){
