@@ -21,34 +21,24 @@ form {
 }
 
 body  {
-  background-color: lightyellow;
+  /*background-color: lightyellow;*/
+}
+
+.background {
+    background-image: url(../img/portlandia-brunch.jpg);
+    filter: grayscale(100%);
 }
 
 section {
   font-family: 'Raleway' , sans-serif;
   display: block;
-  /*! background-color: lightblue; */
 }
 
 ul {
   list-style-type: none;
-  /*padding-left: 65px; */
-  background-color: #ff7f33;
-  overflow: hidden;
-  display: inline-block;
-  position: fixed;
-  z-index: 1;
-  top: 0px;
-  left: 390px;
-  width: 100%;
-  opacity: 0.85;
   text-align: center;
+  display: inline-block;
 }
-
-li {
-  float: left;
-  border-right: 3px solid lightyellow;
-  }
 
 /*////////Review Page Styles////////*/
 #restselect {
@@ -58,43 +48,67 @@ li {
   display: inline-block;
 }
 
+#container_reviews {
+  margin: 0px auto;
+  width: 500px;
+}
+
 #reviews {
-    margin-top: 150px;
+    margin-top: 50px;
     margin-left: 20px;
 }
 
 
 
-
+header {
+  height: 50px;
+  /*! margin-bottom: 5px; */
+  display: block;
+}
 
 #site-title {
+  border: 2px solid white;
+  padding: 5px 10px 0;
+  margin: 5px;
+}
+
+nav {
+  top: 0px;
+  width: 100%;
   position: fixed;
-  top: 0;
-  z-index: 1;
-  border-style: solid;
-  padding: 2px;
-}
-
-
-
-li:first-child {
-  border-left: 3px solid lightyellow;
-}
-
-li a {
-  padding: 10px 10px;
-  text-align: center;
-  display: block;
+  display: flex;
   color: white;
-  text-decoration: none;
+  background-color: #ff7f33;
+  opacity: 0.85;
+  cursor: pointer;
+  padding-left: 12px;
 }
 
-li a:hover{
+/* li:first-child { */
+  /*! border-left: 3px solid lightyellow; */
+/* } */
+
+nav #site-title {
+  font-size: 25px;
+}
+
+nav ul {
+  display: flex;
+  height: 100%;
+  margin-left: 20px;
+  font-size: 17px;
+}
+
+nav ul li {
+  padding: 15px 20px;
+}
+
+nav li:hover{
   background-color: lightblue;
   color: black;
 }
 
-li a hover:not(.active) {
+nav li hover:not(.active) {
   background-color: #111;
 }
 
@@ -107,7 +121,6 @@ li a hover:not(.active) {
 }
 
 #map {
-    /*height: 100%;*/
     height: 350px;
     width: 100%;
 }
@@ -133,13 +146,13 @@ li a hover:not(.active) {
   margin-left: 20px;
 }
 
-#map-nav {
+/*#map-nav {
   margin-left: 20px;
 }
 
 #reviews-nav {
   margin-left: 20px;
-}
+}*/
 
 #launchpage {
   font-family: 'Raleway' , sans-serif;
@@ -147,6 +160,7 @@ li a hover:not(.active) {
   z-index: 5;
   width: 100%;
   margin-top: 75px;
+  background-color: #f0f0f0;
 }
 
 .closed {
@@ -176,13 +190,12 @@ li a hover:not(.active) {
   width: 300px;
 }
 
-#launchpageimages a{
-  /*display: block;*/
+/*#launchpageimages a {
   text-align: center;
-}
+}*/
 
 #launchpageimages figure{
-  border-style: solid;
+  /*border-style: solid;*/
   margin:0 10px;
 }
 
@@ -190,16 +203,11 @@ li a hover:not(.active) {
   text-align: center;
 }
 
-#launchcontent {
-  font-family: 'Raleway' , sans-serif;
-
-}
-
 #buttondiv {
   margin: 5px;
 }
 
-.fadeout{
+/*.fadeout{
   opacity: 0;
   transition: opacity  1s;
 }
@@ -207,7 +215,7 @@ li a hover:not(.active) {
 .fadein{
   opacity:1;
   transition: opacity  1s .25s;
-}
+}*/
 
 .hide{
   opacity: 0;
@@ -223,18 +231,21 @@ li a hover:not(.active) {
 }
 
 #container_btns_secondary {
-    text-align: right;
+    display: inline;
+    margin: auto;
+    margin-right: 150px;
 }
 
 .btns_secondary {
     height: 25px;
-    width: 150px;
+    width: 100px;
     line-height: 25px;
-    background-color: orange;
     color: white;
     text-align: center;
     cursor: pointer;
     display: inline-block;
+    border-radius: 3px;
+    border: 1px solid white;
 }
 
 .feature-frame {

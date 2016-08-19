@@ -102,7 +102,7 @@ function callback(place, status){
         for(var j=0; j<photoSizes.length; j++){
             var size = photoSizes[j];
             var sizedArr = [];
-            var maxPics = 3;
+            var maxPics = 5;
 
             for(var i=0; i<maxPics; i++){//limt to 2 images
                 if(photos[i]){

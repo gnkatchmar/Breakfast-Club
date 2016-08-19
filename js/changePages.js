@@ -52,7 +52,7 @@ function visPage(pageId){
 document.getElementById('nav_main').addEventListener('click', function(e){
     // log(e.target.id);
     switch(e.target.id.toLowerCase()){
-        case "nav-home":
+        case "site-title":
             visPage('launchpage');
         break;
 
