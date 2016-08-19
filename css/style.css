@@ -1,3 +1,7 @@
+* {
+   margin: 0px;
+   padding: 0px;
+}
 
 html, body {
     height: 100%;
@@ -6,19 +10,25 @@ html, body {
 }
 
 
+#site-title {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
 ul {
   list-style-type: none;
-  padding-left: 65px;
+  /*padding-left: 65px; */
   background-color: #ff7f33;
   overflow: hidden;
   display: inline-block;
   position: fixed;
   z-index: 1;
-  top: 50px;
-  left: 0;
+  top: 0px;
+  left: 390px;
   width: 100%;
   opacity: 0.85;
-
+  text-align: center;
 }
 
 li {
@@ -44,7 +54,8 @@ li a {
 }
 
 li a:hover{
-  background-color: green;
+  background-color: lightblue;
+  color: black;
 }
 
 li a hover:not(.active) {
