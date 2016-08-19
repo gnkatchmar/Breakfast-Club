@@ -13,7 +13,7 @@ var selectedTime;
 var infoWindow;
 var mapOptions = {
     cityCenter: {
-        coords: {lat: 45.523832, lng: -122.676678},
+        coords: {lat: 45.57, lng: -122.85},
         zoom: 12
     },
     NE: {
