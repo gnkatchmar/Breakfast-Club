@@ -9,28 +9,63 @@ html, body {
     padding: 0;
 }
 
+body {
+  margin-top: 80px;
+}
+
+header {
+   overflow: hidden;
+/*   display: inline-block; */
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+/*   left: 570px; */
+  width: 100%;
+  opacity: 0.85;
+  text-align: center;
+  background-color: #ff7f33;
+}
+
+h1  {
+/*   font-family: 'Courgette', cursive;
+  text-align: center;
+  font-size: 30px;
+  display: inline-block; */
+}
+
 
 #site-title {
-  position: fixed;
+  /*! position: fixed; */
   top: 0;
   z-index: 1;
-  border-style: solid;
+/*   border-style: solid; */
+  color:white;
   padding: 2px;
+  font-family: 'Courgette', cursive;
+  font-size: 30px;
+  display: inline-block;
+  
 }
+
+#nav_main {
+  display: inline-block;
+}
+
 
 ul {
   list-style-type: none;
   /*padding-left: 65px; */
-  background-color: #ff7f33;
-  overflow: hidden;
-  display: inline-block;
+/*   background-color: #ff7f33; */
+/*   overflow: hidden;
+  */ display: inline-block; /*
   position: fixed;
   z-index: 1;
   top: 0px;
-  left: 390px;
+  left: 570px;
   width: 100%;
   opacity: 0.85;
-  text-align: center;
+  text-align: center; */
+  
 }
 
 li {
@@ -55,18 +90,31 @@ li a {
   text-decoration: none;
 }
 
+li a:visited {
+  background-color: purple;
+}
+
 li a:hover{
   background-color: lightblue;
   color: black;
 }
 
-li a hover:not(.active) {
-  background-color: #111;
+
+
+li a:active {
+  background-color: green;
+}
+
+/*
+li a:hover:not(.active) {
+  background-color: lightblue;
+  color: black;
 }
 
 .active {
     background-color: #4CAF50;
 }
+*/
 
 #searchpage {
     height: 100%;
@@ -90,11 +138,7 @@ li a hover:not(.active) {
   display: inline-block;
 }
 
-h1  {
-  font-family: 'Courgette', cursive;
-  text-align: center;
-  font-size: 50px
-}
+
 
 #timeandlocationheader {
   margin-left: 20px;
@@ -115,6 +159,7 @@ h1  {
 #reviews-nav {
   margin-left: 20px;
 }
+
 
 body  {
   background-color: lightyellow;
