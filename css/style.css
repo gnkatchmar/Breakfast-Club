@@ -16,7 +16,7 @@ body {
 h1  {
   font-family: 'Courgette', cursive;
   text-align: center;
-  font-size: 50px
+  font-size: 40px;
 }
 
 form {
@@ -32,30 +32,29 @@ section {
 }
 
 
-/*header {*/
-   /*overflow: hidden;*/
-/*   display: inline-block;*/
-  /*position: fixed;*/
-  /*z-index: 1;*/
-  /*top: 0px;
-   left: 570px;
+header {
+   overflow: hidden;
+   display: inline-block;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
   width: 100%;
   opacity: 0.85;
-  text-align: center;
   background-color: #ff7f33;
-}*/
+  height: 50px;
+}
 
 
 #site-title {
   position: fixed;
-  top: 0;
-  z-index: 1;
-  border-style: solid;
-  /*color:white;*/
+  z-index: 2;
+/*   background-color: #ff7f33; */
+/*   top: 0; */
+/*   border-style: solid; */
+  color:white;
   padding: 2px;
-  /*font-family: 'Courgette', cursive;*/
   /*font-size: 30px;*/
-  /*display: inline-block;*/
+/*   display: inline-block; */
 }
 
 #nav_main {
@@ -65,22 +64,26 @@ section {
 
 ul {
   list-style-type: none;
-  /*padding-left: 65px; */
    background-color: #ff7f33;
    overflow: hidden;
    display: inline-block;
-  position: fixed;
+  position: fixed;  
   z-index: 1;
   top: 0px;
-  left: 570px;
+/*   left: 570px; */
   width: 100%;
+  float: right;
   opacity: 0.85;
   text-align: center;
+  
 }
 
 li {
-  float: left;
+  float: right;
+  display: inline-block;
   border-right: 3px solid lightyellow;
+  margin-top: 4px;
+  padding: 2px;
   }
 
 /*////////Review Page Styles////////*/
@@ -99,10 +102,13 @@ li {
 
 
 li:first-child {
-  border-left: 3px solid lightyellow;
+/*   border-left: 3px solid lightyellow; */
+  border-right: none;
 }
 
+
 li a {
+/*   float: right; */
   padding: 10px 10px;
   text-align: center;
   display: block;
@@ -118,7 +124,6 @@ li a:hover{
   background-color: lightblue;
   color: black;
 }
-
 
 
 li a:active {
