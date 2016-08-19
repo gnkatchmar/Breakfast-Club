@@ -13,8 +13,8 @@ var selectedTime;
 var infoWindow;
 var mapOptions = {
     cityCenter: {
-        coords: {lat: 45.57, lng: -122.85},
-        zoom: 12
+        coords: {lat: 45.525, lng: -122.66},
+        zoom: 11
     },
     NE: {
         coords: {lat: 45.542097, lng: -122.650560},
@@ -119,28 +119,31 @@ function zoomTo(quadArr){
     log.g("Zooming to: " + quadArr);
     var options;
 
-    // if 1 box is checked
-    if(quadArr.length === 1){
-        log.g("opt1");
+    if(quadArr.length === 0){
+        options = mapOptions.cityCenter;
+        // if 1 box is checked
+    } else if(quadArr.length === 1){
+        // log.g("opt1");
         options = mapOptions[quadArr[0]];
     // if 3 boxes checked
-    } else if(quadArr.length === 3 || quadArr.length === 0){
-        log.g("opt2");
+    } else if(quadArr.length === 3){
+        // log.g("opt2");
         options = mapOptions.cityCenter;
     // if 2 boxes checked
     } else if(quadArr.indexOf('NE') !== -1 && quadArr.indexOf('SW') !== -1){
-        log.g("opt3");
+        // log.g("opt3");
         options = mapOptions.NESW;
     } else if(quadArr.indexOf('NE') !== -1 && quadArr.indexOf('SE') !== -1){
-        log.g("opt4");
+        // log.g("opt4");
         options = mapOptions.EASTSIDE;
     } else if(quadArr.indexOf('SE') !== -1 && quadArr.indexOf('SW') !== -1){
-        log.g("opt5");
+        // log.g("opt5");
         options = mapOptions.SOUTHSIDE;
     }
 
     mapObj.panTo(options.coords);
     mapObj.setZoom(options.zoom);
+    // google.maps.event.trigger(mapObj, 'resize');
 }
 
 function initMap() {
@@ -158,8 +161,6 @@ function initMap() {
     checkboxes_geo = document.querySelectorAll('input[type=checkbox]');
     // clear checkboxes
     clearCheckBoxes();
-    // zoomTo(['cityCenter']);
-    // google.maps.event.trigger(mapObj, 'resize');
 }
 
 function clearCheckBoxes(){
