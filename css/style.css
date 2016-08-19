@@ -218,8 +218,12 @@ li a hover:not(.active) {
 }
 
 
-#container_btns_secondary {
+#wrapper_btns_secondary {
   height: 25px;
+}
+
+#container_btns_secondary {
+    text-align: right;
 }
 
 .btns_secondary {
@@ -229,8 +233,8 @@ li a hover:not(.active) {
     background-color: orange;
     color: white;
     text-align: center;
-    float: right;
     cursor: pointer;
+    display: inline-block;
 }
 
 .feature-frame {
