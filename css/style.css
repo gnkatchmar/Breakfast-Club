@@ -1,4 +1,4 @@
-/////////*Base Styles*/////////
+/*////////Base Styles////////*/
 * {
    margin: 0px;
    padding: 0px;
@@ -50,7 +50,7 @@ li {
   border-right: 3px solid lightyellow;
   }
 
-/////////*Review Page Styles*/////////
+/*////////Review Page Styles////////*/
 #restselect {
   border-style: solid;
   margin: 20px 0 10px 0;
@@ -80,11 +80,6 @@ li {
 li:first-child {
   border-left: 3px solid lightyellow;
 }
-
-/*li:last-child {
-  border-right: none;
-}
-*/
 
 li a {
   padding: 10px 10px;
@@ -146,8 +141,6 @@ li a hover:not(.active) {
   margin-left: 20px;
 }
 
-
-
 #launchpage {
   font-family: 'Raleway' , sans-serif;
 /*   position: absolute; */
@@ -199,13 +192,11 @@ li a hover:not(.active) {
 
 #launchcontent {
   font-family: 'Raleway' , sans-serif;
-  /*background-color: lightgreen;*/
 
 }
 
 #buttondiv {
   margin: 5px;
-
 }
 
 .fadeout{
@@ -227,18 +218,23 @@ li a hover:not(.active) {
 }
 
 
-#container_btn_nearby {
+#wrapper_btns_secondary {
   height: 25px;
 }
 
-#btn_nearBy {
-  height: 25px;
-  width: 150px;
-  background-color: orange;
-  color: white;
-  text-align: center;
-  float: right;
-  cursor: pointer;
+#container_btns_secondary {
+    text-align: right;
+}
+
+.btns_secondary {
+    height: 25px;
+    width: 150px;
+    line-height: 25px;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .feature-frame {
@@ -268,7 +264,7 @@ figcaption a {
   color: orange;
 }
 
-/////////*Change Page Transitions*/////////
+/*////////Change Page Transitions////////*/
 .invisible {
     opacity: 0;
 }

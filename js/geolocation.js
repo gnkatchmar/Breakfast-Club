@@ -22,7 +22,7 @@ var mapOptions = {
     },
     SE: {
         coords: {lat: 45.505, lng: -122.651998},
-        zoom: 12
+        zoom: 13
     },
     SW: {
         coords: {lat: 45.518964, lng: -122.679481},
@@ -38,7 +38,7 @@ var mapOptions = {
     },
     EASTSIDE: {
         coords: {lat: 45.519922, lng: -122.590758},
-        zoom: 14
+        zoom: 13
     },
     SOUTHSIDE: {
         coords: {lat: 45.505, lng: -122.66},
@@ -94,6 +94,9 @@ window.addEventListener('load', function(){
 
     document.getElementById('btn_nearBy').addEventListener('click', function(){
         enable_geoloc();
+    });
+    document.getElementById('btn_refresh').addEventListener('click', function(){
+        getPlacePhotos();
     });
 });
 
@@ -159,8 +162,7 @@ function initMap() {
 
     // get checkboxes, prepare for geolocating user
     checkboxes_geo = document.querySelectorAll('input[type=checkbox]');
-    // clear checkboxes
-//    clearCheckBoxes();
+    // clearCheckBoxes();
 }
 
 function clearCheckBoxes(){
@@ -194,7 +196,6 @@ function enable_geoloc(){
         log.g("Current user location: " + userQuad);
 
         // reload featured photos to show nearby options
-        imgsFilled = 0;
         getPlacePhotos();
 
         // check box matching user's geolocation
@@ -292,7 +293,7 @@ function convertAllToMarkers(){
             title: brunchArr[i].title,
             openTime: brunchArr[i].opentime
         });
-
+        markerObj.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
         markerObj.setAnimation(google.maps.Animation.DROP);
         // this array is returned
         arr.push(markerObj);

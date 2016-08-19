@@ -21,25 +21,22 @@
       </nav>
     </header>
     <section id="launchpage">
-        <div id="container_btn_nearby"><div id="btn_nearBy">Get Local</div></div>
-        <div id="container_googlePhotos"></div><!--For testing. This can be commented out.-->
+        <div id="wrapper_btns_secondary">
+            <div id="container_btns_secondary">
+                <div id="btn_refresh" class="btns_secondary">Next3</div>
+                <div id="btn_nearBy" class="btns_secondary">Nearby</div>
+            </div>
+        </div>
         <div id="imgWrapper">
           <div id="launchpageimages">
-            <div id="pic1" class="feature-frame invisible"></div>
-            <div id="pic2" class="feature-frame invisible"></div>
-            <div id="pic3" class="feature-frame invisible"></div>
+            <article id="pic1" class="feature-frame invisible"></article>
+            <article id="pic2" class="feature-frame invisible"></article>
+            <article id="pic3" class="feature-frame invisible"></article>
           </div>
         </div>
-
-      <div id="currentPosition"></div>
-      <div id="launchcontent">
-      </div>
-        <!-- <input type="button" value="Advanced Search" id="AdvancedSearch"> -->
     </section>
-    <!-- PAGE BOUNDARY -->
+<!-- PAGE BOUNDARY -->
     <section id="searchpage" class="none">
-        <!-- <a name="startPage"></a> -->
-        <!-- <nav id="searchform"> -->
             <div id="map"></div>
             <div>
             <div id="timeandlocation">
@@ -70,14 +67,13 @@
                     </form>
                 </div>
             </div>
-                <!-- <p></p> -->
-				<section>
-				    <table id="restaurantListTable"></table>
-				</section>
+			<section>
+			    <table id="restaurantListTable"></table>
+			</section>
     </section>
-  <!-- PAGE BOUNDARY --> 
-      <section id="reviews" class="none">
-        <h2 id="reviews-header"> Reviews </h2>
+<!-- PAGE BOUNDARY -->
+    <section id="reviews" class="none">
+        <h2 id="reviews-header">Reviews</h2>
         <a name="reviewsPage"></a>
         <div id="restselect">
             <form name="restselect">
@@ -200,17 +196,10 @@
                 <textarea rows="10" cols="50" id="reviewtext"></textarea>
                 <input type="submit" value="Submit Review">
             </form>
-
       </div>
         <br>
-      <div id="review-content"><p></p></div>
-        <!-- <nav id="reviews-nav">
-            <a href="#startPage"></a>
-            <a href="#listAndMapPage"></a>
-        </nav> -->
-
+      <div id="review-content"></div>
     </section>
-
 </body>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/geolocation.js"></script>
