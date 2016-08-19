@@ -1,3 +1,7 @@
+* {
+   margin: 0px;
+   padding: 0px;
+}
 
 html, body {
     height: 100%;
@@ -5,40 +9,55 @@ html, body {
     padding: 0;
 }
 
-/*
-#navigation {
-  /*position: fixed;
+
+#site-title {
+  position: fixed;
+  top: 0;
+  z-index: 1;
   border-style: solid;
-  font-weight: bolder;
-  margin-left: 20px;
-  font-size: 20px;
+  padding: 2px;
 }
-*/
 
 ul {
   list-style-type: none;
-  margin-left: 30px;
-  padding: 0;
+  /*padding-left: 65px; */
   background-color: #ff7f33;
   overflow: hidden;
   display: inline-block;
   position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 390px;
+  width: 100%;
+  opacity: 0.85;
+  text-align: center;
 }
 
 li {
   float: left;
-  border-right: 7px solid lightyellow;
+  border-right: 3px solid lightyellow;
   }
 
-li:last-child {
+li:first-child {
+  border-left: 3px solid lightyellow;
+}
+
+/*li:last-child {
   border-right: none;
 }
+*/
 
 li a {
   padding: 10px 10px;
   text-align: center;
   display: block;
   color: white;
+  text-decoration: none;
+}
+
+li a:hover{
+  background-color: lightblue;
+  color: black;
 }
 
 li a hover:not(.active) {
