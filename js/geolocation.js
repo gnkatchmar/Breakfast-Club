@@ -14,15 +14,15 @@ var infoWindow;
 var mapOptions = {
     cityCenter: {
         coords: {lat: 45.523832, lng: -122.676678},
-        zoom: 13
+        zoom: 12
     },
     NE: {
         coords: {lat: 45.542097, lng: -122.650560},
         zoom: 14
     },
     SE: {
-        coords: {lat: 45.512792, lng: -122.651998},
-        zoom: 14
+        coords: {lat: 45.505, lng: -122.651998},
+        zoom: 12
     },
     SW: {
         coords: {lat: 45.518964, lng: -122.679481},
@@ -32,13 +32,17 @@ var mapOptions = {
         coords: {lat: 45.529873, lng: -122.694569},
         zoom: 14
     },
+    NESW: {
+        coords: {lat: 45.535, lng: -122.676678},
+        zoom: 13
+    },
     EASTSIDE: {
         coords: {lat: 45.519922, lng: -122.590758},
         zoom: 14
     },
     SOUTHSIDE: {
-        coords: {lat: 45.495202, lng: -122.664215},
-        zoom: 14
+        coords: {lat: 45.505, lng: -122.66},
+        zoom: 12
     }
 };
 
@@ -47,7 +51,7 @@ var log = function(t){
     console.log(t);
 };
 log.g = function(t){
-    // log(t);
+    log(t);
 };
 
 // Utility function
@@ -114,19 +118,27 @@ function visByCheckbox(){
 function zoomTo(quadArr){
     log.g("Zooming to: " + quadArr);
     var options;
+
+    // if 1 box is checked
     if(quadArr.length === 1){
+        log.g("opt1");
         options = mapOptions[quadArr[0]];
-    } else if(quadArr.length === 3){
+    // if 3 boxes checked
+    } else if(quadArr.length === 3 || quadArr.length === 0){
+        log.g("opt2");
         options = mapOptions.cityCenter;
-    } else {
-        if(quadArr.indexOf('NE') && quadArr.indexOf('SW')){
-            options = mapOptions.cityCenter;
-        } else if(quadArr.indexOf('NE') && quadArr.indexOf('SE')){
-            options = mapOptions.EASTSIDE;
-        } else {
-            options = mapOptions.SOUTHSIDE;
-        }
+    // if 2 boxes checked
+    } else if(quadArr.indexOf('NE') !== -1 && quadArr.indexOf('SW') !== -1){
+        log.g("opt3");
+        options = mapOptions.NESW;
+    } else if(quadArr.indexOf('NE') !== -1 && quadArr.indexOf('SE') !== -1){
+        log.g("opt4");
+        options = mapOptions.EASTSIDE;
+    } else if(quadArr.indexOf('SE') !== -1 && quadArr.indexOf('SW') !== -1){
+        log.g("opt5");
+        options = mapOptions.SOUTHSIDE;
     }
+
     mapObj.panTo(options.coords);
     mapObj.setZoom(options.zoom);
 }
@@ -144,10 +156,20 @@ function initMap() {
 
     // get checkboxes, prepare for geolocating user
     checkboxes_geo = document.querySelectorAll('input[type=checkbox]');
+    // clear checkboxes
+    clearCheckBoxes();
+    // zoomTo(['cityCenter']);
+    // google.maps.event.trigger(mapObj, 'resize');
+}
+
+function clearCheckBoxes(){
+    for(var i=0; i<checkboxes_geo.length; i++){
+        checkboxes_geo[i].checked = false;
+    }
 }
 
 function enable_geoloc(){
-    if (navigator.geolocation){
+    if(navigator.geolocation){
         geo_enabled = true;
         navigator.geolocation.getCurrentPosition(function(position){
 
