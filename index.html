@@ -43,13 +43,14 @@
             <div id="map"></div>
             <div>
             <div id="timeandlocation">
-                <h2 id="timeandlocationheader"> Select location and time</h2>
+                <h3 id="timeandlocationheader"> Select location and time</h3>
+                <br>
                 <form name="nhoodselect" onsubmit = "test(nh1, nh2, nh3); return false">
-                    <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked>SE Portland<br>
-                    <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked>NE Portland<br>
-                    <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked>Downtown Portland<br>
-    <!--            <input type="submit" value="Submit Search">-->
+                    <input type="checkbox" name="nh1" data-quad="SE" value="SEPDX" id="cb0" checked> SE Portland<br>
+                    <input type="checkbox" name="nh2" data-quad="NE" value="NEPDX" id="cb1" checked> NE Portland<br>
+                    <input type="checkbox" name="nh3" data-quad="SW" value="DTPDX" id="cb2" checked> Downtown Portland<br>
                 </form>
+                <br>
                 <div id="timeselect">
                     <form name="timeselect">
                         <select id="dropdown">
@@ -65,9 +66,8 @@
                             <option value="9">10:30 AM</option>
                             <option value="10">11:00 AM</option>
                             <option value="11">11:30 AM</option>
-                            <option value="12" checked>12:00 PM</option>
-                            <option value="13" selected="selected">Select a time</option>
-
+                            <option value="12">12:00 PM</option>
+                            <option value="13" selected="selected">Select Your Brunch Time</option>
                         </select>
                     </form>
                 </div>
@@ -76,21 +76,9 @@
 				<section>
 				    <table id="restaurantListTable"></table>
 				</section>
-                <!--<div id="buttondiv">
-                    <button type="button" onclick="">Restaurant List</button>
-                    <button type="button" onclick="">Advanced Search</button>
-                    <button type="button" onclick="">Repeat Search</button>
-                    <button type="button" onclick="">Quit</button>
-                </div>-->
-            <!-- <h2 id="mapheader"> Brunch Map </h2> -->
-            <!-- <nav id="map-nav">
-                <a href="#startPage"></a>
-                <a href="#reviewsPage"></a>
-            </nav> -->
-            <!-- <a name="listAndMapPage"></a> -->
-
     </section>
-    <section id="reviews" class="none">
+  <!-- PAGE BOUNDARY --> 
+      <section id="reviews" class="none">
         <h2 id="reviews-header"> Reviews </h2>
         <a name="reviewsPage"></a>
         <div id="restselect">
@@ -210,11 +198,11 @@
             <br>
             <form name = "votes"  onsubmit = "reviewPage(vote); return false">
                 <input type="radio" name="vote" value="recommend"> Recommend<br>
-                <input type="radio" name="vote" value="notrecommend"> Do Not Recommend<br>
+                <input type="radio" name="vote" value="notrecommend"> Don't Recommend<br>
                 <br>
                 <p>How was your brunch here?</p>
                 <textarea rows="10" cols="50" id="reviewtext"></textarea>
-                <br>
+              <p> </p>
                 <input type="submit" value="Submit Review">
             </form>
 
