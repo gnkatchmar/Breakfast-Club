@@ -31,7 +31,10 @@ function visPage(pageId){
             display('searchpage', 1);
             display('reviews', 0);
             // refresh map
+            // mapObj.setCenter(mapOptions.cityCenter.coords);
+            // mapObj.setZoom(mapOptions.cityCenter.zoom);
             google.maps.event.trigger(mapObj, 'resize');
+            setTimeout(function(){zoomTo(['cityCenter']);}, 100);
         break;
 
         case 'reviews':
