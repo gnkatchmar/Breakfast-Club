@@ -96,6 +96,16 @@ window.addEventListener('load', function(){
         enable_geoloc();
     });
     document.getElementById('btn_refresh').addEventListener('click', function(){
+        setTimeout(function(){
+            replaceClass('pic1', 'visible', 'invisible');
+        }, 50);
+        setTimeout(function(){
+            replaceClass('pic2', 'visible', 'invisible');
+        }, 100);
+        setTimeout(function(){
+            replaceClass('pic3', 'visible', 'invisible');
+        }, 150);
+
         getPlacePhotos();
     });
 });
