@@ -46,13 +46,18 @@ function visPage(pageId){
             reviewOutput();
         break;
     }
+    if(pageId === 'launchpage'){
+        vis('container_btns_secondary', 1);
+    } else {
+        vis('container_btns_secondary', 0);
+    }
 }
 
 // add nav event system
 document.getElementById('nav_main').addEventListener('click', function(e){
     // log(e.target.id);
     switch(e.target.id.toLowerCase()){
-        case "nav-home":
+        case "site-title":
             visPage('launchpage');
         break;
 
