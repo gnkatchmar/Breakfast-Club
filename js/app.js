@@ -11,7 +11,7 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
     this.upvotes = 0;
     this.downvotes = 0;
     this.restcomment ="";
-  
+
     //advanced search table generation method
     this.addInfo = function(){
     var locationRow = document.createElement("tr");
@@ -240,6 +240,7 @@ function reviewPage (review) {
                 brunchArr[i].restcomment += ('<br>"' + restText + '"');
             } //if/else if recommend
             localStorage.setItem("votes",JSON.stringify(brunchArr));
+            display('review-content', 1);
         } //if title ==
     } //for
 
@@ -294,6 +295,12 @@ function visPage(pageId){
             display('searchpage', 0);
             display('reviews', 1);
             reviewOutput();
+            // unhide reviews if they exist
+            if(document.getElementById('review-content').innerHTML){
+                display('review-content', 1);
+            } else {
+                display('review-content', 0);
+            }
         break;
     }
     if(pageId === 'launchpage'){
