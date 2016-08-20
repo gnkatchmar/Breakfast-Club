@@ -1,7 +1,9 @@
 // GEOLOCATION API
 var x = document.getElementById('currentPosition');
 var pos;
+var userQuad = null;
 var mapObj;
+var checkboxes_geo;
 var brunchMarkerObjs;
 var markerArr_NE = [];
 var markerArr_SE = [];
@@ -11,16 +13,16 @@ var selectedTime;
 var infoWindow;
 var mapOptions = {
     cityCenter: {
-        coords: {lat: 45.523832, lng: -122.676678},
-        zoom: 13
+        coords: {lat: 45.525, lng: -122.66},
+        zoom: 11
     },
     NE: {
         coords: {lat: 45.542097, lng: -122.650560},
         zoom: 14
     },
     SE: {
-        coords: {lat: 45.512792, lng: -122.651998},
-        zoom: 14
+        coords: {lat: 45.505, lng: -122.651998},
+        zoom: 13
     },
     SW: {
         coords: {lat: 45.518964, lng: -122.679481},
@@ -30,13 +32,17 @@ var mapOptions = {
         coords: {lat: 45.529873, lng: -122.694569},
         zoom: 14
     },
+    NESW: {
+        coords: {lat: 45.535, lng: -122.676678},
+        zoom: 13
+    },
     EASTSIDE: {
         coords: {lat: 45.519922, lng: -122.590758},
-        zoom: 14
+        zoom: 13
     },
     SOUTHSIDE: {
-        coords: {lat: 45.495202, lng: -122.664215},
-        zoom: 14
+        coords: {lat: 45.505, lng: -122.66},
+        zoom: 12
     }
 };
 
@@ -47,6 +53,21 @@ var log = function(t){
 log.g = function(t){
     // log(t);
 };
+
+// Utility function
+var timerStart, timerEnd;
+function timer(mode){
+    if(mode === 'start' || mode === 'stop'){
+        var now = Date.now();
+        if(mode === 'start'){
+            timerStart = now;
+        } else {
+            timerEnd = now;
+        }
+    } else {
+        return (timerEnd - timerStart) / 1000 + "s";
+    }
+}
 
 // Event listener for form elements
 window.addEventListener('load', function(){
@@ -74,17 +95,30 @@ window.addEventListener('load', function(){
     document.getElementById('btn_nearBy').addEventListener('click', function(){
         enable_geoloc();
     });
+    document.getElementById('btn_refresh').addEventListener('click', function(){
+        setTimeout(function(){
+            replaceClass('pic1', 'visible', 'invisible');
+        }, 50);
+        setTimeout(function(){
+            replaceClass('pic2', 'visible', 'invisible');
+        }, 100);
+        setTimeout(function(){
+            replaceClass('pic3', 'visible', 'invisible');
+        }, 150);
+
+        getPlacePhotos();
+    });
 });
 
 function visByCheckbox(){
-    var checkboxes = document.querySelectorAll('input[type=checkbox]');
+    checkboxes_geo = document.querySelectorAll('input[type=checkbox]');
     var checkedQuads = [];
 
-    for(var i=0; i<checkboxes.length; i++){
-        var quad = checkboxes[i].dataset.quad;
+    for(var i=0; i<checkboxes_geo.length; i++){
+        var quad = checkboxes_geo[i].dataset.quad;
 
         //show/hide markers based on checked boxes
-        if(checkboxes[i].checked){
+        if(checkboxes_geo[i].checked){
             setMapOnAll('show', getMarkerObjs(quad));
             checkedQuads.push(quad);
         } else {
@@ -95,120 +129,62 @@ function visByCheckbox(){
 }
 
 function zoomTo(quadArr){
-    log.g("Quad arr: " + quadArr);
+    log.g("Zooming to: " + quadArr);
     var options;
-    if(quadArr.length === 1){
-        options = mapOptions[quadArr[0]];
-    } else if(quadArr.length === 3){
+
+    if(quadArr.length === 0){
         options = mapOptions.cityCenter;
-    } else {
-        if(quadArr.indexOf('NE') && quadArr.indexOf('SW')){
-            options = mapOptions.cityCenter;
-        } else if(quadArr.indexOf('NE') && quadArr.indexOf('SE')){
-            options = mapOptions.EASTSIDE;
-        } else {
-            options = mapOptions.SOUTHSIDE;
-        }
+        // if 1 box is checked
+    } else if(quadArr.length === 1){
+        // log.g("opt1");
+        options = mapOptions[quadArr[0]];
+    // if 3 boxes checked
+    } else if(quadArr.length === 3){
+        // log.g("opt2");
+        options = mapOptions.cityCenter;
+    // if 2 boxes checked
+    } else if(quadArr.indexOf('NE') !== -1 && quadArr.indexOf('SW') !== -1){
+        // log.g("opt3");
+        options = mapOptions.NESW;
+    } else if(quadArr.indexOf('NE') !== -1 && quadArr.indexOf('SE') !== -1){
+        // log.g("opt4");
+        options = mapOptions.EASTSIDE;
+    } else if(quadArr.indexOf('SE') !== -1 && quadArr.indexOf('SW') !== -1){
+        // log.g("opt5");
+        options = mapOptions.SOUTHSIDE;
     }
+
     mapObj.panTo(options.coords);
     mapObj.setZoom(options.zoom);
-}
-
-// find center if multiple quads checked
-// prepare for all relevant markers to be placed
-// function getMultiCenter(coordsArr){
-//     var x, y;
-//     // If two sets of coords, subtract one from the other in each lat lng
-//     if(coordsArr.length == 2){
-//         x = (coordsArr[0][0] + coordsArr[1][0]) / 2;
-//         y = (coordsArr[0][1] + coordsArr[0][1]) / 2;
-//     } else {
-//         // log.g("coordsArr length: " + coordsArr.length);
-//     }
-//     return {lat: x, lng: y};
-//     // If three or more coords, create shape and find center of shape
-// }
-
-var timerStart, timerEnd;
-function timer(mode){
-    if(mode === 'start' || mode === 'stop'){
-        var now = Date.now();
-        if(mode === 'start'){
-            timerStart = now;
-        } else {
-            timerEnd = now;
-        }
-    } else {
-        return (timerEnd - timerStart) / 1000 + "s";
-    }
+    // google.maps.event.trigger(mapObj, 'resize');
 }
 
 function initMap() {
     infoWindow = new google.maps.InfoWindow({map: mapObj});
     mapObj = new google.maps.Map(document.getElementById('map'), {
         center: mapOptions.cityCenter.coords,//initializes at city center
-        zoom: mapOptions.cityCenter.zoom
+        zoom: mapOptions.cityCenter.zoom,
+        scrollwheel: false
     });
 
     // convert all brunchtrackers to marker objects
     brunchMarkerObjs = convertAllToMarkers();
 
     // get checkboxes, prepare for geolocating user
-    var checkboxes = document.querySelectorAll('input[type=checkbox]');
-    var userQuad = "";
+    checkboxes_geo = document.querySelectorAll('input[type=checkbox]');
+    // clearCheckBoxes();
+}
 
-    // USER OPTS IN TO GEOLOCATION -------------------------------------
-//     if (navigator.geolocation){
-//       navigator.geolocation.getCurrentPosition(function(position){
-//
-// timer('start');
-//
-//         pos = {
-//           lat: position.coords.latitude,
-//           lng: position.coords.longitude
-//         };
-//
-//         // log.g("Current Lat, Lng: " + pos.lat + ", " + pos.lng);
-//         infoWindow.setPosition(pos);//center view on user location
-//         infoWindow.setContent('Location found.');
-//         mapObj.setCenter(pos);
-//         // infoWindow.open(mapObj);//shows location. Not necessarily accurate
-//
-//         // get current user location quadrant
-//         userQuad = getQuadrant();
-//         // log.g("Current user location: " + userQuad);
-//
-//         // check box matching user's geolocation
-//         for(var i=0; i<checkboxes.length; i++){
-//             // log.g("Quad checkbox: " + checkboxes[i].dataset.quad);
-//
-//             if(checkboxes[i].dataset.quad === userQuad){
-//                 checkboxes[i].checked = true;
-//
-//                 // show relevant quad
-//                 setMapOnAll('show', getMarkerObjs(userQuad));
-//             } else {
-//                 checkboxes[i].checked = false;
-//
-//                 // hide other quads
-//                 var quad = checkboxes[i].dataset.quad;
-//                 setMapOnAll('hide', getMarkerObjs(quad));
-//             }
-//         }
-//
-// timer('stop');
-//
-//       }, function() {
-//         handleLocationError(false, infoWindow, mapObj.getCenter());
-//       });
-//       // Browser doesn't support Geolocation
-//       handleLocationError(false, infoWindow, mapObj.getCenter());
-//     }
+function clearCheckBoxes(){
+    for(var i=0; i<checkboxes_geo.length; i++){
+        checkboxes_geo[i].checked = false;
+    }
 }
 
 function enable_geoloc(){
-    if (navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(function(position){
+    if(navigator.geolocation){
+        geo_enabled = true;
+        navigator.geolocation.getCurrentPosition(function(position){
 
 // timer('start');
 
@@ -216,6 +192,8 @@ function enable_geoloc(){
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
+
+
 
         // log.g("Current Lat, Lng: " + pos.lat + ", " + pos.lng);
         infoWindow.setPosition(pos);//center view on user location
@@ -225,22 +203,25 @@ function enable_geoloc(){
 
         // get current user location quadrant
         userQuad = getQuadrant();
-        // log.g("Current user location: " + userQuad);
+        log.g("Current user location: " + userQuad);
+
+        // reload featured photos to show nearby options
+        getPlacePhotos();
 
         // check box matching user's geolocation
-        for(var i=0; i<checkboxes.length; i++){
-            // log.g("Quad checkbox: " + checkboxes[i].dataset.quad);
+        for(var i=0; i<checkboxes_geo.length; i++){
+            // log.g("Quad checkbox: " + checkboxes_geo[i].dataset.quad);
 
-            if(checkboxes[i].dataset.quad === userQuad){
-                checkboxes[i].checked = true;
+            if(checkboxes_geo[i].dataset.quad === userQuad){
+                checkboxes_geo[i].checked = true;
 
                 // show relevant quad
                 setMapOnAll('show', getMarkerObjs(userQuad));
             } else {
-                checkboxes[i].checked = false;
+                checkboxes_geo[i].checked = false;
 
                 // hide other quads
-                var quad = checkboxes[i].dataset.quad;
+                var quad = checkboxes_geo[i].dataset.quad;
                 setMapOnAll('hide', getMarkerObjs(quad));
             }
         }
@@ -285,17 +266,6 @@ function getQuadrant(){
     return concat;
 }
 
-// Get subset of brunch array that match quadrant
-function getBrunchObjs(quad){
-    var subsetArr = [];
-    for(var i=0; i<brunchArr.length; i++){
-        if(brunchArr[i].nhd === quad){
-            subsetArr.push(brunchArr[i]);
-        }
-    }
-    return subsetArr;
-}
-
 function getMarkerObjs(quad){
     var quadMarkerArr;
     // log.g("Fetching quad: " + quad );
@@ -333,7 +303,7 @@ function convertAllToMarkers(){
             title: brunchArr[i].title,
             openTime: brunchArr[i].opentime
         });
-
+        markerObj.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
         markerObj.setAnimation(google.maps.Animation.DROP);
         // this array is returned
         arr.push(markerObj);

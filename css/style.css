@@ -1,47 +1,133 @@
+/*////////Base Styles////////*/
+* {
+   margin: 0px;
+   padding: 0px;
+}
 
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    font-family: 'Raleway' , sans-serif;
 }
 
-/*
-#navigation {
-  /*position: fixed;
-  border-style: solid;
-  font-weight: bolder;
-  margin-left: 20px;
-  font-size: 20px;
+h1  {
+  font-family: 'Courgette', cursive;
+  text-align: center;
+  font-size: 50px
 }
-*/
+
+form {
+    margin-left: 20px;
+    font-family: arial;
+    font-size: smaller;
+}
+
+body  {
+
+}
+
+section {
+  font-family: 'Raleway' , sans-serif;
+  display: block;
+  /*! display: inline-block; */
+}
 
 ul {
   list-style-type: none;
-  margin-left: 30px;
-  padding: 0;
-  background-color: #ff7f33;
-  overflow: hidden;
-  display: inline-block;
-  position: fixed;
-}
-
-li {
-  float: left;
-  border-right: 7px solid lightyellow;
-  }
-
-li:last-child {
-  border-right: none;
-}
-
-li a {
-  padding: 10px 10px;
   text-align: center;
-  display: block;
-  color: white;
+  display: inline-block;
 }
 
-li a hover:not(.active) {
+/*////////Review Page Styles////////*/
+#restselect {
+  border: 1px solid gray;
+  margin: 20px 0 10px 0;
+  padding: 10px 10px 10px 0;
+  display: inline-block;
+  background-color: white;
+  opacity: .8;
+}
+
+#reviews {
+  width: 100%;
+  height: 100%;
+}
+
+#background {
+    object-fit: cover;
+    filter: grayscale(50%);
+    position: absolute;
+    width: 100%;
+    opacity: .35;
+}
+
+#container_reviews {
+  margin: 0px auto;
+  width: 500px;
+  position: relative;
+  /*! z-index: 1; */
+  padding-top: 50px;
+}
+
+#reviews {
+    margin-top: 0px;
+}
+
+#review-content {
+  background-color: white;
+  border: 1px solid gray;
+  padding: 25px;
+  opacity: .8;
+}
+
+header {
+  height: 50px;
+  /*! margin-bottom: 5px; */
+  display: block;
+}
+
+#site-title {
+  border: 2px solid white;
+  padding: 5px 10px 0;
+  margin: 5px;
+}
+
+nav {
+  top: 0px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  color: white;
+  background-color: #ff7f33;
+  opacity: 0.85;
+  cursor: pointer;
+  padding-left: 12px;
+  z-index: 1;
+}
+
+/* li:first-child { */
+  /*! border-left: 3px solid lightyellow; */
+/* } */
+
+nav #site-title {
+  font-size: 25px;
+}
+
+nav ul {
+  display: flex;
+  height: 100%;
+  margin-left: 20px;
+  font-size: 17px;
+}
+
+nav ul li {
+  padding: 15px 20px;
+}
+
+nav li:hover{
+  background-color: lightblue;
+  color: black;
+}
+
+nav li hover:not(.active) {
   background-color: #111;
 }
 
@@ -54,16 +140,24 @@ li a hover:not(.active) {
 }
 
 #map {
-    /*height: 100%;*/
     height: 350px;
     width: 100%;
 }
 
-#timeandlocation {
-  border-style: solid;
-  margin-left: 20px;
+#container_table {
   display: inline-block;
+  margin: 20px;
+}
 
+#timeandlocation {
+  /*! border-style: solid; */
+  margin: 20px;
+  padding: 10px;
+  display: inline-block;
+  background-color: lightblue;
+  border-radius: 3px;
+  align-content: top;
+  vertical-align: top;
 }
 
 #generatedcontent {
@@ -71,45 +165,22 @@ li a hover:not(.active) {
   display: inline-block;
 }
 
-h1  {
-  font-family: 'Raleway', sans-serif;
-  margin-left: 20px;
-  font-weight: bolder;
-}
 
 #timeandlocationheader {
-  margin-left: 20px;
+  text-align: center;
 }
 
 #mapheader {
   margin-left: 20px;
 }
 
-#reviews-header {
-  margin-left: 20px;
-}
-
-#map-nav {
+/*#map-nav {
   margin-left: 20px;
 }
 
 #reviews-nav {
   margin-left: 20px;
-}
-
-body  {
-  background-color: lightyellow;
-}
-
-section {
-  font-family: 'Raleway' , sans-serif;
-  display: block;
-  /*! background-color: lightblue; */
-}
-
-form {
-  font-family: monospace;
-}
+}*/
 
 #launchpage {
   font-family: 'Raleway' , sans-serif;
@@ -117,6 +188,7 @@ form {
   z-index: 5;
   width: 100%;
   margin-top: 75px;
+  background-color: #f0f0f0;
 }
 
 .closed {
@@ -146,13 +218,12 @@ form {
   width: 300px;
 }
 
-#launchpageimages a{
-  /*display: block;*/
+/*#launchpageimages a {
   text-align: center;
-}
+}*/
 
 #launchpageimages figure{
-  border-style: solid;
+  /*border-style: solid;*/
   margin:0 10px;
 }
 
@@ -160,40 +231,8 @@ form {
   text-align: center;
 }
 
-#launchcontent {
-  font-family: 'Raleway' , sans-serif;
-  /*background-color: lightgreen;*/
-
-}
-
-#searchform {
-  background-color:
-
-}
-
 #buttondiv {
   margin: 5px;
-
-}
-
-/*#map {
-  margin: 30px;
-}*/
-
-#searchpage{
-    /*display: none;*/
-/*   margin-top: 400px; */
-/*  added to remove launch page conflict*/
-}
-
-.fadeout{
-  opacity: 0;
-  transition: opacity  1s;
-}
-
-.fadein{
-  opacity:1;
-  transition: opacity  1s .25s;
 }
 
 .hide{
@@ -204,25 +243,27 @@ form {
   margin: 5px;
 }
 
-#nhoodselect {
-}
 
-#reviews {
-    margin-bottom: 300px;
-}
-
-#container_btn_nearby {
+#wrapper_btns_secondary {
   height: 25px;
 }
 
-#btn_nearBy {
-  height: 25px;
-  width: 150px;
-  background-color: orange;
-  color: white;
-  text-align: center;
-  float: right;
-  cursor: pointer;
+#container_btns_secondary {
+    display: inline;
+    margin: auto;
+    margin-right: 150px;
+}
+
+.btns_secondary {
+    height: 25px;
+    width: 100px;
+    line-height: 25px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid white;
 }
 
 .feature-frame {
@@ -252,6 +293,7 @@ figcaption a {
   color: orange;
 }
 
+/*////////Change Page Transitions////////*/
 .invisible {
     opacity: 0;
 }

@@ -1,4 +1,7 @@
 var service;
+var geo_enabled = false;
+var active_BrunchArr;
+var brunchArr_Geo = [];
 var imgsFilled = 0;
 var photosObj = {
     global_pId: null,
@@ -31,8 +34,21 @@ function getTrackerObj(pId){
 // Utility function
 function getRandom(bounds){
     var rand = Math.floor(Math.random() * bounds);
-    log.p("Random num: " + rand);
+    // log.p("Random num: " + rand);
     return rand;
+}
+
+// Get subset of brunch array that match quadrant
+function getBrunchObjs(quad){
+    log.g("Getting brunches in " + quad);
+    var subsetArr = [];
+    for(var i=0; i<brunchArr.length; i++){
+        if(brunchArr[i].nhd === quad){
+            subsetArr.push(brunchArr[i]);
+            // log.g(quad);
+        }
+    }
+    return subsetArr;
 }
 
 function initPhotos(){
@@ -41,29 +57,32 @@ function initPhotos(){
 
 // Fill photoUrls arrays with images of brunchtracker with this pId
 function getPlacePhotos(){
-    var indx = getRandom(brunchArr.length);
-    var placeObj = brunchArr[indx];
-    log.p("Querying GooglePlaces for " + brunchArr[indx].title + " | (brunchArr[index]) = " + indx);
-
-    if(!placeObj.hasOwnProperty('imgs')){
-        // log.p('getPlacePhotos');
-        photosObj.global_pId = placeObj.pId;
-        photosObj.indx = indx;
-        // log.p("INDX " + photosObj.indx);
-
-        var request = {
-            placeId: placeObj.pId
-        };
-
-        if(!service){
-            service = new google.maps.places.PlacesService(mapObj);
-        }
-        service.getDetails(request, callback);
-    } else {
-        log.p("This tracker already has images! Exiting...");
-        // Fix this: If a random number is a repeat try again,
-        // don't exit
+    if(!geo_enabled){
+        active_BrunchArr = brunchArr;
+        // indx = getRandom(brunchArr.length);
+    } else {// geolocation enabled
+        // get subset of brunchArr, put to brunchArr_Geo
+        // log.p("geo enabled!");
+        brunchArr_Geo = getBrunchObjs(userQuad);
+        active_BrunchArr = brunchArr_Geo;
     }
+    var indx = getRandom(active_BrunchArr.length);
+    // log.p("active_BrunchArr = " + active_BrunchArr);
+    var placeObj = active_BrunchArr[indx];
+    // log.p("Querying GooglePlaces for " + active_BrunchArr[indx].title + " | (brunchArr_Geo[index]) = " + indx);
+
+    photosObj.global_pId = placeObj.pId;
+    photosObj.indx = indx;
+    // log.p("INDX " + photosObj.indx);
+
+    var request = {
+        placeId: placeObj.pId
+    };
+
+    if(!service){
+        service = new google.maps.places.PlacesService(mapObj);
+    }
+    service.getDetails(request, callback);
 }
 
 // Fill the photUrls arrays
@@ -83,62 +102,54 @@ function callback(place, status){
         for(var j=0; j<photoSizes.length; j++){
             var size = photoSizes[j];
             var sizedArr = [];
-            var maxPics = 3;
+            var maxPics = 5;
 
             for(var i=0; i<maxPics; i++){//limt to 2 images
                 if(photos[i]){
                     url = photos[i].getUrl({'maxWidth':size, 'maxHeight':size});
                 }
-                // else {
-                //     log.p("There were no photos for this place. Index = " + photosObj.indx);
-                //     maxPics++;
-                // }
-                // if no photos, do something else
                 sizedArr.push(url);
             }
             urlMasterArr.push(sizedArr);
         }
         // attach imgs property to brunch object
-        brunchArr[photosObj.indx].imgs = urlMasterArr;
+        active_BrunchArr[photosObj.indx].imgs = urlMasterArr;
 
         // // draw photos on page1
-        log.p("drawing index " + photosObj.indx);
-        drawPhotos(brunchArr[photosObj.indx], 'md', 1);
+        // log.p("drawing index " + photosObj.indx);
+        drawPhotos(active_BrunchArr[photosObj.indx], 'md', 1);
         imgsFilled++;
 
         if(imgsFilled < 3){
             getPlacePhotos();
+        } else {
+            imgsFilled = 0;
         }
         // log.p('end callback');
     }
 }
 
 function drawPhotos(brunchObj, size, quantity){
-    log.p("Drawing photos for " + brunchObj.title);
+    // log.p("Drawing photos for " + brunchObj.title);
     var activePhotoUrlArr;
 
     var indx = photosObj.indx;
-    var website = brunchArr[indx].website;
-    var title = brunchArr[indx].title;
-    var openTime = brunchArr[indx].opentime;
+    var website = active_BrunchArr[indx].website;
+    var title = active_BrunchArr[indx].title;
+    var openTime = active_BrunchArr[indx].opentime;
     var photoUrl;
-    if(brunchArr[indx].imgs[1].length > 0){
-        photoUrl = brunchArr[indx].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
+    if(active_BrunchArr[indx].imgs[1].length > 0){
+        photoUrl = active_BrunchArr[indx].imgs[1][getRandom(active_BrunchArr[indx].imgs[1].length)];
     } else {
-        log.p("No photos available for this location. Rolling again.");
-        photoUrl = brunchArr[getRandom(brunchArr.length)].imgs[1][getRandom(brunchArr[indx].imgs[1].length)];
+        // log.p("No photos available for this location. Rolling again.");
+        photoUrl = active_BrunchArr[getRandom(active_brunchArr.length)].imgs[1][getRandom(active_BrunchArr[indx].imgs[1].length)];
     }
     var n = imgsFilled+1;
     var target = 'pic' + n;
     var container = 'container_img' + imgsFilled;
-    log.p("Filling ID: " + n);
+    // log.p("Filling ID: " + n);
 
-    document.getElementById(target).innerHTML = "<figure id='" + container + "' class='invisible'><img src='" + photoUrl + "'></figure><figcaption><div class='f-title'>" + brunchObj.title + "</div><div class='f-time'>Open: " + brunchObj.opentime + "</div><div><a href='" + brunchObj.website + "' class='f-site' target='blank'>website</div></figcaption>";
-    // document.getElementById('launchpageimages').display = block;
-
-    // setTimeout(function(){
-    //     replaceClass('launchpageimages', 'closed', 'open');
-    // }, 800);
+    document.getElementById(target).innerHTML = "<figure id='" + container + "' class='invisible'><img src='" + photoUrl + "'></figure><figcaption><div class='f-title'>" + brunchObj.title + "</div><div class='f-time'>Opens: " + brunchObj.opentime + "</div><div><a href='" + brunchObj.website + "' class='f-site' target='blank'>website</div></figcaption>";
 
     setTimeout(function(){
         replaceClass(target, 'invisible', 'visible');
@@ -167,6 +178,11 @@ function replaceClass(id, oldClass, newClass){
     var currentClass = el.className;
     document.getElementById(id).className = currentClass.replace(oldClass, newClass).trim();
 }
+
+document.getElementById('pic1').addEventListener('click', function(e){
+    // log.p(e.target.tagName);
+    visPage('searchpage');
+});
 
 // TEST CODE ----------------------------------------------------------------
 
