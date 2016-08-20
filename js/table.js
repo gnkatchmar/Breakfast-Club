@@ -1,6 +1,7 @@
 document.getElementById("dropdown").addEventListener("change", getIndex);
 
 function getIndex() {
+	// clears table
 	var tableContainer = document.getElementById("restaurantListTable");
 	tableContainer.innerHTML = "";
 	
@@ -30,8 +31,9 @@ function getIndex() {
 
 	// if SE is selected print out se restaurants
 	for (var index = 0; index < brunchArr.length; index++) {
-		//if (brunchArr[index].nhd == "SE" && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
-		if (brunchArr[index].nhd == SEboxTrue && parseInt(userSelectTime) >= parseInt(brunchArr[index].opentime)) {
+	        var brunchArrTime = brunchArr[index].opentime;
+			if (brunchArr[index].nhd == SEboxTrue && parseInt(userSelectTime.replace(":", "")) >= parseInt(brunchArrTime.replace(":", ""))) {
+	
 			var currentRestaurant = brunchArr[index];
 			currentRestaurant.addInfo();
 		}
@@ -39,8 +41,8 @@ function getIndex() {
 	
 	// if NE is selected print out ne restaurants
 	for (var index = 0; index < brunchArr.length; index++) {
-		//if (brunchArr[index].nhd == "SE" && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
-		if (brunchArr[index].nhd == NEboxTrue && parseInt(userSelectTime) >= parseInt(brunchArr[index].opentime)) {
+			var brunchArrTime = brunchArr[index].opentime;
+			if (brunchArr[index].nhd == NEboxTrue && parseInt(userSelectTime.replace(":", "")) >= parseInt(brunchArrTime.replace(":", ""))) {
 			var currentRestaurant = brunchArr[index];
 			currentRestaurant.addInfo();
 		}
@@ -48,14 +50,10 @@ function getIndex() {
 	
 	// if SW is selected print out sw restaurants
 	for (var index = 0; index < brunchArr.length; index++) {
-		//if (brunchArr[index].nhd == "SE" && parseInt(userSelectTime) > parseInt(brunchArr[index].opentime)) {
-		if (brunchArr[index].nhd == SWboxTrue && parseInt(userSelectTime) >= parseInt(brunchArr[index].opentime)) {
+			var brunchArrTime = brunchArr[index].opentime;
+			if (brunchArr[index].nhd == SWboxTrue && parseInt(userSelectTime.replace(":", "")) >= parseInt(brunchArrTime.replace(":", ""))) {
 			var currentRestaurant = brunchArr[index];
 			currentRestaurant.addInfo();
 		}
 	}	
 }
-
-
-
-

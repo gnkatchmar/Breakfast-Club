@@ -19,9 +19,9 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
     nameCell.innerText = this.title;
     locationRow.appendChild(nameCell);
 
-    //var opentimeCell = document.createElement("td");
-    //opentimeCell.innerText = this.opentime;
-    //locationRow.appendChild(opentimeCell);
+    var opentimeCell = document.createElement("td");
+    opentimeCell.innerText = this.opentime;
+    locationRow.appendChild(opentimeCell);
 
     var addressCell = document.createElement("td");
     addressCell.innerText = this.address;
