@@ -11,7 +11,7 @@ function getIndex() {
 	var SEboxChecked = document.getElementById("cb0").checked;
 	if (SEboxChecked == true){
 		var SEboxTrue = "SE";
-		var originalHotcakes = new brunchtracker("Original Hotcake House", "1002 SE Powell", "SE", "12:00 AM", "http://www.hotcakehouse.com/", 45.50114,  -122.65558,  'ChIJ7ctb9noKlVQRUDHDKivog2g');
+		var originalHotcakes = new brunchtracker("Original Hotcake House", "1002 SE Powell", "SE", "12:00 AM", "www.hotcakehouse.com/", 45.50114,  -122.65558,  'ChIJ7ctb9noKlVQRUDHDKivog2g');
 		originalHotcakes.addInfo();
 	}
 	
