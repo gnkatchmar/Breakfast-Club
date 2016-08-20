@@ -46,6 +46,11 @@ function visPage(pageId){
             reviewOutput();
         break;
     }
+    if(pageId === 'launchpage'){
+        vis('container_btns_secondary', 1);
+    } else {
+        vis('container_btns_secondary', 0);
+    }
 }
 
 // add nav event system
