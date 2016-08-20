@@ -8,10 +8,15 @@ html, body {
     font-family: 'Raleway' , sans-serif;
 }
 
+body {
+  /*margin-top: 80px;*/
+  background-color: lightyellow;
+}
+
 h1  {
   font-family: 'Courgette', cursive;
   text-align: center;
-  font-size: 50px
+  font-size: 40px;
 }
 
 form {
@@ -20,25 +25,64 @@ form {
     font-size: smaller;
 }
 
-body  {
-  /*background-color: lightyellow;*/
-}
-
-.background {
-    background-image: url(../img/portlandia-brunch.jpg);
-    filter: grayscale(100%);
-}
-
 section {
   font-family: 'Raleway' , sans-serif;
   display: block;
 }
 
-ul {
-  list-style-type: none;
-  text-align: center;
+header {
+   overflow: hidden;
+   display: inline-block;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  width: 100%;
+  opacity: 0.85;
+  background-color: #ff7f33;
+  height: 50px;
+}
+
+
+#site-title {
+  position: fixed;
+  z-index: 2;
+/*   background-color: #ff7f33; */
+/*   top: 0; */
+/*   border-style: solid; */
+  color:white;
+  padding: 2px;
+  /*font-size: 30px;*/
+/*   display: inline-block; */
+}
+
+#nav_main {
   display: inline-block;
 }
+
+
+ul {
+  list-style-type: none;
+   background-color: #ff7f33;
+   overflow: hidden;
+   display: inline-block;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+/*   left: 570px; */
+  width: 100%;
+  float: right;
+  opacity: 0.85;
+  text-align: center;
+
+}
+
+li {
+  float: right;
+  display: inline-block;
+  border-right: 3px solid lightyellow;
+  margin-top: 4px;
+  padding: 2px;
+  }
 
 /*////////Review Page Styles////////*/
 #restselect {
@@ -58,63 +102,44 @@ ul {
     margin-left: 20px;
 }
 
+li:first-child {
+/*   border-left: 3px solid lightyellow; */
+  border-right: none;
+}
 
 
-header {
-  height: 50px;
-  /*! margin-bottom: 5px; */
+li a {
+/*   float: right; */
+  padding: 10px 10px;
+  text-align: center;
   display: block;
-}
-
-#site-title {
-  border: 2px solid white;
-  padding: 5px 10px 0;
-  margin: 5px;
-}
-
-nav {
-  top: 0px;
-  width: 100%;
-  position: fixed;
-  display: flex;
   color: white;
-  background-color: #ff7f33;
-  opacity: 0.85;
-  cursor: pointer;
-  padding-left: 12px;
+  text-decoration: none;
 }
 
-/* li:first-child { */
-  /*! border-left: 3px solid lightyellow; */
-/* } */
-
-nav #site-title {
-  font-size: 25px;
+li a:visited {
+  background-color: purple;
 }
 
-nav ul {
-  display: flex;
-  height: 100%;
-  margin-left: 20px;
-  font-size: 17px;
-}
-
-nav ul li {
-  padding: 15px 20px;
-}
-
-nav li:hover{
+li a:hover{
   background-color: lightblue;
   color: black;
 }
 
-nav li hover:not(.active) {
-  background-color: #111;
+li a:active {
+  background-color: green;
+}
+
+/*
+li a:hover:not(.active) {
+  background-color: lightblue;
+  color: black;
 }
 
 .active {
     background-color: #4CAF50;
 }
+*/
 
 #searchpage {
     height: 100%;
