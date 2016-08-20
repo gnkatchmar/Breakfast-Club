@@ -51,7 +51,7 @@ var log = function(t){
     console.log(t);
 };
 log.g = function(t){
-    log(t);
+    // log(t);
 };
 
 // Utility function

@@ -219,7 +219,6 @@ function reviewOutput () {
             rptContent.innerHTML += brunchArr[i].restcomment + "<br>";
         } // if any votes
     } //for brunchArr
-    // vis('review-content', 1);
 }
 
 //Review page process
@@ -241,6 +240,7 @@ function reviewPage (review) {
                 brunchArr[i].restcomment += ('<br>"' + restText + '"');
             } //if/else if recommend
             localStorage.setItem("votes",JSON.stringify(brunchArr));
+            display('review-content', 1);
         } //if title ==
     } //for
 
@@ -295,6 +295,12 @@ function visPage(pageId){
             display('searchpage', 0);
             display('reviews', 1);
             reviewOutput();
+            // unhide reviews if they exist
+            if(document.getElementById('review-content').innerHTML){
+                display('review-content', 1);
+            } else {
+                display('review-content', 0);
+            }
         break;
     }
     if(pageId === 'launchpage'){
