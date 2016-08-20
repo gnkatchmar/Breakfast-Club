@@ -11,7 +11,7 @@ var brunchtracker = function (title, address, nhd, opentime, website, lat, lng, 
     this.upvotes = 0;
     this.downvotes = 0;
     this.restcomment ="";
-  
+
     //advanced search table generation method
     this.addInfo = function(){
     var locationRow = document.createElement("tr");
@@ -219,6 +219,7 @@ function reviewOutput () {
             rptContent.innerHTML += brunchArr[i].restcomment + "<br>";
         } // if any votes
     } //for brunchArr
+    // vis('review-content', 1);
 }
 
 //Review page process
