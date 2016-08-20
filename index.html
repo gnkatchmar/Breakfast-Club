@@ -195,11 +195,13 @@
                           <option value="108">Zell's Cafe</option>
                       </select>
                 </form>
-                <form name = "votes"  onsubmit = "reviewPage(vote); return false">
+                <br>
+                <form name = "votes" id="votes" onsubmit = "reviewPage(vote); return false">
                     <input type="radio" name="vote" value="recommend"> Recommend<br>
                     <input type="radio" name="vote" value="notrecommend"> Don't Recommend<br>
+                    <br>
                     <p>How was your brunch here?</p>
-                    <textarea rows="10" cols="50" id="reviewtext"></textarea>
+                    <textarea rows="5" cols="50" id="reviewtext"></textarea>
                     <input type="submit" value="Submit Review">
                 </form>
           </div>
@@ -212,8 +214,5 @@
 <script type="text/javascript" src="js/geolocation.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
 <script type="text/javascript" src="js/googlePlaces.js"></script>
-<!-- <script type="text/javascript" src="js/launchpage.js"></script> -->
-<!-- <script type = "text/javascript" src= "js/RndImgs.js"></script> -->
 <script type="text/javascript" src="js/table.js"></script>
-<script type="text/javascript" src="js/changePages.js"></script>
 </html>
